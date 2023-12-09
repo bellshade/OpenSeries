@@ -24,3 +24,15 @@ def percepatan(kecepatan: float | int, waktu: float | int) -> float:
     float: hasil dari kecepatan / waktu
     """
     return kecepatan / waktu
+
+
+def rumus_glbb(kecepatan_awal: float, a: float, t: float) -> float:
+    """
+    fungsi untuk menghitung jarak yang ditempuh oleh benda yang bergerak lurus beraturan
+
+    parameter:
+        kecepatan_awal (float): kecepatan awal (m/s)
+        a (float): percepatan (m/s**2)
+        t (float): waktu (s)
+    """
+    return kecepatan_awal * t + 0.5 * a * t ** 2

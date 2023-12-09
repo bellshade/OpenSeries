@@ -1,4 +1,4 @@
-from WpuPythonSeries.util import constant
+from OpenSeries.util import constant
 
 
 def luas_lingkaran(jari: float | int) -> float:

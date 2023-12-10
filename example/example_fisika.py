@@ -12,7 +12,6 @@ print("hitung glbb (gerak lurus beraturan)")
 result_glbb = fisika.rumus_glbb(10, 2, 3)
 print(f"hasil dari glbb adalah: {result_glbb}")
 
-tambah = 1 + 3
-print("hasil adalah", tambah)
-print("hasil adalah {}".format(tambah))
-print(f"hasil adalah {tambah}")
+print("menghitung koordinat parabola (x, y)")
+result_parabola = fisika.koordinat_parabola(2.0, 3.2, 2.0, 3.0)
+print(f"hasil dari koordinat parabola adalah {result_parabola}")

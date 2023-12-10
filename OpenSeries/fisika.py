@@ -41,20 +41,12 @@ def gerak_lurus_beraturan(kecepatan_awal: float, a: float, t: float) -> float:
     return kecepatan_awal * t + 0.5 * a * t**2
 
 
-def koordinat_parabola(v0: float, y0: float, x0: float, a: float) -> float:
+def energi_kinetik(massa: float, kecepatan: int | float) -> int | float:
     """
-    menghitung koordinat (x, y) dari sebuah parabola
+    menghitung energi kinetik
 
-    paremeter:
-        v0: kecepatan awal (m/s)
-        y0: koordinat awal y (m)
-        x0: koordinat awal x (m)
-        a: percepatan gravitasi (m/s**2)
-
-    return:
-        x: koordinat x (m)
+    parameter:
+        massa (float): massa benda
+        kecepatan (float | int): kecepatan benda
     """
-    y = y0 + v0 + math.sin(a) * t - (g / 2) * t**2
-    x = x0 + v0 + math.cos(a) * t
-
-    return x, y
+    return 0.5 * massa * kecepatan**2

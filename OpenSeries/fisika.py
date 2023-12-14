@@ -47,6 +47,17 @@ def energi_kinetik(massa: float, kecepatan: int | float) -> int | float:
 
     parameter:
         massa (float): massa benda
-        kecepatan (float | int): kecepatan benda
+        kecepatan (float atau int): kecepatan benda
     """
     return 0.5 * massa * kecepatan**2
+
+
+def masa_jenis(massa: int | float, volume: int | float) -> int | float:
+    """
+    menghitung masa jenis suatu benda
+
+    parameter:
+        massa (float atau int): massa benda
+        volume (float atau int): volume benda
+    """
+    return massa / volume

@@ -18,3 +18,9 @@ print(
     f"menghitung energi kinetik pada benda {massa_benda} kg dengan kecepatan {kecepatan_benda} m/s"
 )
 print(f"hasilnya adalah : {fisika.energi_kinetik(massa_benda, kecepatan_benda)} joule")
+
+volume_benda = 8
+print(
+    f"menghitung massa jenis benda dengan massa benda {massa_benda} gram, dan volume benda {volume_benda} cm3"
+)
+print(f"hasilnya adalah : {fisika.masa_jenis(massa_benda, volume_benda)}")

@@ -9,7 +9,11 @@ def luas_lingkaran(jari: float | int) -> float:
     Parameter:
     jari-jari (float atau integer): jari jari yang akan dihitung
     """
-    return constant.pi * jari**2
+    if isinstance(jari, (float, int)):
+        return constant.pi * jari**2
+    else:
+        print("kamu memasukkan tipe data yang salah")
+    return None
 
 
 def keliling_lingkaran(jari: float | int) -> float:
@@ -19,7 +23,11 @@ def keliling_lingkaran(jari: float | int) -> float:
     parameter:
         jari (float atau integer); jari-jari lingkaran
     """
-    return 2 * constant.pi * jari
+    if isinstance(jari, (float, int)):
+        return 2 * constant.pi * jari
+    else:
+        print("kamu memasukkan tipe data yang salah")
+    return None
 
 
 def diameter_lingkaran(jari: float | int) -> float:
@@ -29,7 +37,11 @@ def diameter_lingkaran(jari: float | int) -> float:
     parameter:
         jari (float atau integer): jari-jari lingkaran
     """
-    return 2 * jari
+    if isinstance(jari, (float, int)):
+        return 2 * jari
+    else:
+        print("kamu memasukkan tipe data yang salah")
+    return None
 
 
 def persamaan_linear(a: int | float, b: int | float, c: int | float) -> int | float:

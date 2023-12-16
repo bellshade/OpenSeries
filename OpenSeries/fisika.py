@@ -12,7 +12,14 @@ def kecepatan(jarak: float | int, waktu: float | int) -> float:
     Return:
     float: hasil dari jarak / waktu
     """
-    return jarak / waktu
+    if isinstance(jarak, (float, int)) and isinstance(waktu, (float, int)):
+        try:
+            return jarak / waktu
+        except ZeroDivisionError:
+            print("tidak bisa dibagikan dengan 0")
+    else:
+        print("kamu memasukkan tipe data yang salah")
+    return None
 
 
 def percepatan(kecepatan: float | int, waktu: float | int) -> float:

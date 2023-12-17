@@ -9,11 +9,12 @@ def luas_lingkaran(jari: float | int) -> float:
     Parameter:
     jari-jari (float atau integer): jari jari yang akan dihitung
     """
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
     if isinstance(jari, (float, int)):
         return constant.pi * jari**2
     else:
-        print("kamu memasukkan tipe data yang salah")
-    return None
+        return "kamu memasukkan tipe data yang salah"
 
 
 def keliling_lingkaran(jari: float | int) -> float:
@@ -23,28 +24,32 @@ def keliling_lingkaran(jari: float | int) -> float:
     parameter:
         jari (float atau integer); jari-jari lingkaran
     """
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
     if isinstance(jari, (float, int)):
         return 2 * constant.pi * jari
     else:
-        print("kamu memasukkan tipe data yang salah")
-    return None
+        return "kamu memasukkan tipe data yang salah"
 
 
-def diameter_lingkaran(jari: float | int) -> float:
+def diameter_lingkaran(jari: float | int) -> float | str:
     """
     menghitung diameter lingkaran
 
     parameter:
         jari (float atau integer): jari-jari lingkaran
     """
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
     if isinstance(jari, (float, int)):
         return 2 * jari
     else:
-        print("kamu memasukkan tipe data yang salah")
-    return None
+        return "kamu memasukkan tipe data yang salah"
 
 
-def persamaan_linear(a: int | float, b: int | float, c: int | float) -> int | float:
+def persamaan_linear(
+    a: int | float, b: int | float, c: int | float
+) -> int | float | str:
     """
     menghitung persamaan linear
 
@@ -56,20 +61,37 @@ def persamaan_linear(a: int | float, b: int | float, c: int | float) -> int | fl
     return:
         (float atau integer): hasil persamaan linear dari 3 bilangan a, b, dan c
     """
-    return (-b + math.sqrt(b**2 - 4 * a * c)) / 2 * a
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
+    if isinstance((a, b, c), (int, float)):
+        return (-b + math.sqrt(b**2 - 4 * a * c)) / 2 * a
+    else:
+        return "kamu memasukkan tipe data yang salah"
 
 
-def rata_rata(nilai: list[int | float]) -> list[int | float]:
+def rata_rata(nilai: list[int | float]) -> list[int | float] | str:
     """
     menghitung nilai rata-rata
 
     parameter:
         nilai (list(float atau integer)): nilai yang dihitung
     """
-    return sum(nilai) / len(nilai)
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
+    if isinstance(nilai, (list)):
+        # membuat looping untuk memecah nilai yang terdapat pada list
+        for cek_nilai in nilai:
+            # mengecek nilai di dalam list apakah semua tipe data berbentuk int atau float
+            # jika tidak maka error
+            if isinstance(cek_nilai, (int, float)):
+                return sum(nilai) / len(nilai)
+            else:
+                return "kamu memasukkan tipe data yang salah, harus int atau float"
+    else:
+        return "kamu memasukkan tipe data yang salah"
 
 
-def faktorial(nilai: int) -> int:
+def faktorial(nilai: int) -> int | str:
     """
     menghitung produk dari semua bilangan bulat positif
     contoh `4! = 24 = 4 x 3 x 2 x 1`
@@ -77,13 +99,18 @@ def faktorial(nilai: int) -> int:
     parameter:
         nilai (int): nilai yang akan di faktorial
     """
-    if nilai == 0 or nilai == 1:
-        return 1
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
+    if isinstance(nilai, int):
+        if nilai == 0 or nilai == 1:
+            return 1
+        else:
+            return nilai * faktorial(nilai - 1)
     else:
-        return nilai * faktorial(nilai - 1)
+        return "kamu memasukkan tipe data yang salah"
 
 
-def permutasi(nilai: int, r: int) -> int | float:
+def permutasi(nilai: int, r: int) -> int | float | str:
     """
     menghitung nilai permutasi dari n objek yang diambil dari r
 
@@ -91,10 +118,15 @@ def permutasi(nilai: int, r: int) -> int | float:
         nilai (int): nilai objek
         r (int): jumlah objek yang diambil
     """
-    return faktorial(nilai) / faktorial(nilai - r)
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
+    if isinstance(nilai, (int, float)):
+        return faktorial(nilai) / faktorial(nilai - r)
+    else:
+        return "kamu memasukkan tipe data yang salah"
 
 
-def kombinasi(nilai: int, r: int) -> int | float:
+def kombinasi(nilai: int, r: int) -> int | float | str:
     """
     menghitung nilai kombasi dari n objek yang diambil dari r
 
@@ -102,10 +134,17 @@ def kombinasi(nilai: int, r: int) -> int | float:
         nilai (int): nilai objek
         r (int): jumlah objek yang diambil
     """
-    return faktorial(nilai) / (faktorial(r) * faktorial(nilai - r))
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
+    if isinstance(nilai, (int, float)):
+        return faktorial(nilai) / (faktorial(r) * faktorial(nilai - r))
+    else:
+        return "kamu memasukkan tipe data yang salah"
 
 
-def fpb(bilangan_pertama: int | float, bilangan_kedua: int | float) -> int | float:
+def fpb(
+    bilangan_pertama: int | float, bilangan_kedua: int | float
+) -> int | float | str:
     """
     menghitung faktor persekutuan terbesar dari dua buah bilangan
 
@@ -113,9 +152,16 @@ def fpb(bilangan_pertama: int | float, bilangan_kedua: int | float) -> int | flo
         bilangan_pertama (float atau integer): bilagan pertama
         bilangan_kedua (float atau integer): bilangan kedua
     """
-    while bilangan_kedua:
-        bilangan_pertama, bilangan_kedua = (
-            bilangan_kedua,
-            bilangan_pertama % bilangan_kedua,
-        )
-    return abs(bilangan_pertama)
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
+    if isinstance(bilangan_pertama, (int, float)) and isinstance(
+        bilangan_kedua, (int, float)
+    ):
+        while bilangan_kedua:
+            bilangan_pertama, bilangan_kedua = (
+                bilangan_kedua,
+                bilangan_pertama % bilangan_kedua,
+            )
+        return abs(bilangan_pertama)
+    else:
+        return "kamu memasukkan tipe data yang salah"

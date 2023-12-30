@@ -1,4 +1,5 @@
 from OpenSeries.util import constant
+from OpenSeries.util import error as pesan_error
 import math
 
 
@@ -14,7 +15,7 @@ def luas_lingkaran(jari: float | int) -> float:
     if isinstance(jari, (float, int)):
         return constant.pi * jari**2
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return pesan_error.error_tipe_data(["float", "int"])
 
 
 def keliling_lingkaran(jari: float | int) -> float:
@@ -29,7 +30,7 @@ def keliling_lingkaran(jari: float | int) -> float:
     if isinstance(jari, (float, int)):
         return 2 * constant.pi * jari
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return pesan_error.error_tipe_data(["float"])
 
 
 def diameter_lingkaran(jari: float | int) -> float | str:
@@ -44,7 +45,7 @@ def diameter_lingkaran(jari: float | int) -> float | str:
     if isinstance(jari, (float, int)):
         return 2 * jari
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return pesan_error.error_tipe_data(["float", "int"])
 
 
 def persamaan_linear(
@@ -66,7 +67,7 @@ def persamaan_linear(
     if isinstance((a, b, c), (int, float)):
         return (-b + math.sqrt(b**2 - 4 * a * c)) / 2 * a
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return pesan_error.error_tipe_data(["float", "int"])
 
 
 def rata_rata(nilai: list[int | float]) -> list[int | float] | str:
@@ -86,9 +87,9 @@ def rata_rata(nilai: list[int | float]) -> list[int | float] | str:
             if isinstance(cek_nilai, (int, float)):
                 return sum(nilai) / len(nilai)
             else:
-                return "kamu memasukkan tipe data yang salah, harus int atau float"
+                return pesan_error.error_tipe_data(["float", "int"])
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return pesan_error.error_tipe_data(["float", "int"])
 
 
 def faktorial(nilai: int) -> int | str:
@@ -107,7 +108,7 @@ def faktorial(nilai: int) -> int | str:
         else:
             return nilai * faktorial(nilai - 1)
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return pesan_error.error_tipe_data(["int"])
 
 
 def permutasi(nilai: int, r: int) -> int | float | str:
@@ -123,7 +124,7 @@ def permutasi(nilai: int, r: int) -> int | float | str:
     if isinstance(nilai, (int, float)):
         return faktorial(nilai) / faktorial(nilai - r)
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return pesan_error.error_tipe_data(["float", "int"])
 
 
 def kombinasi(nilai: int, r: int) -> int | float | str:
@@ -139,8 +140,7 @@ def kombinasi(nilai: int, r: int) -> int | float | str:
     if isinstance(nilai, (int, float)):
         return faktorial(nilai) / (faktorial(r) * faktorial(nilai - r))
     else:
-        return "kamu memasukkan tipe data yang salah"
-
+        return pesan_error.error_tipe_data(["float", "int"])
 
 def fpb(
     bilangan_pertama: int | float, bilangan_kedua: int | float
@@ -164,4 +164,4 @@ def fpb(
             )
         return abs(bilangan_pertama)
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return pesan_error.error_tipe_data(["float", "int"])

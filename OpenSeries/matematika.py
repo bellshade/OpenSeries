@@ -142,6 +142,7 @@ def kombinasi(nilai: int, r: int) -> int | float | str:
     else:
         return pesan_error.error_tipe_data(["float", "int"])
 
+
 def fpb(
     bilangan_pertama: int | float, bilangan_kedua: int | float
 ) -> int | float | str:

@@ -3,6 +3,19 @@ from OpenSeries.util import error as pesan_error
 import math
 
 
+def radian_ke_derajat(radian: float | int) -> float | str:
+    """
+    mengubah nilai radian ke derajat
+
+    parameter:
+        radian (float atau integer): nilai radian
+    """
+    if not isinstance(radian, (float, int)):
+        return pesan_error.error_tipe_data()
+    else:
+        return radian * (180 / constant.pi)
+
+
 def luas_lingkaran(jari: float | int) -> float:
     """
     menghitung luas lingkaran
@@ -23,7 +36,7 @@ def keliling_lingkaran(jari: float | int) -> float:
     menghitung keliling lingkaran
 
     parameter:
-        jari (float atau integer); jari-jari lingkaran
+        jari (float atau integer): jari-jari lingkaran
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -166,3 +179,31 @@ def fpb(
         return abs(bilangan_pertama)
     else:
         return pesan_error.error_tipe_data(["float", "int"])
+
+
+def faktor_prima(n: int) -> list[int] | str:
+    """
+    membuat fungsi untuk mengurutkan nilai faktor prima
+
+    parameter:
+        n (int): rentang angka yang mau di tampilkan bilangan faktor prima
+    """
+    # mengecek apakah variable n bertipe data integer atau float
+    if not isinstance(n, (int)) and not isinstance(n, (float)):
+        # menampilkan pesan error jika tipe data salah
+        return pesan_error.error_tipe_data(["float", "int"])
+    else:
+        # jika desimal mengubah bilangan ke integer
+        n = int(n)
+        i = 2
+        faktor = []
+        while i * i <= n:
+            if n % i:
+                i += 1
+            else:
+                n //= i
+                # memasukkan hasil faktor prima ke dalam list
+                faktor.append(i)
+        if n > 1:
+            faktor.append(i)
+        return faktor

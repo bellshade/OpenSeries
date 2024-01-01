@@ -1,4 +1,5 @@
 import math
+import OpenSeries.util.error as error
 
 
 def kecepatan(jarak: float | int, waktu: float | int) -> float | str:
@@ -19,9 +20,9 @@ def kecepatan(jarak: float | int, waktu: float | int) -> float | str:
             return jarak / waktu
         except ZeroDivisionError:
             # error jika hasil pembagian dibagikan dengan 0
-            return "tidak bisa dibagikan dengan 0"
+            return erro.error_dibagi_nol()
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return error.error_tipe_data(["int", "float"])
 
 
 def percepatan(kecepatan: float | int, waktu: float | int) -> float | str:
@@ -42,9 +43,9 @@ def percepatan(kecepatan: float | int, waktu: float | int) -> float | str:
             return kecepatan / waktu
         except ZeroDivisionError:
             # error jika hasil pembagian dibagikan dengan 0
-            return "tidak bisa dibagikan dengan 0"
+            return error.error_dibagi_nol()
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return error.error_tipe_data(["int", "float"])
 
 
 def gerak_lurus_beraturan(kecepatan_awal: float, a: float, t: float) -> float | str:
@@ -65,7 +66,7 @@ def gerak_lurus_beraturan(kecepatan_awal: float, a: float, t: float) -> float | 
     ):
         return kecepatan_awal * t + 0.5 * a * t**2
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return error.error_tipe_data(["int", "float"])
 
 
 def energi_kinetik(massa: float | int, kecepatan: int | float) -> int | float | str:
@@ -81,7 +82,7 @@ def energi_kinetik(massa: float | int, kecepatan: int | float) -> int | float | 
     if isinstance(massa, (int, float)) and isinstance(kecepatan, (int, float)):
         return 0.5 * massa * kecepatan**2
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return error.error_tipe_data(["int", "float"])
 
 
 def masa_jenis(massa: int | float, volume: int | float) -> int | float | str:
@@ -99,6 +100,45 @@ def masa_jenis(massa: int | float, volume: int | float) -> int | float | str:
             return massa / volume
         except ZeroDivisionError:
             # error jika hasil pembagian dibagikan dengan 0
-            return "tidak bisa dibagikan dengan 0"
+            return error.error_dibagi_nol()
     else:
-        return "kamu memasukkan tipe data yang salah"
+        return error.error_tipe_data(["int", "float"])
+
+
+def energi_potensial(
+    m: int | float, g: int | float, h: int | float
+) -> float | int | str:
+    """
+    menghitung energi potensial dengan rumus Ep = m * g * h
+
+    Parameter:
+        m (float atau int): masa benda
+        g (float atau int): gravitasi bumi
+        h (float atau int): ketinggian suatu benda
+    """
+    if (
+        not isinstance(m, (float, int))
+        and not isinstance(g, (float, int))
+        and not isinstance(h, (float, int))
+    ):
+        return error.error_tipe_data(["float", "int"])
+    else:
+        return m * g * h
+
+
+def hukum_ohm(i: float | int, r: float | int) -> float | int | str:
+    """
+    menghitung hukum ohm dengan besar arus listrik yang mengalir
+    melalui sebuah hantaran akan berbanding lurus dengan tengangan potensial
+    yang diterapkan kepadanya dan berbanding balik dengan hambatan
+
+    Parameter:
+        i (float atau int): kuat arus
+        r (float atau int): hambatan (ditulis omega)
+    """
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
+    if not isinstance(i, (float, int)) and not isinstance(r, (float, int)):
+        return error.error_tipe_data(["float", "int"])
+    else:
+        return i * r

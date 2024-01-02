@@ -1,4 +1,8 @@
 import OpenSeries.matematika as matematika
+import OpenSeries.util.constant as konstanta
+
+print("menampilkan nilai konstan")
+print(f"nilai dari pi adalah: {str(konstanta.pi)}\n")
 
 print("hitung jari jari lingkaran")
 hasil_jari_lingkaran = matematika.luas_lingkaran(4.5)
@@ -30,4 +34,26 @@ print(f"hasilnya adalah : {matematika.fpb(nilai1, nilai2)}\n")
 rentang_nilai = 300
 print(
     f"rentang nilai {rentang_nilai} faktor prima adalah {matematika.faktor_prima(rentang_nilai)}\n"
+)
+
+nilai_A = 5
+nilai_S = 10
+
+print("menghitung probabilitas suatu kejadian")
+print(f"dengan jumlah hasil yang menguntungkan :{nilai_A}")
+print(f"dan dengan ukuran ruang sampel {nilai_S}")
+print(
+    f"probabilitas dari kejadiannya adalah: {matematika.peluang_kejadian(nilai_A, nilai_S)}\n"
+)
+
+
+nilai_suku = 5
+suku_pertama = 3
+selisih_suku = 2
+print("menghitung jumlah deret aritmatika")
+print(f"dengan nilai suku: {nilai_suku}")
+print(f"suku pertama: {suku_pertama}")
+print(f"selisih suku: {selisih_suku}")
+print(
+    f"hasilnya adalah: {matematika.hitung_jumlah_deret(nilai_suku, suku_pertama, selisih_suku)}\n"
 )

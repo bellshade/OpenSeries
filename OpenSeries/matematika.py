@@ -207,3 +207,48 @@ def faktor_prima(n: int) -> list[int] | str:
         if n > 1:
             faktor.append(i)
         return faktor
+
+
+def peluang_kejadian(
+    kejadian: int | float, ukuran_sampel: int | float
+) -> int | float | str:
+    """
+    menghitung probabilitas dari suatu kejadian
+
+    parameter:
+        kejadian (float atau integer): jumlah hasil yang menguntungkan (n(A))
+        ukuran sampel (float atau integer): ukurang ruang sampel (n(S))
+    """
+    # mengecek apakah variable kejadian, ukuran sampel bertipe data integer atau float
+    if not isinstance(kejadian, (float, int)) and not isinstance(
+        ukuran_sampel, (float, int)
+    ):
+        return pesan_error.error_tipe_data(["float", "int"])
+    else:
+        try:
+            return kejadian / ukuran_sampel
+        except ZeroDivisionError:
+            # menampilkan pesan error jika dibagi dengan 0
+            return pesan_error.error_dibagi_nol()
+
+
+def hitung_jumlah_deret(
+    n: float | int, a: float | int, b: float | int
+) -> float | int | str:
+    """
+    menghitung jumlah deret aritmatika
+
+    parameter:
+        n (float atau integer): jumlah suku dalam deret
+        a (float atau integer): suku pertama dalam deret
+        b (float atau integer): selisih antara dua suku berturut-turut
+    """
+    # mengecek apakah variable n, a dan b bertipe data integer atau float
+    if (
+        not isinstance(n, (float, int))
+        and not isinstance(a, (float, int))
+        and not isinstance(b, (float, int))
+    ):
+        return pesan_error.error_tipe_data(["float", "int"])
+    else:
+        return 0.5 * n * (2 * a + (n - 1) * b)

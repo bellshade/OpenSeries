@@ -1,4 +1,3 @@
-import math
 import OpenSeries.util.error as error
 
 
@@ -20,7 +19,7 @@ def kecepatan(jarak: float | int, waktu: float | int) -> float | str:
             return jarak / waktu
         except ZeroDivisionError:
             # error jika hasil pembagian dibagikan dengan 0
-            return erro.error_dibagi_nol()
+            return error.error_dibagi_nol()
     else:
         return error.error_tipe_data(["int", "float"])
 

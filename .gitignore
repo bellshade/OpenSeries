@@ -1,3 +1,4 @@
 # cache dari hasil running python
 __pycache__/
+.pytest_cache/
 

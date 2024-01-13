@@ -1,0 +1,36 @@
+name: openseries testing
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+
+    steps:
+      - name: checkout kode
+        uses: action/checkout@v4
+
+      - name: setting python
+        uses: actions/setup-python@v4
+
+      - name: cache pip
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+
+      - name: install requirement
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r dev-requirements.txt
+
+      - name: testing kodenya
+        run: |
+          pytest . --verbose

@@ -159,3 +159,11 @@ class TestFaktorPrima(unittest.TestCase):
     def test_input_negatif(self):
         hasil = matematika.faktor_prima(-30)
         self.assertEqual(hasil, error.error_format("Angka tidak boleh negatif"))
+
+
+class TestMatriksTranspose(unittest.TestCase):
+    def test_valid_input(self):
+        matriks_a = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+        ekspetasi = [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+        hasil = matematika.transpose_matriks(matriks_a)
+        self.assertEqual(hasil, ekspetasi)

@@ -10,6 +10,7 @@ from testing.matematika_test import (
     TestKombinasi,
     TestFPB,
     TestFaktorPrima,
+    TestMatriksTranspose,
 )
 
 if __name__ == "__main__":
@@ -24,6 +25,7 @@ if __name__ == "__main__":
         TestKombinasi,
         TestFPB,
         TestFaktorPrima,
+        TestMatriksTranspose,
     )
     all_tests = unittest.TestSuite([testing_matematika])
 

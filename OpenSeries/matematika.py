@@ -273,3 +273,18 @@ def hitung_jumlah_deret(
         return pesan_error.error_tipe_data(["float", "int"])
     else:
         return 0.5 * n * (2 * a + (n - 1) * b)
+
+
+def transpose_matriks(matriks: list[Union[float, int]]) -> Union[list[int, float], str]:
+    """
+    fungsi untuk transpose matrix
+
+    parameter:
+        matriks: list[float, int]: matriks yang akan di transpose
+    """
+    if not isinstance(matriks, list):
+        return pesan_error.error_tipe_data(["list"])
+    else:
+        return [
+            [matriks[j][i] for j in range(len(matriks))] for i in range(len(matriks[0]))
+        ]

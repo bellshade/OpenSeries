@@ -1,0 +1,8 @@
+# codeowners adalah suatu konfigurasi file dari github yang memungkinkan
+# github secara otomatis meminta (request) review kode dari orang
+# atau tim yang bertanggung jawab atas bagian atau kode dalam repositori
+# ini memastikan bahwa perubahan dari kode ditinjau oleh orang yang benar-benar
+# berpegang penuh dalam repositori
+
+# tanda * merupakan yang meninjau segala aspek pada repositori
+*       @slowy07

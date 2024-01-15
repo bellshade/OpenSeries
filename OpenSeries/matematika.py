@@ -1,9 +1,10 @@
 from OpenSeries.util import constant
 from OpenSeries.util import error as pesan_error
+from typing import Union
 import math
 
 
-def radian_ke_derajat(radian: float | int) -> float | str:
+def radian_ke_derajat(radian: float | int) -> Union[float, str]:
     """
     mengubah nilai radian ke derajat
 
@@ -16,7 +17,7 @@ def radian_ke_derajat(radian: float | int) -> float | str:
         return radian * (180 / constant.pi)
 
 
-def luas_lingkaran(jari: float | int) -> float:
+def luas_lingkaran(jari: float | int) -> Union[float, str]:
     """
     menghitung luas lingkaran
 
@@ -31,7 +32,7 @@ def luas_lingkaran(jari: float | int) -> float:
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def keliling_lingkaran(jari: float | int) -> float | str:
+def keliling_lingkaran(jari: float | int) -> Union[float, str]:
     """
     menghitung keliling lingkaran
 
@@ -46,7 +47,7 @@ def keliling_lingkaran(jari: float | int) -> float | str:
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def diameter_lingkaran(jari: float | int) -> float | str:
+def diameter_lingkaran(jari: float | int) -> Union[float, str]:
     """
     menghitung diameter lingkaran
 
@@ -63,7 +64,7 @@ def diameter_lingkaran(jari: float | int) -> float | str:
 
 def persamaan_linear(
     a: int | float, b: int | float, c: int | float
-) -> int | float | str:
+) -> Union[float, int, str]:
     """
     menghitung persamaan linear
 
@@ -92,7 +93,7 @@ def persamaan_linear(
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def rata_rata(nilai: list[int | float]) -> int | float | str:
+def rata_rata(nilai: list[int | float]) -> Union[int, float, str]:
     """
     menghitung nilai rata-rata
 
@@ -117,7 +118,7 @@ def rata_rata(nilai: list[int | float]) -> int | float | str:
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def faktorial(nilai: int) -> int | str:
+def faktorial(nilai: int) -> Union[int, str]:
     """
     menghitung produk dari semua bilangan bulat positif
     contoh `4! = 24 = 4 x 3 x 2 x 1`
@@ -138,7 +139,7 @@ def faktorial(nilai: int) -> int | str:
         return pesan_error.error_tipe_data(["int"])
 
 
-def permutasi(nilai: int, r: int) -> int | float | str:
+def permutasi(nilai: int, r: int) -> Union[int, float, str]:
     """
     menghitung nilai permutasi dari n objek yang diambil dari r
 
@@ -154,7 +155,7 @@ def permutasi(nilai: int, r: int) -> int | float | str:
         return faktorial(nilai) / faktorial(nilai - r)
 
 
-def kombinasi(nilai: int, r: int) -> int | float | str:
+def kombinasi(nilai: int, r: int) -> Union[int, float, str]:
     """
     menghitung nilai kombasi dari n objek yang diambil dari r
 
@@ -172,7 +173,7 @@ def kombinasi(nilai: int, r: int) -> int | float | str:
 
 def fpb(
     bilangan_pertama: int | float, bilangan_kedua: int | float
-) -> int | float | str:
+) -> Union[int, float, str]:
     """
     menghitung faktor persekutuan terbesar dari dua buah bilangan
 
@@ -198,7 +199,7 @@ def fpb(
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def faktor_prima(n: int) -> list[int] | str:
+def faktor_prima(n: int) -> Union[list[int], str]:
     """
     membuat fungsi untuk mengurutkan nilai faktor prima
 
@@ -231,7 +232,7 @@ def faktor_prima(n: int) -> list[int] | str:
 
 def peluang_kejadian(
     kejadian: int | float, ukuran_sampel: int | float
-) -> int | float | str:
+) -> Union[int, float, str]:
     """
     menghitung probabilitas dari suatu kejadian
 
@@ -254,7 +255,7 @@ def peluang_kejadian(
 
 def hitung_jumlah_deret(
     n: float | int, a: float | int, b: float | int
-) -> float | int | str:
+) -> Union[float, int, str]:
     """
     menghitung jumlah deret aritmatika
 

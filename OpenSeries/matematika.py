@@ -4,7 +4,7 @@ from typing import Union
 import math
 
 
-def radian_ke_derajat(radian: float | int) -> Union[float, str]:
+def radian_ke_derajat(radian: Union[float, int]) -> Union[float, str]:
     """
     mengubah nilai radian ke derajat
 
@@ -17,7 +17,7 @@ def radian_ke_derajat(radian: float | int) -> Union[float, str]:
         return radian * (180 / constant.pi)
 
 
-def luas_lingkaran(jari: float | int) -> Union[float, str]:
+def luas_lingkaran(jari: Union[float, int]) -> Union[float, str]:
     """
     menghitung luas lingkaran
 
@@ -32,7 +32,7 @@ def luas_lingkaran(jari: float | int) -> Union[float, str]:
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def keliling_lingkaran(jari: float | int) -> Union[float, str]:
+def keliling_lingkaran(jari: Union[float, int]) -> Union[float, str]:
     """
     menghitung keliling lingkaran
 
@@ -47,7 +47,7 @@ def keliling_lingkaran(jari: float | int) -> Union[float, str]:
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def diameter_lingkaran(jari: float | int) -> Union[float, str]:
+def diameter_lingkaran(jari: Union[float, int]) -> Union[float, str]:
     """
     menghitung diameter lingkaran
 
@@ -63,7 +63,7 @@ def diameter_lingkaran(jari: float | int) -> Union[float, str]:
 
 
 def persamaan_linear(
-    a: int | float, b: int | float, c: int | float
+    a: Union[int, float], b: Union[int, float], c: Union[int, float]
 ) -> Union[float, int, str]:
     """
     menghitung persamaan linear
@@ -93,7 +93,7 @@ def persamaan_linear(
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def rata_rata(nilai: list[int | float]) -> Union[int, float, str]:
+def rata_rata(nilai: list[Union[int, float]]) -> Union[int, float, str]:
     """
     menghitung nilai rata-rata
 
@@ -172,7 +172,7 @@ def kombinasi(nilai: int, r: int) -> Union[int, float, str]:
 
 
 def fpb(
-    bilangan_pertama: int | float, bilangan_kedua: int | float
+    bilangan_pertama: Union[int, float], bilangan_kedua: Union[int, float]
 ) -> Union[int, float, str]:
     """
     menghitung faktor persekutuan terbesar dari dua buah bilangan
@@ -231,7 +231,7 @@ def faktor_prima(n: int) -> Union[list[int], str]:
 
 
 def peluang_kejadian(
-    kejadian: int | float, ukuran_sampel: int | float
+    kejadian: Union[int, float], ukuran_sampel: Union[int, float]
 ) -> Union[int, float, str]:
     """
     menghitung probabilitas dari suatu kejadian
@@ -254,7 +254,7 @@ def peluang_kejadian(
 
 
 def hitung_jumlah_deret(
-    n: float | int, a: float | int, b: float | int
+    n: Union[float, int], a: Union[float, int], b: Union[float, int]
 ) -> Union[float, int, str]:
     """
     menghitung jumlah deret aritmatika

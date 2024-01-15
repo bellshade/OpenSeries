@@ -2,7 +2,7 @@ import OpenSeries.util.error as error
 from typing import Union
 
 
-def kecepatan(jarak: float | int, waktu: float | int) -> Union[float, str]:
+def kecepatan(jarak: Union[float, int], waktu: Union[float, int]) -> Union[float, str]:
     """
     fungsi untuk menghitung kecepatan
 
@@ -25,7 +25,9 @@ def kecepatan(jarak: float | int, waktu: float | int) -> Union[float, str]:
         return error.error_tipe_data(["int", "float"])
 
 
-def percepatan(kecepatan: float | int, waktu: float | int) -> Union[float, str]:
+def percepatan(
+    kecepatan: Union[float, int], waktu: Union[float, int]
+) -> Union[float, str]:
     """
     fungsi untuk menghitung percepatan
 
@@ -72,7 +74,7 @@ def gerak_lurus_beraturan(
 
 
 def energi_kinetik(
-    massa: float | int, kecepatan: int | float
+    massa: Union[float, int], kecepatan: Union[int, float]
 ) -> Union[int, float, str]:
     """
     menghitung energi kinetik
@@ -89,7 +91,9 @@ def energi_kinetik(
         return error.error_tipe_data(["int", "float"])
 
 
-def masa_jenis(massa: int | float, volume: int | float) -> Union[int, float, str]:
+def masa_jenis(
+    massa: Union[int, float], volume: Union[int, float]
+) -> Union[int, float, str]:
     """
     menghitung masa jenis suatu benda
 
@@ -110,7 +114,7 @@ def masa_jenis(massa: int | float, volume: int | float) -> Union[int, float, str
 
 
 def energi_potensial(
-    m: int | float, g: int | float, h: int | float
+    m: Union[int, float], g: Union[int, float], h: Union[int, float]
 ) -> Union[float, int, str]:
     """
     menghitung energi potensial dengan rumus Ep = m * g * h
@@ -130,7 +134,7 @@ def energi_potensial(
         return m * g * h
 
 
-def hukum_ohm(i: float | int, r: float | int) -> Union[float, int, str]:
+def hukum_ohm(i: Union[float, int], r: Union[float, int]) -> Union[float, int, str]:
     """
     menghitung hukum ohm dengan besar arus listrik yang mengalir
     melalui sebuah hantaran akan berbanding lurus dengan tengangan potensial

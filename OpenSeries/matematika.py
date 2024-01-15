@@ -11,7 +11,7 @@ def radian_ke_derajat(radian: float | int) -> float | str:
         radian (float atau integer): nilai radian
     """
     if not isinstance(radian, (float, int)):
-        return pesan_error.error_tipe_data()
+        return pesan_error.error_tipe_data(["float", "int"])
     else:
         return radian * (180 / constant.pi)
 
@@ -31,7 +31,7 @@ def luas_lingkaran(jari: float | int) -> float:
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def keliling_lingkaran(jari: float | int) -> float:
+def keliling_lingkaran(jari: float | int) -> float | str:
     """
     menghitung keliling lingkaran
 
@@ -43,7 +43,7 @@ def keliling_lingkaran(jari: float | int) -> float:
     if isinstance(jari, (float, int)):
         return 2 * constant.pi * jari
     else:
-        return pesan_error.error_tipe_data(["float"])
+        return pesan_error.error_tipe_data(["float", "int"])
 
 
 def diameter_lingkaran(jari: float | int) -> float | str:
@@ -77,13 +77,22 @@ def persamaan_linear(
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance((a, b, c), (int, float)):
-        return (-b + math.sqrt(b**2 - 4 * a * c)) / 2 * a
+    if (
+        isinstance(a, (int, float))
+        and isinstance(b, (int, float))
+        and isinstance(c, (int, float))
+    ):
+        diskriminan = b**2 - 4 * a * c
+        if diskriminan >= 0:
+            akar1 = (-b + math.sqrt(diskriminan)) / (2 * a)
+            return akar1
+        else:
+            return pesan_error.error_format("Persamaan memiliki solusi complex")
     else:
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def rata_rata(nilai: list[int | float]) -> list[int | float] | str:
+def rata_rata(nilai: list[int | float]) -> int | float | str:
     """
     menghitung nilai rata-rata
 
@@ -92,15 +101,18 @@ def rata_rata(nilai: list[int | float]) -> list[int | float] | str:
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance(nilai, (list)):
+    if isinstance(nilai, list):
+        # mengecek apakah nilai dalam list kodong
+        if not nilai:
+            return pesan_error.error_format("List tidak boleh kosong")
         # membuat looping untuk memecah nilai yang terdapat pada list
         for cek_nilai in nilai:
-            # mengecek nilai di dalam list apakah semua tipe data berbentuk int atau float
-            # jika tidak maka error
-            if isinstance(cek_nilai, (int, float)):
-                return sum(nilai) / len(nilai)
-            else:
+            # mengecek nilai dalam list apakah semua tipe data berbentuk int
+            # atau float, jika tidak error
+            if not isinstance(cek_nilai, (int, float)):
                 return pesan_error.error_tipe_data(["float", "int"])
+        # menghitung nilai rata-rata
+        return sum(nilai) / len(nilai)
     else:
         return pesan_error.error_tipe_data(["float", "int"])
 
@@ -118,6 +130,8 @@ def faktorial(nilai: int) -> int | str:
     if isinstance(nilai, int):
         if nilai == 0 or nilai == 1:
             return 1
+        elif nilai < 0:
+            return pesan_error.error_format("Tidak bisa menggunakan angka negatif")
         else:
             return nilai * faktorial(nilai - 1)
     else:
@@ -134,10 +148,10 @@ def permutasi(nilai: int, r: int) -> int | float | str:
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance(nilai, (int, float)):
-        return faktorial(nilai) / faktorial(nilai - r)
+    if not isinstance(nilai, int) or not isinstance(r, int):
+        return pesan_error.error_tipe_data(["int"])
     else:
-        return pesan_error.error_tipe_data(["float", "int"])
+        return faktorial(nilai) / faktorial(nilai - r)
 
 
 def kombinasi(nilai: int, r: int) -> int | float | str:
@@ -150,10 +164,10 @@ def kombinasi(nilai: int, r: int) -> int | float | str:
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance(nilai, (int, float)):
+    if isinstance(nilai, (int)):
         return faktorial(nilai) / (faktorial(r) * faktorial(nilai - r))
     else:
-        return pesan_error.error_tipe_data(["float", "int"])
+        return pesan_error.error_tipe_data(["int"])
 
 
 def fpb(
@@ -171,12 +185,15 @@ def fpb(
     if isinstance(bilangan_pertama, (int, float)) and isinstance(
         bilangan_kedua, (int, float)
     ):
-        while bilangan_kedua:
-            bilangan_pertama, bilangan_kedua = (
-                bilangan_kedua,
-                bilangan_pertama % bilangan_kedua,
-            )
-        return abs(bilangan_pertama)
+        if bilangan_pertama < 0 and bilangan_kedua < 0:
+            return pesan_error.error_format("Angka tidak boleh negatif")
+        else:
+            while bilangan_kedua:
+                bilangan_pertama, bilangan_kedua = (
+                    bilangan_kedua,
+                    bilangan_pertama % bilangan_kedua,
+                )
+            return abs(bilangan_pertama)
     else:
         return pesan_error.error_tipe_data(["float", "int"])
 
@@ -193,20 +210,23 @@ def faktor_prima(n: int) -> list[int] | str:
         # menampilkan pesan error jika tipe data salah
         return pesan_error.error_tipe_data(["float", "int"])
     else:
-        # jika desimal mengubah bilangan ke integer
-        n = int(n)
-        i = 2
-        faktor = []
-        while i * i <= n:
-            if n % i:
-                i += 1
-            else:
-                n //= i
-                # memasukkan hasil faktor prima ke dalam list
-                faktor.append(i)
-        if n > 1:
-            faktor.append(i)
-        return faktor
+        if n < 0:
+            return pesan_error.error_format("Angka tidak boleh negatif")
+        else:
+            # jika desimal mengubah bilangan ke integer
+            n = int(n)
+            i = 2
+            faktor = []
+            while i * i <= n:
+                if n % i:
+                    i += 1
+                else:
+                    n //= i
+                    # memasukkan hasil faktor prima ke dalam list
+                    faktor.append(i)
+            if n > 1:
+                faktor.append(n)
+            return faktor
 
 
 def peluang_kejadian(

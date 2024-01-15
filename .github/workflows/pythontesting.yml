@@ -28,4 +28,4 @@ jobs:
 
       - name: testing kodenya
         run: |
-          pytest . --verbose
+          pytest testing/main_test.py --verbose

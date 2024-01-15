@@ -8,6 +8,8 @@ Project ini bertujuan untuk memudahkan siswa dalam menghitung persamaan atau pro
 **menghitung nilai probabilitas dari suatu kejadian**
 
 ```python
+import OpenSeries.matematika as matematika
+
 nilai_A = 4
 nilai_S = 20
 
@@ -24,7 +26,8 @@ print(
 Untuk Menjalankan Library ini, kamu harus Memiliki Python dengan versi: 3.11.6 hingga 3.12.
 
 ## Installasi
-kamu bisa menginstall package ``OpenSeries`` via pip dengan cara
+
+kamu bisa menginstall package `OpenSeries` via pip dengan cara
 
 ```bash
 pip install git+https://github.com/bellshade/OpenSeries

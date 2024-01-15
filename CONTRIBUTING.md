@@ -1,18 +1,17 @@
-Kami sangat senang anda telah ikut berkontribusi dalam implementasi algortima, struktur data, atau memperbaiki *error*.
-Semua boleh ikut berkontribusi sekecil apapun dengan pengecualian sebagai berikut:
+Kami sangat berterima kasih karena telah ikut berkontribusi dalam proyek `OpenSeries`, Semua boleh ikut berkontribusi sekecil apapun dengan pengecualian sebagai berikut:
 
-- Hasil pekerjaan kamu adalah buatan kamu sendiri dan tidak ada hak cipta dari orang lain. Jika kami menemukan kesamaan, maka tidak kami *merge*.
-- Hasil kerja kamu akan berlisensi [MIT](LICENSE) ketika *pull request* kamu sudah di-*merge*.
-- Hasil kerja kamu wajib mengikuti standar dan *style* koding dari kami.
-- Hanya menerima *file* dengan ekstensi ``*.py``, selain itu dibuat pengecualian dengan menjelaskan secara detail.
+- Hasil pekerjaan kamu adalah buatan kamu sendiri dan tidak ada hak cipta dari orang lain. Jika kami menemukan kesamaan, maka tidak kami _merge_.
+- Hasil kerja kamu akan berlisensi [MIT](LICENSE) ketika _pull request_ kamu sudah di-_merge_.
+- Hasil kerja kamu wajib mengikuti standar dan _style_ koding dari kami.
+- Hanya menerima _file_ dengan ekstensi `*.py`, selain itu dibuat pengecualian dengan menjelaskan secara detail.
 
 # Docstrings
 
-**Penggunaan *docstring***
+**Penggunaan _docstring_**
 
-Penggunaan *docstring* bertujuan untuk memudahkan pembaca membaca dan mengimplementasikan algoritma.
+Penggunaan _docstring_ bertujuan untuk memudahkan pembaca membaca dan mengimplementasikan algoritma. docstring harus memiliki (minimal) penjelasan dari fungsi hingga penjelasan dari parameter dari fungsi tersebut.
 
-***Docstring* yang baik:**
+**_Docstring_ yang baik:**
 
 ```py
 def adding(num1, num2):
@@ -30,7 +29,7 @@ def adding(num1, num2):
     return num1 + num2
 ```
 
-***Docstring* yang kurang baik:**
+**_Docstring_ yang kurang baik:**
 
 ```py
 def adding(num1, num2):
@@ -40,7 +39,7 @@ def adding(num1, num2):
     return num1 + num2
 ```
 
-**Saran penggunaan *docstring* yang baik untuk *doctest*:**
+**Saran penggunaan _docstring_ yang baik untuk _doctest_:**
 
 ```py
 def adding(num1, num2):
@@ -60,29 +59,35 @@ def adding(num1, num2):
 
 **Testing**
 
-Untuk *lint testing*, kami menyarankan kamu untuk melakukan tes lokal dengan ``flake8``:
+Untuk _lint testing_, kami menyarankan kamu untuk melakukan tes lokal dengan `flake8`:
+
+```bash
+pytest . --max-line-length=100 --exclude=example
+```
+
+kemudian testing kode python dengan pytest:
 
 ```bash
 pytest . --verbose
 ```
 
-***Pull request* yang baik**
+**_Pull request_ yang baik**
 
-Informasi: gunakan [*issue*](https://github.com/bellshade/Python/issues) apabila ingin menambahkan kode atau implementasi algoritma, dll (*basic*) agar tidak ada konflik dengan *pull request* lainnya. Kamu juga bisa menggunakan issue jika kamu ada 
+Informasi: gunakan [_issue_](https://github.com/bellshade/Python/issues) apabila ingin menambahkan kode atau implementasi algoritma, dll (_basic_) agar tidak ada konflik dengan _pull request_ lainnya. Kamu juga bisa menggunakan issue jika kamu ada
 kendala atau masalah ketika melakukan pull request. Kamu juga bisa bertanya pada forum discord **WPU** dan **Kelas Terbuka** perihal bellshade.
 
-- Lakukan penjelasan deskripsi perubahan yang anda lakukan pada repositori kami dengan membuat penjelasan di [*issue*](https://github.com/bellshade/OpenSeries/issues).
-- Setelah menjelaskan perubahan anda di [*issue*](https://github.com/bellshade/OpenSeries/issues) kemudian lakukan *fork* pada repositori kami.
-- Setelah melakukan *fork*, anda dibebaskan untuk mengubah atau menambah algoritma.
-  - Untuk *pull request* merubah atau memperbaiki, diusahakan kamu menerapkan algoritma yang lebih baik dan lebih mudah serta memeberikan penjelasan lebih detail alasan dari perubahaan tersebut lebih baik dari sebelumnya.
-- Lakukan tes dengan menggunakan ``pytest`` secara lokal.
-- Setelah merubah-rubah atau menambahkan algoritma serta melakukan tes lokal kode kamu, usahakan kamu membuat *local branch* baru:
+- Lakukan penjelasan deskripsi perubahan yang anda lakukan pada repositori kami dengan membuat penjelasan di [_issue_](https://github.com/bellshade/OpenSeries/issues).
+- Setelah menjelaskan perubahan anda di [_issue_](https://github.com/bellshade/OpenSeries/issues) kemudian lakukan _fork_ pada repositori kami.
+- Setelah melakukan _fork_, anda dibebaskan untuk mengubah atau menambah algoritma.
+  - Untuk _pull request_ merubah atau memperbaiki, diusahakan kamu menerapkan algoritma yang lebih baik dan lebih mudah serta memeberikan penjelasan lebih detail alasan dari perubahaan tersebut lebih baik dari sebelumnya.
+- Lakukan tes dengan menggunakan `pytest` secara lokal.
+- Setelah merubah-rubah atau menambahkan algoritma serta melakukan tes lokal kode kamu, usahakan kamu membuat _local branch_ baru:
   ```bash
   git checkout -b <branch_name>
   git add . # atau git add nama_perubahan_kamu.py
   git commit -m "feat: menambahkan algoritma terbaru"
   ```
-- Lakukan *push* ke *branch* kamu dan kemudian *open pull request*.
+- Lakukan _push_ ke _branch_ kamu dan kemudian _open pull request_.
 
 **Saran pesan commit**
 
@@ -94,14 +99,16 @@ kendala atau masalah ketika melakukan pull request. Kamu juga bisa bertanya pada
 Catatan: pesan commit harus menjelaskan perubahan secara singkat.
 
 Contoh yang benar:
+
 - &#9746; feat: test_x.py
 - &#9745; feat: tambah unittest untuk algoritma x
 
 Lebih lengkapnya bisa dilihat di:
+
 - [EN](https://www.conventionalcommits.org/en/v1.0.0/)
 - [ID](https://www.conventionalcommits.org/id/v1.0.0/)
 
-Pull request akan di-*merge* jika:
+Pull request akan di-_merge_ jika:
 
 - mengikuti standar dan arahan dari `CONTRIBUTING.md`;
 - lulus tes dan cek dari beberapa tes yang sudah kami siapkan.

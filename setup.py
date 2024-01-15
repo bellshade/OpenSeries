@@ -1,7 +1,4 @@
 from setuptools import setup, find_packages
-from os import path
-import io
-import platform
 
 # membuka file README
 with open("README.md") as file_readme:

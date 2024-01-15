@@ -2,3 +2,10 @@
 __pycache__/
 .pytest_cache/
 
+# hasil dari installasi
+*.egg-info
+
+# hasil dari build pip
+build/
+build
+

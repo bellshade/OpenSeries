@@ -1,4 +1,4 @@
-from OpenSeries.util import constant
+from OpenSeries.util import constant as constant
 from OpenSeries.util import error as pesan_error
 from typing import Union
 import math

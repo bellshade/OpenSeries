@@ -1,4 +1,4 @@
-import OpenSeries.util.error as error
+from OpenSeries.util import error as error
 from typing import Union
 
 

@@ -45,21 +45,21 @@ class TestDiameterLingkaran(unittest.TestCase):
         self.assertEqual(hasil, error.error_tipe_data(["float", "int"]))
 
 
-class TestPersamaanLinear(unittest.TestCase):
+class TestPersamaanKuadrat(unittest.TestCase):
     def test_nilai_valid(self):
-        hasil = matematika.persamaan_linear(1, -3, 2)
+        hasil = matematika.persamaan_kuadrat(1, -3, 2)
         self.assertAlmostEqual(hasil, 2.0)
 
     def test_nilai_valid_float(self):
-        hasil = matematika.persamaan_linear(1.0, -2.0, 1.0)
+        hasil = matematika.persamaan_kuadrat(1.0, -2.0, 1.0)
         self.assertAlmostEqual(hasil, 1.0)
 
     def test_nilai_input_tidak_valid(self):
-        hasil = matematika.persamaan_linear("12", 2, 3)
+        hasil = matematika.persamaan_kuadrat("12", 2, 3)
         self.assertEqual(hasil, error.error_tipe_data(["float", "int"]))
 
     def test_nilai_complex(self):
-        hasil = matematika.persamaan_linear(1, 2, 5)
+        hasil = matematika.persamaan_kuadrat(1, 2, 5)
         self.assertEqual(hasil, error.error_format("Persamaan memiliki solusi complex"))
 
 

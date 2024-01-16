@@ -70,7 +70,7 @@ def gerak_lurus_beraturan(
     ):
         return kecepatan_awal * t + 0.5 * a * t**2
     else:
-        return error.error_tipe_data(["int", "float"])
+        return error.error_tipe_data(["float"])
 
 
 def energi_kinetik(

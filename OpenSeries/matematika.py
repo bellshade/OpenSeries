@@ -62,7 +62,7 @@ def diameter_lingkaran(jari: Union[float, int]) -> Union[float, str]:
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def persamaan_linear(
+def persamaan_kuadrat(
     a: Union[int, float], b: Union[int, float], c: Union[int, float]
 ) -> Union[float, int, str]:
     """

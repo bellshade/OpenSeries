@@ -3,7 +3,7 @@ from testing.matematika_test import (
     TestKelilingLingkaran,
     TestRadianKeDerajat,
     TestDiameterLingkaran,
-    TestPersamaanLinear,
+    TestPersamaanKuadrat,
     TestRataRata,
     TestFaktorial,
     TestPermutasi,
@@ -13,12 +13,19 @@ from testing.matematika_test import (
     TestMatriksTranspose,
 )
 
+from testing.fisika_test import (
+    TestKecepatan,
+    TestPercepatan,
+    TestGerakLurusBeraturan,
+    TestEnergiKinetik,
+)
+
 if __name__ == "__main__":
-    testing_matematika = unittest.TestLoader().loadTestsFromTestCase(
+    testing_matematika: list = [
         TestKelilingLingkaran,
         TestRadianKeDerajat,
         TestDiameterLingkaran,
-        TestPersamaanLinear,
+        TestPersamaanKuadrat,
         TestRataRata,
         TestFaktorial,
         TestPermutasi,
@@ -26,7 +33,21 @@ if __name__ == "__main__":
         TestFPB,
         TestFaktorPrima,
         TestMatriksTranspose,
-    )
-    all_tests = unittest.TestSuite([testing_matematika])
+    ]
+
+    testing_fisika: list = [
+        TestKecepatan,
+        TestPercepatan,
+        TestGerakLurusBeraturan,
+        TestEnergiKinetik,
+    ]
+
+    all_tests = unittest.TestSuite()
+
+    for testing_math in testing_matematika:
+        all_tests.addTest(unittest.TestLoader().loadTestsFromTestCase(testing_math))
+
+    for testing_physic in testing_fisika:
+        all_tests.addTest(unittest.TestLoader().loadTestsFromTestCase(testing_physic))
 
     unittest.TextTestRunner(verbosity=2).run(all_tests)

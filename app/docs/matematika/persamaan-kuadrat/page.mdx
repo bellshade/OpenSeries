@@ -1,0 +1,24 @@
+# Persamaan Kuadrat
+
+Rumus:
+
+```
+ax² + bx + c = 0
+```
+
+Fungsi [sumber kode [disini](https://github.com/bellshade/OpenSeries/blob/11ea1de5b7cbb8fa09b8b8a1097e5913bb2bdd05/OpenSeries/matematika.py#L65)]
+
+```python
+def persamaan_linear(
+    a: Union[int, float], b: Union[int, float], c: Union[int, float]
+) -> Union[float, int, str]:
+```
+
+Contoh Kode
+
+```python
+import OpenSeries.matematika as matematika
+
+print(matematika.persamaan_kuadrat(1, -3, 2))
+# 2,0
+```

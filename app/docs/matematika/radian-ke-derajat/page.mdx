@@ -1,0 +1,23 @@
+# Radian ke derajat
+
+Rumus:
+
+```
+derajat = radian * 180 / π
+```
+
+Fungsi [sumber kode [disini](https://github.com/bellshade/OpenSeries/blob/11ea1de5b7cbb8fa09b8b8a1097e5913bb2bdd05/OpenSeries/matematika.py#L7C1-L7C71)]
+
+```python
+def radian_ke_derajat(radian: Union[float, int]) -> Union[float, str]:
+```
+
+Contoh kode
+
+```python
+import OpenSeries.matematika as matematika
+
+radian = 1
+print(matematika.radian_ke_derajat(radian))
+# 57,296
+```

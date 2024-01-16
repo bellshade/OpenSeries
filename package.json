@@ -14,11 +14,16 @@
         "@mdx-js/react": "^3.0.0",
         "@next/mdx": "^14.0.4",
         "@types/mdx": "^2.0.10",
+        "glob": "^10.3.10",
         "next": "14.0.4",
         "react": "^18",
-        "react-dom": "^18"
+        "react-dom": "^18",
+        "remark-gfm": "^4.0.0"
     },
     "devDependencies": {
+        "@iconify/json": "^2.2.169",
+        "@iconify/tailwind": "^0.1.4",
+        "@tailwindcss/typography": "^0.5.10",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",

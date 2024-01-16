@@ -1,0 +1,63 @@
+# Instalasi
+
+## Kebutuhan
+
+Installasi `OpenSeries` membutuhkan antara lain:
+
+-   Python (dengan minimal versi 3.10)<br /> OpenSeries library berjalan di atas python dengan minimal 3.10, untuk yang memliki versi dibawah atau belum punya dari python, bisa mengunduh dan menginstallnya terlebih dahulu, untuk sumber dari installasi python bisa dilihat [disini](https://www.python.org/)
+
+## Installasi
+
+kamu bisa menginstall package dari open series dengan 2 cara antara lain:
+
+-   **install via pip**<br/>kamu bisa menginstall via pip dengan cara
+
+```bash
+pip install git+https://github.com/bellshade/OpenSeries
+```
+
+kalau kamu menemukan masalah seperti ini
+
+```
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─> To install Python packages system-wide, try 'apt-get or pacman -S yum dnf xbps', where xyz is the package you are trying to
+    install.
+
+    If you wish to install a non-OS-packaged Python package,
+    create a virtual environment using 'python -m venv path/to/venv'.
+    Then use path/to/venv/bin/python and path/to/venv/bin/pip.
+
+    If you wish to install a non-OS packaged Python application,
+    it may be easiest to use 'pipx install xyz', which will manage a
+    virtual environment for you. Make sure you have python-pipx
+    installed via pacman.
+
+note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+hint: See PEP 668 for the detailed specification.
+```
+
+kamu harus membuat virtual environment terlebih dahulu, bisa dilihat [disini](https://docs.python.org/3/library/venv.html) atau kamu bisa menambahkan parameter tambahan seperti ini (dengan cara install break packages):
+
+```bash
+pip install git+https://github.com/bellshade/OpenSeries --break-system-packages
+```
+
+-   **installasi via clone dari github**<br/>kamu bisa installasi via github dengan mengclone dari projek `OpenSeries` dengan cara:
+
+```bash
+git clone https://github.com/bellshade/OpenSeries
+```
+
+setelah sudah terclone kamu bisa masuk ke dalam folder dari `OpenSeries` dan buka `terminal`, `command prompt`, `powershell` diatas folder dengan perintah pip
+
+```bash
+pip install .
+```
+
+jika kamu memiliki masalah juga seperti diatas kamu bisa menambahkan parameter (dengan cara install break packages):
+
+```bash
+pip install . --break-system-packages
+```

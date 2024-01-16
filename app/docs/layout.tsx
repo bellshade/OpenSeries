@@ -6,7 +6,7 @@ export default async function MdxLayout({ children }: { children: React.ReactNod
         <>
             <div className="flex h-screen max-h-screen flex-col overflow-hidden">
                 <Header />
-                <div className="flex h-full pt-14">
+                <div className="relative flex h-full pt-[3.6rem]">
                     <Sidebar />
                     <main className="prose h-full w-full max-w-none overflow-y-auto p-6">{children}</main>
                 </div>

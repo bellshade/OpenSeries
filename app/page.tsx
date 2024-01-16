@@ -4,7 +4,7 @@ export default async function Home() {
     return (
         <>
             <nav className="fixed inset-x-0 top-0 py-6">
-                <div className="container mx-auto flex items-center justify-between">
+                <div className="container flex items-center justify-between">
                     <Link className="font-bold text-zinc-800" href="/">
                         OpenSeries
                     </Link>
@@ -30,10 +30,10 @@ export default async function Home() {
             </nav>
             <section className="flex min-h-screen items-center justify-center">
                 <div className="container flex flex-col items-center gap-8 text-center">
-                    <h1 className="text-balance text-6xl font-black">
+                    <h1 className="text-balance text-5xl font-black sm:text-6xl">
                         Selamat datang di <span className="text-zinc-800">OpenSeries</span>
                     </h1>
-                    <p className="max-w-2xl text-lg text-zinc-600">
+                    <p className="max-w-2xl text-zinc-600 sm:text-lg">
                         Solusi Pintar untuk Hitung-Hitung Sekolah! Temukan kemudahan mengatasi segala jenis persamaan
                         dan rumus di bangku SMA/SMK/Sederajat.
                     </p>

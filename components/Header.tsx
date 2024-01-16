@@ -5,7 +5,7 @@ type Props = {};
 
 export default function Header({}: Props) {
     return (
-        <header className="fixed inset-x-0 top-0 flex items-center justify-between border-b bg-white px-6 py-4">
+        <header className="fixed inset-x-0 top-0 z-10 flex items-center justify-between border-b bg-white px-6 py-4">
             <Link className="font-bold text-zinc-800" href="/">
                 OpenSeries
             </Link>

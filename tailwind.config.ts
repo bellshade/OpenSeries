@@ -8,7 +8,12 @@ const config: Config = {
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            container: {
+                padding: "2rem",
+                center: true,
+            },
+        },
     },
     plugins: [require("@tailwindcss/typography"), addDynamicIconSelectors()],
 };

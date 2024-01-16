@@ -43,13 +43,11 @@ const links = {
 
 export default function Sidebar({}: Props) {
     const pathname = usePathname();
-    const aside = useRef(null);
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <>
             <aside
-                ref={aside}
                 className={`absolute inset-y-0 z-20 flex min-w-[250px] max-w-[250px]  grow flex-col gap-4 overflow-y-auto border-r bg-white px-6 pb-6 pt-4 transition-all duration-300 md:static md:translate-x-0 md:pt-6 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
             >
                 <div className="relative flex items-center justify-between border-b pb-4 md:hidden">

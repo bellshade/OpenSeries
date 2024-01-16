@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { Fragment, useRef, useState } from "react";
-
+import React, { Fragment, useState } from "react";
 type Props = {};
 
 const links = {
@@ -48,14 +47,23 @@ export default function Sidebar({}: Props) {
     return (
         <>
             <aside
-                className={`absolute inset-y-0 z-20 flex min-w-[250px] max-w-[250px]  grow flex-col gap-4 overflow-y-auto border-r bg-white px-6 pb-6 pt-4 transition-all duration-300 md:static md:translate-x-0 md:pt-6 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+                className={`absolute inset-y-0 z-20 m-6 flex min-w-[250px]  max-w-[250px] grow flex-col gap-4 overflow-y-auto rounded-xl bg-zinc-100 px-6 pb-6 pt-4 transition-all duration-300 md:static md:translate-x-0 md:pt-6 ${isOpen ? "translate-x-0" : "-translate-x-[calc(100%+0.6rem)]"}`}
             >
-                <div className="relative flex items-center justify-between border-b pb-4 md:hidden">
-                    <Link className="text-sm font-bold" href="/">
+                <header className="flex items-center justify-between border-b pb-3">
+                    <Link className="font-bold text-zinc-800" href="/">
                         OpenSeries
                     </Link>
-                    <button onClick={() => setIsOpen(false)} className="icon-[ph--x]"></button>
-                </div>
+                    <div className="flex items-center gap-2">
+                        <Link
+                            href="/github"
+                            className="icon-[mdi--github] text-xl text-zinc-500 transition-all duration-300 hover:text-zinc-800"
+                        ></Link>
+                        <Link
+                            href="/github"
+                            className="icon-[ic--baseline-discord] text-xl text-zinc-500 transition-all duration-300 hover:text-zinc-800"
+                        ></Link>
+                    </div>
+                </header>
                 {Object.keys(links).map((category) => (
                     <Fragment key={category}>
                         {!!category && <span className="text-xs font-bold uppercase text-zinc-400">{category}</span>}

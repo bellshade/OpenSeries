@@ -1,0 +1,25 @@
+# Energi Kinetik
+
+Rumus:
+
+```
+Ek = 1/2 mv²
+```
+
+Fungsi [sumber kode [disini](https://github.com/slowy07/OpenSeries/blob/dd1ab1959333fc1da900a58a43c8ebd98512e904/OpenSeries/fisika.py#L76)]
+
+```python
+def energi_kinetik(
+    massa: Union[float, int], kecepatan: Union[int, float]
+) -> Union[int, float, str]:
+```
+
+Contoh Kode
+
+```python
+import OpenSeries.fisika as fisika
+
+masa_benda = 14
+kecepatan_benda = 23.4
+print(fisika.energi_kinetik(masa_benda, kecepatan_benda))
+```

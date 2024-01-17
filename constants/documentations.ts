@@ -37,4 +37,29 @@ export const documentations = [
             },
         ],
     },
+    {
+        parent: "Fisika",
+        childs: [
+            {
+                title: "Kecepatan",
+                href: "/docs/fisika/kecepatan",
+            },
+            {
+                title: "Energi Kinetik",
+                href: "/docs/fisika/energi-kinetik",
+            },
+            {
+                title: "Masa Jenis",
+                href: "/docs/fisika/masa-jenis",
+            },
+            {
+                title: "Energi Potensian",
+                href: "/docs/fisika/energi-potensial",
+            },
+            {
+                title: "Hukum Ohm",
+                href: "/docs/fisika/hukum-ohm",
+            },
+        ],
+    },
 ];

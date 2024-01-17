@@ -1,0 +1,26 @@
+# Energi Potensial
+
+Rumus:
+
+```
+Ep = mgh
+```
+
+Fungsi [sumber kode [disini](https://github.com/slowy07/OpenSeries/blob/dd1ab1959333fc1da900a58a43c8ebd98512e904/OpenSeries/fisika.py#L116)]
+
+```python
+def energi_potensial(
+    m: Union[int, float], g: Union[int, float], h: Union[int, float]
+) -> Union[float, int, str]:
+```
+
+Contoh Kode
+
+```python
+import OpenSeries.fisika as fisika
+
+massa_benda_potensial = 12
+gravitasi_bumi = 9.78
+ketinggian_benda = 400
+print(fisika.energi_potensial(massa_benda_potensial, gravitasi_bumi, ketinggian_benda))
+```

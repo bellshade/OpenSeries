@@ -1,9 +1,37 @@
-import Link from "next/link";
+"use client";
 
-export default async function Home() {
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import GLOBE from "vanta/dist/vanta.globe.min";
+import * as THREE from "three";
+
+export default function Home() {
+    const [vantaEffect, setVantaEffect] = useState(null);
+    const globeRef = useRef(null);
+
+    useEffect(() => {
+        if (window.matchMedia("(min-width: 640px)").matches) {
+            if (!vantaEffect) {
+                setVantaEffect(
+                    GLOBE({
+                        el: globeRef.current,
+                        THREE,
+                        color: "#a1a1aa",
+                        color2: "#52525b",
+                        backgroundColor: "#e4e4e7",
+                    }),
+                );
+            }
+        }
+        return () => {
+            // @ts-ignore
+            if (vantaEffect) vantaEffect.destroy();
+        };
+    }, [vantaEffect]);
+
     return (
-        <>
-            <nav className="fixed inset-x-0 top-0 py-6">
+        <div ref={globeRef}>
+            <nav className="fixed inset-x-0 top-0 z-40 py-6">
                 <div className="container flex items-center justify-between">
                     <Link className="font-bold text-zinc-800" href="/">
                         OpenSeries
@@ -28,7 +56,7 @@ export default async function Home() {
                     </div>
                 </div>
             </nav>
-            <section className="flex min-h-screen items-center justify-center">
+            <section className="flex min-h-dvh items-center justify-center">
                 <div className="container flex flex-col items-center gap-8 text-center">
                     <h1 className="text-balance text-5xl font-black sm:text-6xl">
                         Selamat datang di <span className="text-zinc-800">OpenSeries</span>
@@ -44,21 +72,21 @@ export default async function Home() {
                         Get Started
                     </Link>
                     <span className="text-sm font-medium text-zinc-400">
-                        By{" "}
+                        By
                         <Link className="hover:underline" href="">
                             Kelas Terbuka
                         </Link>
-                        ,{" "}
+                        ,
                         <Link className="hover:underline" href="">
                             Bellshade
                         </Link>
-                        ,{" "}
+                        ,
                         <Link className="hover:underline" href="">
                             WPU
                         </Link>
                     </span>
                 </div>
             </section>
-        </>
+        </div>
     );
 }

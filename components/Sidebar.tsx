@@ -74,6 +74,7 @@ export default function Sidebar({}: Props) {
                                     key={link.href}
                                     className={`border-l-2 py-2 pl-6 text-sm ${link.href === pathname ? "border-l-zinc-800 text-zinc-800" : "text-zinc-400"}`}
                                     href={link.href}
+                                    onClick={() => setIsOpen(false)}
                                 >
                                     {link.title}
                                 </Link>

@@ -9,3 +9,12 @@ __pycache__/
 build/
 build
 
+# ignore dari website
+.next/
+.next
+node_modules/
+node_modules
+*.ts
+next-*
+next-env.d.ts
+

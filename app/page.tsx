@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import GLOBE from "vanta/dist/vanta.globe.min";
 import * as THREE from "three";
+import { projectByLinks } from "@/constants/projectByLinks";
 
 export default function Home() {
     const [vantaEffect, setVantaEffect] = useState(null);
@@ -71,19 +72,18 @@ export default function Home() {
                     >
                         Get Started
                     </Link>
-                    <span className="text-sm font-medium text-zinc-400">
+                    <span className="flex items-center gap-1">
                         By
-                        <Link className="hover:underline" href="">
-                            Kelas Terbuka
-                        </Link>
-                        ,
-                        <Link className="hover:underline" href="">
-                            Bellshade
-                        </Link>
-                        ,
-                        <Link className="hover:underline" href="">
-                            WPU
-                        </Link>
+                        {projectByLinks.map((link) => (
+                            <Link
+                                key={link.name}
+                                target="_blank"
+                                className="rounded-full border-2 border-zinc-800 px-4 py-1 text-xs font-medium text-zinc-800 transition-all duration-200 hover:bg-zinc-300"
+                                href={link.href}
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
                     </span>
                 </div>
             </section>

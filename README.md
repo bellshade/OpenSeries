@@ -35,3 +35,15 @@ kamu bisa menginstall package `OpenSeries` via pip dengan cara
 ```bash
 pip install git+https://github.com/bellshade/OpenSeries
 ```
+
+Informasi:
+
+kamu bisa melihat pada [wiki](https://github.com/bellshade/OpenSeries/wiki) atau ke [website](openseries.pages.dev/), untuk dokumentasi installasi dan pengunaan dari `OpenSeries`
+
+## 🤩 Ayo ikut kami dan berkontribusi! 🤩
+
+Bantuan kalian diperlukan Agar Bellshade dapat lebih jauh lagi mengembangan Project ini, kita butuh tenaga kalian!
+
+Kami sangat senang bilat kalian melakukan kontribusi project **OpenSeries** ini. Tapi, sebelum itu, silahkan baca terlebih dahulu [peraturan dan pedomannya](CONTRIBUTING.md) yang telah kami siapkan. Terima kasih
+
+Untuk informasi lebih lanjut, mari gabung dalam komunitas [Discord Channel WPU](http://discord.gg/S4rrXQU) dan [Discord Channel Kelas Terbuka](https://discord.gg/eavqxxTU)

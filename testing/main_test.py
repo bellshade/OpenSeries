@@ -1,7 +1,7 @@
 import unittest
 from testing.matematika_test import (
+    TestKonversi,
     TestKelilingLingkaran,
-    TestRadianKeDerajat,
     TestDiameterLingkaran,
     TestPersamaanKuadrat,
     TestRataRata,
@@ -23,7 +23,7 @@ from testing.fisika_test import (
 if __name__ == "__main__":
     testing_matematika: list = [
         TestKelilingLingkaran,
-        TestRadianKeDerajat,
+        TestKonversi,
         TestDiameterLingkaran,
         TestPersamaanKuadrat,
         TestRataRata,

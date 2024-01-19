@@ -17,6 +17,45 @@ def radian_ke_derajat(radian: Union[float, int]) -> Union[float, str]:
         return radian * (180 / constant.pi)
 
 
+def derajat_ke_radian(derajat: Union[float, int]) -> Union[float, str]:
+    """
+    mengubah nilai derajat ke nilai radian
+
+    parameter:
+        derajat (float atau int): nilai derajat
+    """
+    if not isinstance(derajat, (float, int)):
+        return pesan_error.error_tipe_data(["float", "int"])
+    else:
+        return derajat * (constant.pi / 180)
+
+
+def radian_ke_gradian(radian: Union[float, int]) -> Union[float, str]:
+    """
+    mengubah nilai radian ke gradian
+
+    Parameter:
+        radian (float atau int): nilai radian
+    """
+    if not isinstance(radian, (float, int)):
+        return pesan_error.error_tipe_data(["float", "int"])
+    else:
+        return radian * (200 / constant.pi)
+
+
+def gradian_ke_radian(gradian: Union[float, int]) -> Union[float, str]:
+    """
+    mengubah nilai gradian ke radian
+
+    parameter:
+        gradian (float atau int): nilai gradian
+    """
+    if not isinstance(gradian, (float, int)):
+        return pesan_error.error_tipe_data(["float", "int"])
+    else:
+        return gradian * (constant.pi / 200)
+
+
 def luas_lingkaran(jari: Union[float, int]) -> Union[float, str]:
     """
     menghitung luas lingkaran

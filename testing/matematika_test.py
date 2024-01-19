@@ -3,18 +3,32 @@ from OpenSeries import matematika as matematika
 from OpenSeries.util import error as error
 
 
-class TestRadianKeDerajat(unittest.TestCase):
-    def test_tipe_data_float(self):
-        hasil = matematika.radian_ke_derajat(1.0)
-        self.assertEqual(hasil, 57.29577951308232)
+class TestKonversi(unittest.TestCase):
+    def test_radian_ke_derajat(self):
+        self.assertAlmostEqual(matematika.radian_ke_derajat(1), 57.2957795131)
+        self.assertAlmostEqual(matematika.radian_ke_derajat(0), 0)
+        self.assertEqual(
+            matematika.radian_ke_derajat("12"), error.error_tipe_data(["float", "int"])
+        )
 
-    def test_tipe_data_int(self):
-        hasil = matematika.radian_ke_derajat(2)
-        self.assertEqual(hasil, 114.59155902616465)
+    def test_derajat_ke_radian(self):
+        self.assertAlmostEqual(matematika.derajat_ke_radian(180), 3.1415926535)
+        self.assertAlmostEqual(matematika.derajat_ke_radian(0), 0)
+        self.assertEqual(
+            matematika.derajat_ke_radian("15"), error.error_tipe_data(["float", "int"])
+        )
 
-    def test_nilai_input_tidak_valid(self):
-        hasil = matematika.radian_ke_derajat("12")
-        self.assertEqual(hasil, error.error_tipe_data(["float", "int"]))
+    def test_radian_ke_gradian(self):
+        self.assertAlmostEqual(matematika.radian_ke_gradian(180), 11459.1559026)
+        self.assertEqual(
+            matematika.radian_ke_gradian("128"), error.error_tipe_data(["float", "int"])
+        )
+
+    def test_gradian_ke_radian(self):
+        self.assertAlmostEqual(matematika.gradian_ke_radian(52), 0.8168140899)
+        self.assertEqual(
+            matematika.gradian_ke_radian("200"), error.error_tipe_data(["float", "int"])
+        )
 
 
 class TestKelilingLingkaran(unittest.TestCase):

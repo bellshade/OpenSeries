@@ -1,6 +1,7 @@
 "use client";
 
 import { documentations } from "@/constants/documentations";
+import { socialLinks } from "@/constants/socialLinks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { Fragment, useState } from "react";
@@ -20,14 +21,14 @@ export default function Sidebar({}: Props) {
                         OpenSeries
                     </Link>
                     <div className="flex items-center gap-2">
-                        <Link
-                            href="/github"
-                            className="icon-[mdi--github] text-xl text-zinc-500 transition-all duration-300 hover:text-zinc-800"
-                        ></Link>
-                        <Link
-                            href="/github"
-                            className="icon-[ic--baseline-discord] text-xl text-zinc-500 transition-all duration-300 hover:text-zinc-800"
-                        ></Link>
+                        {socialLinks.map((link) => (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                target="_blank"
+                                className={`${link.icon} text-xl text-zinc-500 transition-all duration-300 hover:text-zinc-800`}
+                            ></Link>
+                        ))}
                     </div>
                 </header>
                 {documentations.map((documentation) => (

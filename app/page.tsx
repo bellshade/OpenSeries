@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import GLOBE from "vanta/dist/vanta.globe.min";
 import * as THREE from "three";
 import { projectByLinks } from "@/constants/projectByLinks";
+import { socialLinks } from "@/constants/socialLinks";
 
 export default function Home() {
     const [vantaEffect, setVantaEffect] = useState(null);
@@ -45,14 +46,14 @@ export default function Home() {
                             Docs
                         </Link>
                         <div className="flex items-center gap-2">
-                            <Link
-                                href="/github"
-                                className="icon-[mdi--github] text-xl text-zinc-500 transition-all duration-300 hover:text-zinc-800"
-                            ></Link>
-                            <Link
-                                href="/github"
-                                className="icon-[ic--baseline-discord] text-xl text-zinc-500 transition-all duration-300 hover:text-zinc-800"
-                            ></Link>
+                            {socialLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    target="_blank"
+                                    className={`${link.icon} text-xl text-zinc-500 transition-all duration-300 hover:text-zinc-800`}
+                                ></Link>
+                            ))}
                         </div>
                     </div>
                 </div>

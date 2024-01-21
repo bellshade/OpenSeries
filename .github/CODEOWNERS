@@ -5,4 +5,5 @@
 # berpegang penuh dalam repositori
 
 # tanda * merupakan yang meninjau segala aspek pada repositori
-*       @slowy07
+*       @slowy07 @OpenSeries
+*.md    @dherlyar

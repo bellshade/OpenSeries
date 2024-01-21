@@ -1,8 +1,20 @@
 from setuptools import setup, find_packages
+from os import path
+import io
+import platform
 
 # membuka file README
 with open("README.md") as file_readme:
     readme = file_readme.read()
+
+# buat installasi requirement dari requirements agar auto install
+info = path.abspath(path.dirname(__file__))
+with io.open(path.join(info, "requirements.txt"), encoding="utf-8") as file:
+    core_require = file.read().split("\n")
+    if platform.system == "windows":
+        core_require.append("pywin32")
+
+install_require = [x.strip() for x in core_require if "git+" not in x]
 
 # setup nama project
 setup(
@@ -32,6 +44,8 @@ setup(
         "Programming Language :: Python :: 3.12",
         "Operating System :: OS Independent",
     ],
+    # fungsi untuk menginstall package tambahan dari requirements
+    install_requires=install_require,
     # lisensi dari project
     license="MIT License",
     project_urls={

@@ -20,7 +20,7 @@ from testing.fisika_test import (
     TestEnergiKinetik,
 )
 
-from testing.statistika_test import TestFungsiEntropy
+from testing.statistika_test import TestFungsiEntropy, TestFungiStandardDeviasi
 
 if __name__ == "__main__":
     testing_matematika: list = [
@@ -45,7 +45,8 @@ if __name__ == "__main__":
     ]
 
     testing_statistika: list = [
-        TestFungsiEntropy
+        TestFungsiEntropy,
+        TestFungiStandardDeviasi,
     ]
 
     all_tests = unittest.TestSuite()
@@ -57,6 +58,8 @@ if __name__ == "__main__":
         all_tests.addTest(unittest.TestLoader().loadTestsFromTestCase(testing_physic))
 
     for testing_statistik in testing_statistika:
-        all_tests.addTest(unittest.TestLoader().loadTestsFromTestCase(testing_statistik))
+        all_tests.addTest(
+            unittest.TestLoader().loadTestsFromTestCase(testing_statistik)
+        )
 
     unittest.TextTestRunner(verbosity=2).run(all_tests)

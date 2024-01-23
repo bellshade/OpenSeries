@@ -14,10 +14,13 @@ export default function Sidebar({}: Props) {
     return (
         <>
             <aside
-                className={`absolute inset-y-0 z-20 m-6 flex min-w-[250px]  max-w-[250px] grow flex-col gap-4 overflow-y-auto rounded-xl bg-zinc-100 px-6 pb-6 pt-4 transition-all duration-300 md:static md:translate-x-0 md:pt-6 ${isOpen ? "translate-x-0" : "-translate-x-[calc(100%+0.6rem)]"}`}
+                className={`absolute inset-y-0 z-20 flex min-w-[300px] max-w-[300px]  grow flex-col gap-4 overflow-y-auto border-r bg-white p-10 transition-all duration-300 md:static md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-[calc(100%+0.6rem)]"}`}
             >
                 <header className="flex items-center justify-between border-b pb-3">
-                    <Link className="font-bold text-zinc-800" href="/">
+                    <Link
+                        className="bg-gradient-to-br from-indigo-600 to-rose-400 bg-clip-text font-bold text-transparent"
+                        href="/"
+                    >
                         OpenSeries
                     </Link>
                     <div className="flex items-center gap-2">
@@ -26,19 +29,19 @@ export default function Sidebar({}: Props) {
                                 key={link.name}
                                 href={link.href}
                                 target="_blank"
-                                className={`${link.icon} text-xl text-zinc-500 transition-all duration-300 hover:text-zinc-800`}
+                                className={`${link.icon} text-xl text-zinc-500 transition-all duration-300 hover:text-indigo-600`}
                             ></Link>
                         ))}
                     </div>
                 </header>
                 {documentations.map((documentation) => (
                     <Fragment key={documentation.parent}>
-                        <span className="text-xs font-bold uppercase text-zinc-400">{documentation.parent}</span>
+                        <span className="text-xs font-bold uppercase text-zinc-800">{documentation.parent}</span>
                         <div className="flex flex-col">
                             {documentation.childs.map((link) => (
                                 <Link
                                     key={link.href}
-                                    className={`border-l-2 py-2 pl-6 text-sm ${link.href === pathname ? "border-l-zinc-800 text-zinc-800" : "text-zinc-400"}`}
+                                    className={`border-l-2 py-2 pl-6 text-sm transition-all duration-200 hover:border-l-indigo-600 hover:text-indigo-600 ${link.href === pathname ? "border-l-indigo-600 text-indigo-600" : "text-zinc-400"}`}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
                                 >

@@ -20,6 +20,8 @@ from testing.fisika_test import (
     TestEnergiKinetik,
 )
 
+from testing.statistika_test import TestFungsiEntropy, TestFungiStandardDeviasi
+
 if __name__ == "__main__":
     testing_matematika: list = [
         TestKelilingLingkaran,
@@ -42,6 +44,11 @@ if __name__ == "__main__":
         TestEnergiKinetik,
     ]
 
+    testing_statistika: list = [
+        TestFungsiEntropy,
+        TestFungiStandardDeviasi,
+    ]
+
     all_tests = unittest.TestSuite()
 
     for testing_math in testing_matematika:
@@ -49,5 +56,10 @@ if __name__ == "__main__":
 
     for testing_physic in testing_fisika:
         all_tests.addTest(unittest.TestLoader().loadTestsFromTestCase(testing_physic))
+
+    for testing_statistik in testing_statistika:
+        all_tests.addTest(
+            unittest.TestLoader().loadTestsFromTestCase(testing_statistik)
+        )
 
     unittest.TextTestRunner(verbosity=2).run(all_tests)

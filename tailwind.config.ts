@@ -5,17 +5,17 @@ const config: Config = {
     content: [
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
         "./constants/**/*.{js,ts,jsx,tsx,mdx}",
-        "./app/**/*.{js,ts,jsx,tsx,mdx}",
+        "./app/**/*.{js,ts,jsx,tsx,mdx}"
     ],
     theme: {
         extend: {
             container: {
                 padding: "2rem",
-                center: true,
-            },
-        },
+                center: true
+            }
+        }
     },
-    plugins: [require("@tailwindcss/typography"), addDynamicIconSelectors()],
+    plugins: [require("@tailwindcss/typography"), addDynamicIconSelectors()]
 };
 
 export default config;

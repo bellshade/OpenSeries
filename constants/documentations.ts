@@ -4,62 +4,62 @@ export const documentations = [
         childs: [
             {
                 title: "Tentang",
-                href: "/docs",
+                href: "/docs"
             },
             {
                 title: "Instalasi",
-                href: "/docs/get-started/instalasi",
-            },
-        ],
+                href: "/docs/get-started/instalasi"
+            }
+        ]
     },
     {
         parent: "Matematika",
         childs: [
             {
                 title: "Radian ke derajat",
-                href: "/docs/matematika/radian-ke-derajat",
+                href: "/docs/matematika/radian-ke-derajat"
             },
             {
                 title: "Luas Lingkaran",
-                href: "/docs/matematika/luas-lingkaran",
+                href: "/docs/matematika/luas-lingkaran"
             },
             {
                 title: "Keliling Lingkaran",
-                href: "/docs/matematika/keliling-lingkaran",
+                href: "/docs/matematika/keliling-lingkaran"
             },
             {
                 title: "Diameter Lingkaran",
-                href: "/docs/matematika/diameter-lingkaran",
+                href: "/docs/matematika/diameter-lingkaran"
             },
             {
                 title: "Persamaan Kuadrat",
-                href: "/docs/matematika/persamaan-kuadrat",
-            },
-        ],
+                href: "/docs/matematika/persamaan-kuadrat"
+            }
+        ]
     },
     {
         parent: "Fisika",
         childs: [
             {
                 title: "Kecepatan",
-                href: "/docs/fisika/kecepatan",
+                href: "/docs/fisika/kecepatan"
             },
             {
                 title: "Energi Kinetik",
-                href: "/docs/fisika/energi-kinetik",
+                href: "/docs/fisika/energi-kinetik"
             },
             {
                 title: "Masa Jenis",
-                href: "/docs/fisika/masa-jenis",
+                href: "/docs/fisika/masa-jenis"
             },
             {
                 title: "Energi Potensian",
-                href: "/docs/fisika/energi-potensial",
+                href: "/docs/fisika/energi-potensial"
             },
             {
                 title: "Hukum Ohm",
-                href: "/docs/fisika/hukum-ohm",
-            },
-        ],
-    },
+                href: "/docs/fisika/hukum-ohm"
+            }
+        ]
+    }
 ];

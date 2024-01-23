@@ -20,8 +20,8 @@ export default function Home() {
                         THREE,
                         color: "#a1a1aa",
                         color2: "#52525b",
-                        backgroundColor: "#e4e4e7",
-                    }),
+                        backgroundColor: "#e4e4e7"
+                    })
                 );
             }
         }

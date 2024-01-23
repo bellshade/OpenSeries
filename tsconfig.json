@@ -15,13 +15,13 @@
         "incremental": true,
         "plugins": [
             {
-                "name": "next",
-            },
+                "name": "next"
+            }
         ],
         "paths": {
-            "@/*": ["./*"],
-        },
+            "@/*": ["./*"]
+        }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/docs/page.mdx"],
-    "exclude": ["node_modules"],
+    "exclude": ["node_modules"]
 }

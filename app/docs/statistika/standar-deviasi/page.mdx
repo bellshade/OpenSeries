@@ -1,0 +1,32 @@
+# standar_deviasi
+
+Rumus:
+
+```
+σ = √∑(x - μ)^2 / n
+```
+
+Fungsi [sumber kode [disini](https://github.com/slowy07/OpenSeries/blob/main/OpenSeries/statistika.py#L27)]
+
+```python
+def standar_deviasi(
+    vektor: np.ndarray
+) -> Union[float, str]:
+```
+
+Contoh Kode
+
+```python
+import numpy as np
+from OpenSeries import statistika as statistika
+
+# contoh dari standar deviasi
+vektor = np.array([1, 2, 3, 4, 5])
+hasil = statistika.standar_deviasi(vektor)
+print(hasil)
+
+```
+
+## Coba Sekarang
+
+<iframe src="https://replit.com/@ItsArul/standar_deviasi?embed=1&theme=light" className="aspect-video w-full" />

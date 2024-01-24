@@ -23,3 +23,6 @@ next-env.d.ts
 
 # hasil cache dari mypy
 .mypy_cache
+
+# cache dari dist
+dist

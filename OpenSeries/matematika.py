@@ -197,7 +197,7 @@ def permutasi(nilai: int, r: int) -> Union[int, float, str]:
         if isinstance(faktorial_nilai, str) or isinstance(faktorial_nilai_r, str):
             return pesan_error.error_tipe_data(["int"])
         else:
-            return faktorial_nilai_r / faktorial_nilai_r
+            return faktorial_nilai / faktorial_nilai_r
 
 
 def kombinasi(nilai: int, r: int) -> Union[int, float, str]:

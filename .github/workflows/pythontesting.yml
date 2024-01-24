@@ -27,10 +27,6 @@ jobs:
           python -m pip install -r requirements.txt
           python -m pip install -r dev-requirements.txt
 
-      - name: cek kode dengan flake8
-        run: |
-          flake8 . --max-line-length=100 --exclude=example
-
       - name: testing kode dengan pytest
         run: |
           pytest testing/main_test.py --verbose

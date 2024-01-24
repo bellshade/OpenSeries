@@ -18,3 +18,8 @@ node_modules
 next-*
 next-env.d.ts
 
+# hasil dari format ruff
+.ruff_cache
+
+# hasil cache dari mypy
+.mypy_cache

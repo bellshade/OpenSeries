@@ -3,7 +3,7 @@ from typing import Union
 from OpenSeries.util import error as pesan_error
 
 
-def entropy(label: list[int], base: int = None) -> Union[float, int, str]:
+def entropy(label: list[int], base: int) -> Union[float, int, str]:
     """
     fungsi menghitung entropy dari suatu fitur pada suatu dataset
 

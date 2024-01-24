@@ -1,3 +1,1 @@
-black
 pytest
-flake8

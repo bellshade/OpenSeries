@@ -57,15 +57,55 @@ def adding(num1, num2):
   return num1 + num2
 ```
 
-**Testing**
+kemudian testing kode python dengan pytest dan pre-commit
 
-Untuk _lint testing_, kami menyarankan kamu untuk melakukan tes lokal dengan `flake8`:
+install terlebih dahulu dari library pre-commit
 
 ```bash
-pytest . --max-line-length=100 --exclude=example
+pip install pre-commit
 ```
 
-kemudian testing kode python dengan pytest:
+jika ada kendala berupa
+
+```
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─> To install Python packages system-wide, try 'apt-get or pacman -S yum dnf xbps', where xyz is the package you are trying to
+    install.
+
+    If you wish to install a non-OS-packaged Python package,
+    create a virtual environment using 'python -m venv path/to/venv'.
+    Then use path/to/venv/bin/python and path/to/venv/bin/pip.
+
+    If you wish to install a non-OS packaged Python application,
+    it may be easiest to use 'pipx install xyz', which will manage a
+    virtual environment for you. Make sure you have python-pipx
+    installed via pacman.
+
+note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+hint: See PEP 668 for the detailed specification.
+```
+
+kamu bisa menginstallnya dengan cara
+
+```bash
+pip install pre-commit --break-system-packages
+```
+
+kemudian lakukan installasi dari pre-commit deangan cara
+
+```bash
+pre-commit install
+```
+
+kemudian jalankan perintah
+
+```bash
+pre-commit run --all-files
+```
+
+jika sukses, lakukan testing kode dengan perintah
 
 ```bash
 pytest . --verbose
@@ -112,3 +152,4 @@ Pull request akan di-_merge_ jika:
 
 - mengikuti standar dan arahan dari `CONTRIBUTING.md`;
 - lulus tes dan cek dari beberapa tes yang sudah kami siapkan.
+

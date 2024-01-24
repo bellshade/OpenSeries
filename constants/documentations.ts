@@ -59,7 +59,11 @@ export const documentations = [
             {
                 title: "Hukum Ohm",
                 href: "/docs/fisika/hukum-ohm"
-            }
+            },
+            {
+                title: "Hukum entropy",
+                href: "/docs/fisika/entropy"
+            },
         ]
     }
 ];

@@ -1,6 +1,6 @@
 from OpenSeries.util import constant as constant
 from OpenSeries.util import error as pesan_error
-from typing import Union
+from typing import Union, Sequence
 import math
 
 
@@ -132,7 +132,7 @@ def persamaan_kuadrat(
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def rata_rata(nilai: list[Union[int, float]]) -> Union[int, float, str]:
+def rata_rata(nilai: Sequence[Union[int, float]]) -> Union[int, float, str]:
     """
     menghitung nilai rata-rata
 
@@ -157,7 +157,7 @@ def rata_rata(nilai: list[Union[int, float]]) -> Union[int, float, str]:
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def faktorial(nilai: int) -> Union[int, str]:
+def faktorial(nilai: int) -> Union[int, float, str]:
     """
     menghitung produk dari semua bilangan bulat positif
     contoh `4! = 24 = 4 x 3 x 2 x 1`
@@ -173,7 +173,7 @@ def faktorial(nilai: int) -> Union[int, str]:
         elif nilai < 0:
             return pesan_error.error_format("Tidak bisa menggunakan angka negatif")
         else:
-            return nilai * faktorial(nilai - 1)
+            return int(nilai * faktorial(nilai - 1))
     else:
         return pesan_error.error_tipe_data(["int"])
 
@@ -191,7 +191,13 @@ def permutasi(nilai: int, r: int) -> Union[int, float, str]:
     if not isinstance(nilai, int) or not isinstance(r, int):
         return pesan_error.error_tipe_data(["int"])
     else:
-        return faktorial(nilai) / faktorial(nilai - r)
+        faktorial_nilai = faktorial(nilai)
+        faktorial_nilai_r = faktorial(nilai - r)
+
+        if isinstance(faktorial_nilai, str) or isinstance(faktorial_nilai_r, str):
+            return pesan_error.error_tipe_data(["int"])
+        else:
+            return faktorial_nilai / faktorial_nilai_r
 
 
 def kombinasi(nilai: int, r: int) -> Union[int, float, str]:
@@ -204,8 +210,19 @@ def kombinasi(nilai: int, r: int) -> Union[int, float, str]:
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance(nilai, (int)):
-        return faktorial(nilai) / (faktorial(r) * faktorial(nilai - r))
+    if isinstance(nilai, (int)) and isinstance(r, int):
+        faktorial_nilai = faktorial(nilai)
+        faktorial_r = faktorial(r)
+        faktorial_nilai_r = faktorial(nilai - r)
+
+        if (
+            isinstance(faktorial_nilai, str)
+            or isinstance(faktorial_r, str)
+            or isinstance(faktorial_nilai_r, str)
+        ):
+            return pesan_error.error_tipe_data(["int"])
+        else:
+            return faktorial_nilai / (faktorial_r * faktorial_nilai_r)
     else:
         return pesan_error.error_tipe_data(["int"])
 
@@ -314,7 +331,9 @@ def hitung_jumlah_deret(
         return 0.5 * n * (2 * a + (n - 1) * b)
 
 
-def transpose_matriks(matriks: list[Union[float, int]]) -> Union[list[int, float], str]:
+def transpose_matriks(
+    matriks: list[list[Union[float, int]]],
+) -> Union[list[list[Union[float, int]]], str]:
     """
     fungsi untuk transpose matrix
 

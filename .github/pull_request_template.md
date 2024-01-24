@@ -8,7 +8,7 @@
 
 <!-- Checklist semua perubahan yang sesuai. -->
 
-- [ ] Saya menambah algoritma terbaru.
+- [ ] Saya menambah fungsi / algoritma.
 - [ ] Saya memperbaiki algoritma yang sudah ada.
 - [ ] Saya memperbaiki dokumentasi.
 - [ ] Saya menambah dokumentasi.
@@ -25,7 +25,7 @@
 <!-- Checklist unit tester / linter yang sesuai. -->
 
 - [ ] pytest
-- [ ] flake8
+- [ ] pre-commit
 
 ## Environment
 

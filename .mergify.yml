@@ -1,0 +1,33 @@
+pull_request_rules:
+  # membuat requirement dari automerge dengan sistem
+  # ketika workflow build passed maka akan dicentang
+  # ketika target pull request ke main maka akan dicentang
+  # ketika dikasih label 'ready-to-merge' akan dicentang
+  - name: testing dengan label ready-to-merge
+    conditions:
+      - base=main
+      - label=ready-to-merge
+    actions:
+      comment:
+        # menambahkan komentar message jika sudah di merge
+        message: terima kasih atas kontribusinya @{{author}} 🤩
+      label:
+        add:
+          - sudah direview!
+      # metode dari automerge
+      merge:
+        method: squash
+
+  # membuat label dengan kondisi jika di dalam pull request
+  # terdapat file python
+  - name: python label
+    conditions:
+      - or:
+          - body~=(?m)^\[X\] Saya menambah algoritma terbaru.
+          - files~=\.py$
+
+    actions:
+      # menambahkan label `python files`
+      label:
+        add:
+          - OpenSeries Python

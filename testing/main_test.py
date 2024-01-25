@@ -18,6 +18,7 @@ from testing.fisika_test import (
     TestPercepatan,
     TestGerakLurusBeraturan,
     TestEnergiKinetik,
+    TestKetinggianBarometrik,
 )
 
 from testing.statistika_test import TestFungsiEntropy, TestFungiStandardDeviasi
@@ -42,6 +43,7 @@ if __name__ == "__main__":
         TestPercepatan,
         TestGerakLurusBeraturan,
         TestEnergiKinetik,
+        TestKetinggianBarometrik,
     ]
 
     testing_statistika: list = [

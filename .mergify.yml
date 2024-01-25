@@ -5,7 +5,6 @@ pull_request_rules:
   # ketika dikasih label 'ready-to-merge' akan dicentang
   - name: testing dengan label ready-to-merge
     conditions:
-      - base=main
       - label=ready-to-merge
     actions:
       comment:

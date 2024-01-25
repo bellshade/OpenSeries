@@ -2,9 +2,9 @@ name: openseries testing
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, develop-library]
   push:
-    branches: [main]
+    branches: [main, develop-library]
 
 jobs:
   build:

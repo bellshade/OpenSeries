@@ -129,6 +129,12 @@ kendala atau masalah ketika melakukan pull request. Kamu juga bisa bertanya pada
   ```
 - Lakukan _push_ ke _branch_ kamu dan kemudian _open pull request_.
 
+> [!IMPORTANT]
+> Lakukan pull request ke branch ``develop-library`` jika ingin pull request library dan ``develop`` untuk pull request ke web dari  OpenSeries.
+
+> [!CAUTION]
+> Pull request akan di close jika mengarah ke branch ``main`` atau ``web``.
+
 **Saran pesan commit**
 
 - `feat:` untuk menambah algoritma atau tambahan lainnya;

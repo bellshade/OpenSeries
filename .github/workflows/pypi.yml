@@ -1,8 +1,8 @@
-name: Upload Python Package
+name: upload OpenSeries ke pypi
 
 on:
   push:
-    branches: [release]
+    branches: [main]
 
 jobs:
   deploy:

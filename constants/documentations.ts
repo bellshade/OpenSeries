@@ -59,7 +59,7 @@ export const documentations = [
             {
                 title: "Hukum Ohm",
                 href: "/docs/fisika/hukum-ohm"
-            },
+            }
         ]
     },
     {
@@ -72,7 +72,7 @@ export const documentations = [
             {
                 title: "standar deviasi",
                 href: "/docs/statistika/standar-deviasi"
-            },
+            }
         ]
     }
 ];

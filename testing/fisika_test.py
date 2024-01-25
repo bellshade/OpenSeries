@@ -56,3 +56,26 @@ class TestEnergiKinetik(unittest.TestCase):
     def test_invalid_input_mix_tipe_data(self):
         hasil = fisika.energi_kinetik("3", 4.5)
         self.assertEqual(hasil, error.error_tipe_data(["int", "float"]))
+
+
+class TestKetinggianBarometrik(unittest.TestCase):
+    def test_valid_input_tekanan(self):
+        hasil = fisika.ketinggian_barometrik(101325.0)
+        self.assertIsInstance(hasil, float)
+
+    def test_tekanan_lebih_besar_daripada_air(self):
+        hasil = fisika.ketinggian_barometrik(110000.0)
+        self.assertEqual(
+            hasil,
+            error.error_format("nilai lebih tinggi dari tekanan di permukaan laut"),
+        )
+
+    def test_tekanan_angka_negatif(self):
+        hasil = fisika.ketinggian_barometrik(-820.3)
+        self.assertEqual(
+            hasil, error.error_format("tekanan atmosfir tidak bisa negatif")
+        )
+
+    def test_tekanan_tipe_data_salah(self):
+        hasil = fisika.ketinggian_barometrik("12")
+        self.assertEqual(hasil, error.error_tipe_data(["float"]))

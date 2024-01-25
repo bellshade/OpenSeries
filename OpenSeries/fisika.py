@@ -150,3 +150,25 @@ def hukum_ohm(i: Union[float, int], r: Union[float, int]) -> Union[float, int, s
         return error.error_tipe_data(["float", "int"])
     else:
         return i * r
+
+
+def ketinggian_barometrik(tekanan: float) -> Union[float, str]:
+    """
+    fungsi untuk menghitung perkiraan ketinggian berdasarkan dari
+    tekanan udara yang menggunakan rumus barometrik
+
+    Parameter:
+        tekanan (float): tekanan udara
+    """
+    if not isinstance(tekanan, float):
+        return error.error_tipe_data(["float"])
+    else:
+        if tekanan > 101325:
+            return error.error_format(
+                "nilai lebih tinggi dari tekanan di permukaan laut"
+            )
+        if tekanan < 0:
+            return error.error_format("tekanan atmosfir tidak bisa negatif")
+        else:
+            hasil = 44_330 * (1 - (tekanan / 101_325) ** (1 / 5.5255))
+    return hasil

@@ -181,3 +181,25 @@ class TestMatriksTranspose(unittest.TestCase):
         ekspetasi = [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
         hasil = matematika.transpose_matriks(matriks_a)
         self.assertEqual(hasil, ekspetasi)
+
+
+class TestFungsiEuler(unittest.TestCase):
+    def test_nilai_positif(self):
+        hasil = matematika.euler_pi(100)
+        self.assertEqual(hasil, 40.0)
+
+    def test_nilai_tidak_integer(self):
+        hasil = matematika.euler_pi(3.14)
+        self.assertEqual(hasil, error.error_tipe_data(["int"]))
+
+    def test_nilai_negatif(self):
+        hasil = matematika.euler_pi(-20)
+        self.assertEqual(
+            hasil, error.error_format("nilai dari bilangan tidak boleh negatif atau 0")
+        )
+
+    def test_nilai_nol(self):
+        hasil = matematika.euler_pi(0)
+        self.assertEqual(
+            hasil, error.error_format("nilai dari bilangan tidak boleh negatif atau 0")
+        )

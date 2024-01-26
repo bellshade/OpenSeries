@@ -255,7 +255,7 @@ def fpb(
         return pesan_error.error_tipe_data(["float", "int"])
 
 
-def faktor_prima(n: int) -> Union[list[int], str]:
+def faktor_prima(n: int) -> Union[list, str]:
     """
     membuat fungsi untuk mengurutkan nilai faktor prima
 
@@ -346,3 +346,23 @@ def transpose_matriks(
         return [
             [matriks[j][i] for j in range(len(matriks))] for i in range(len(matriks[0]))
         ]
+
+
+def euler_pi(n: int) -> Union[int, float, str]:
+    """
+    menghitung fungsi dari euler pi
+
+    parameter:
+        n (int): bilangan untuk menghitung fungsi dari euler phi
+    """
+    if not isinstance(n, int):
+        return pesan_error.error_tipe_data(["int"])
+    else:
+        if n <= 0:
+            return pesan_error.error_format(
+                "nilai dari bilangan tidak boleh negatif atau 0"
+            )
+        s = n
+        for x in set(faktor_prima(n)):
+            s *= (x - 1) / x
+        return s

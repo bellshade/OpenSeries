@@ -2,7 +2,9 @@ from OpenSeries.util import error as error
 from typing import Union
 
 
-def kecepatan(jarak: Union[float, int], waktu: Union[float, int]) -> Union[float, str]:
+def kecepatan(
+    jarak: Union[float, int], waktu: Union[float, int]
+) -> Union[float, error.ErrorDibagiNol, error.ErrorTipeData]:
     """
     fungsi untuk menghitung kecepatan
 
@@ -27,7 +29,7 @@ def kecepatan(jarak: Union[float, int], waktu: Union[float, int]) -> Union[float
 
 def percepatan(
     kecepatan: Union[float, int], waktu: Union[float, int]
-) -> Union[float, str]:
+) -> Union[float, error.ErrorDibagiNol, error.ErrorTipeData]:
     """
     fungsi untuk menghitung percepatan
 
@@ -52,7 +54,7 @@ def percepatan(
 
 def gerak_lurus_beraturan(
     kecepatan_awal: float, a: float, t: float
-) -> Union[float, str]:
+) -> Union[float, error.ErrorTipeData]:
     """
     fungsi untuk menghitung jarak yang ditempuh oleh benda yang bergerak lurus beraturan
 
@@ -71,7 +73,7 @@ def gerak_lurus_beraturan(
 
 def energi_kinetik(
     massa: Union[float, int], kecepatan: Union[int, float]
-) -> Union[int, float, str]:
+) -> Union[int, float, error.ErrorTipeData]:
     """
     menghitung energi kinetik
 
@@ -89,7 +91,7 @@ def energi_kinetik(
 
 def masa_jenis(
     massa: Union[int, float], volume: Union[int, float]
-) -> Union[int, float, str]:
+) -> Union[int, float, error.ErrorDibagiNol, error.ErrorTipeData]:
     """
     menghitung masa jenis suatu benda
 
@@ -111,7 +113,7 @@ def masa_jenis(
 
 def energi_potensial(
     m: Union[int, float], g: Union[int, float], h: Union[int, float]
-) -> Union[float, int, str]:
+) -> Union[float, int, error.ErrorTipeData]:
     """
     menghitung energi potensial dengan rumus Ep = m * g * h
 
@@ -126,7 +128,9 @@ def energi_potensial(
         return m * g * h
 
 
-def hukum_ohm(i: Union[float, int], r: Union[float, int]) -> Union[float, int, str]:
+def hukum_ohm(
+    i: Union[float, int], r: Union[float, int]
+) -> Union[float, int, error.ErrorTipeData]:
     """
     menghitung hukum ohm dengan besar arus listrik yang mengalir
     melalui sebuah hantaran akan berbanding lurus dengan tengangan potensial
@@ -144,7 +148,9 @@ def hukum_ohm(i: Union[float, int], r: Union[float, int]) -> Union[float, int, s
         return i * r
 
 
-def ketinggian_barometrik(tekanan: float) -> Union[float, str]:
+def ketinggian_barometrik(
+    tekanan: float,
+) -> Union[float, error.ErrorTipeData, error.Error]:
     """
     fungsi untuk menghitung perkiraan ketinggian berdasarkan dari
     tekanan udara yang menggunakan rumus barometrik
@@ -156,9 +162,7 @@ def ketinggian_barometrik(tekanan: float) -> Union[float, str]:
         return error.ErrorTipeData(["float"])
     else:
         if tekanan > 101325:
-            return error.Error(
-                "nilai lebih tinggi dari tekanan di permukaan laut"
-            )
+            return error.Error("nilai lebih tinggi dari tekanan di permukaan laut")
         if tekanan < 0:
             return error.Error("tekanan atmosfir tidak bisa negatif")
         else:

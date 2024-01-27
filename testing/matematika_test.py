@@ -170,7 +170,8 @@ class TestFaktorPrima(unittest.TestCase):
 
     def test_input_float(self):
         hasil = matematika.faktor_prima(25.0)
-        self.assertEqual(hasil, [5, 5])
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
 
     def test_faktor_prima_kosong(self):
         hasil = matematika.faktor_prima(1)

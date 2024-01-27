@@ -11,11 +11,11 @@ def entropy(label: list[int], base: int) -> Union[float, int, str]:
         label (list (int)): label fitur yang akan di hitung entropynya
     """
     if not isinstance(label, (list)):
-        return pesan_error.error_tipe_data(["list"])
+        return pesan_error.ErrorTipeData(["list"])
     if not label:
-        return pesan_error.error_format("label tidak boleh kosong")
+        return pesan_error.Error("label tidak boleh kosong")
     if not all(isinstance(cek_nilai, int) for cek_nilai in label):
-        return pesan_error.error_tipe_data(["int"])
+        return pesan_error.ErrorTipeData(["int"])
     _, count = np.unique(label, return_counts=True)
     probabilitas = count / len(label)
     probabilitas[probabilitas == 0] = 1
@@ -32,9 +32,9 @@ def standar_deviasi(vektor: np.ndarray) -> Union[float, str]:
         vektor (np.array)
     """
     if not isinstance(vektor, np.ndarray):
-        return pesan_error.error_tipe_data(["numpy array"])
+        return pesan_error.ErrorTipeData(["numpy array"])
     if len(vektor) == 0:
-        return pesan_error.error_format("vektor tidak boleh kosong")
+        return pesan_error.Error("vektor tidak boleh kosong")
 
     mean_value = np.mean(vektor)
     squared_diff = np.square(vektor - mean_value)

@@ -15,14 +15,14 @@ def kecepatan(jarak: Union[float, int], waktu: Union[float, int]) -> Union[float
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance(jarak, (float, int)) and isinstance(waktu, (float, int)):
+    if all(isinstance(data, (float, int)) for data in [jarak, waktu]):
         try:
             return jarak / waktu
         except ZeroDivisionError:
             # error jika hasil pembagian dibagikan dengan 0
-            return error.error_dibagi_nol()
+            return error.ErrorDibagiNol()
     else:
-        return error.error_tipe_data(["int", "float"])
+        return error.ErrorTipeData(["int", "float"])
 
 
 def percepatan(
@@ -40,14 +40,14 @@ def percepatan(
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance(kecepatan, (float, int)) and isinstance(waktu, (float, int)):
+    if all(isinstance(data, (float, int)) for data in [kecepatan, waktu]):
         try:
             return kecepatan / waktu
         except ZeroDivisionError:
             # error jika hasil pembagian dibagikan dengan 0
-            return error.error_dibagi_nol()
+            return error.ErrorDibagiNol()
     else:
-        return error.error_tipe_data(["int", "float"])
+        return error.ErrorTipeData(["int", "float"])
 
 
 def gerak_lurus_beraturan(
@@ -63,14 +63,10 @@ def gerak_lurus_beraturan(
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if (
-        isinstance(kecepatan_awal, float)
-        and isinstance(a, float)
-        and isinstance(t, float)
-    ):
+    if all(isinstance(data, (float)) for data in [kecepatan_awal, a, t]):
         return kecepatan_awal * t + 0.5 * a * t**2
     else:
-        return error.error_tipe_data(["float"])
+        return error.ErrorTipeData(["float"])
 
 
 def energi_kinetik(
@@ -85,10 +81,10 @@ def energi_kinetik(
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance(massa, (int, float)) and isinstance(kecepatan, (int, float)):
+    if all(isinstance(data, (float, int)) for data in [massa, kecepatan]):
         return 0.5 * massa * kecepatan**2
     else:
-        return error.error_tipe_data(["int", "float"])
+        return error.ErrorTipeData(["int", "float"])
 
 
 def masa_jenis(
@@ -103,14 +99,14 @@ def masa_jenis(
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance(massa, (int, float)) and isinstance(volume, (int, float)):
+    if all(isinstance(data, (float, int)) for data in [massa, volume]):
         try:
             return massa / volume
         except ZeroDivisionError:
             # error jika hasil pembagian dibagikan dengan 0
-            return error.error_dibagi_nol()
+            return error.ErrorDibagiNol()
     else:
-        return error.error_tipe_data(["int", "float"])
+        return error.ErrorTipeData(["int", "float"])
 
 
 def energi_potensial(
@@ -124,12 +120,8 @@ def energi_potensial(
         g (float atau int): gravitasi bumi
         h (float atau int): ketinggian suatu benda
     """
-    if (
-        not isinstance(m, (float, int))
-        and not isinstance(g, (float, int))
-        and not isinstance(h, (float, int))
-    ):
-        return error.error_tipe_data(["float", "int"])
+    if not all(isinstance(data, (float, int)) for data in [m, g, h]):
+        return error.ErrorTipeData(["float", "int"])
     else:
         return m * g * h
 
@@ -146,8 +138,8 @@ def hukum_ohm(i: Union[float, int], r: Union[float, int]) -> Union[float, int, s
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if not isinstance(i, (float, int)) and not isinstance(r, (float, int)):
-        return error.error_tipe_data(["float", "int"])
+    if not all(isinstance(data, (float, int)) for data in [i, r]):
+        return error.ErrorTipeData(["float", "int"])
     else:
         return i * r
 
@@ -161,14 +153,14 @@ def ketinggian_barometrik(tekanan: float) -> Union[float, str]:
         tekanan (float): tekanan udara
     """
     if not isinstance(tekanan, float):
-        return error.error_tipe_data(["float"])
+        return error.ErrorTipeData(["float"])
     else:
         if tekanan > 101325:
-            return error.error_format(
+            return error.Error(
                 "nilai lebih tinggi dari tekanan di permukaan laut"
             )
         if tekanan < 0:
-            return error.error_format("tekanan atmosfir tidak bisa negatif")
+            return error.Error("tekanan atmosfir tidak bisa negatif")
         else:
             hasil = 44_330 * (1 - (tekanan / 101_325) ** (1 / 5.5255))
     return hasil

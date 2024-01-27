@@ -33,7 +33,7 @@ Untuk Menjalankan Library ini, kamu harus Memiliki Python dengan versi: 3.11.6 h
 kamu bisa menginstall package `OpenSeries` via pip dengan cara
 
 ```bash
-pip install git+https://github.com/bellshade/OpenSeries
+pip install OpenSeriesBellshade
 ```
 
 Informasi:

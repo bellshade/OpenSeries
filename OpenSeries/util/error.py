@@ -1,27 +1,41 @@
-def error_tipe_data(error_data: list[str]) -> str:
-    """
-    fungsi panggilan untuk menampilkan pesan error
-
-    Parameter:
-        error_data (list(str)): tipe data yang ingin diisi
-    """
-    return f"Kamu memasukkan tipe data yang salah, harus {','.join(error_data)}"
+from OpenSeries.util import constant as warna
 
 
-def error_format(format_string: str) -> str:
+class ErrorTipeData(TypeError):
     """
-    fungsi untuk menampilkan format error
-    sesuai keinginan dari pesan error
+    kelas untuk mendeteksi error dari tipe data
 
     parameter:
-        format_string (str): pesan yang akan diisi
+        expected_types (list[str]): tipe data yang dimasukkan
+
+    return:
+        (str): pesan error tipe data sesuai dari inputan
     """
-    return "Error: " + format_string
+
+    def __init__(self, expected_types: list[str]):
+        message = f"{warna.red}Error:{warna.reset_warna} tipe data Harus {' atau '.join(expected_types)}"
+        super().__init__(message)
 
 
-def error_dibagi_nol():
+class Error(Exception):
     """
-    fungsi panggilan untuk menampilkan pesan error
-    pesan error berupa `tidak bisa dibagikan dengan 0
+    kelas untuk membuat kostumisasi error
+
+    parameter:
+        pesan (str): pesan kostum yang ingin dimasukkan
     """
-    return "Tidak bisa dibagikan dengan 0"
+
+    def __init__(self, pesan: str):
+        message = f"{warna.red}Error:{warna.reset_warna} {pesan}"
+        super().__init__(message)
+
+
+class ErrorDibagiNol(ZeroDivisionError):
+    """
+    kelas untuk menampilkan error yang tidak bisa dibagi dengan nol
+    """
+
+    def __init__(self):
+        super().__init__(
+            f"{warna.red}Error:{warna.reset_warna} Tidak bisa dibagi dengan nol"
+        )

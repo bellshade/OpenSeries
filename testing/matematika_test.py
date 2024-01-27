@@ -7,28 +7,24 @@ class TestKonversi(unittest.TestCase):
     def test_radian_ke_derajat(self):
         self.assertAlmostEqual(matematika.radian_ke_derajat(1), 57.2957795131)
         self.assertAlmostEqual(matematika.radian_ke_derajat(0), 0)
-        self.assertEqual(
-            matematika.radian_ke_derajat("12"), error.error_tipe_data(["float", "int"])
-        )
+        with self.assertRaises(error.ErrorTipeData):
+            raise matematika.radian_ke_derajat("12")
 
     def test_derajat_ke_radian(self):
         self.assertAlmostEqual(matematika.derajat_ke_radian(180), 3.1415926535)
         self.assertAlmostEqual(matematika.derajat_ke_radian(0), 0)
-        self.assertEqual(
-            matematika.derajat_ke_radian("15"), error.error_tipe_data(["float", "int"])
-        )
+        with self.assertRaises(error.ErrorTipeData):
+            raise matematika.derajat_ke_radian("12")
 
     def test_radian_ke_gradian(self):
         self.assertAlmostEqual(matematika.radian_ke_gradian(180), 11459.1559026)
-        self.assertEqual(
-            matematika.radian_ke_gradian("128"), error.error_tipe_data(["float", "int"])
-        )
+        with self.assertRaises(error.ErrorTipeData):
+            raise matematika.radian_ke_gradian("128")
 
     def test_gradian_ke_radian(self):
         self.assertAlmostEqual(matematika.gradian_ke_radian(52), 0.8168140899)
-        self.assertEqual(
-            matematika.gradian_ke_radian("200"), error.error_tipe_data(["float", "int"])
-        )
+        with self.assertRaises(error.ErrorTipeData):
+            raise matematika.gradian_ke_radian("200")
 
 
 class TestKelilingLingkaran(unittest.TestCase):
@@ -42,7 +38,8 @@ class TestKelilingLingkaran(unittest.TestCase):
 
     def test_nilai_input_tidak_valid(self):
         hasil = matematika.keliling_lingkaran("45")
-        self.assertEqual(hasil, error.error_tipe_data(["float", "int"]))
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
 
 
 class TestDiameterLingkaran(unittest.TestCase):
@@ -56,7 +53,8 @@ class TestDiameterLingkaran(unittest.TestCase):
 
     def test_nilai_input_tidak_valid(self):
         hasil = matematika.diameter_lingkaran("800")
-        self.assertEqual(hasil, error.error_tipe_data(["float", "int"]))
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
 
 
 class TestPersamaanKuadrat(unittest.TestCase):
@@ -70,11 +68,13 @@ class TestPersamaanKuadrat(unittest.TestCase):
 
     def test_nilai_input_tidak_valid(self):
         hasil = matematika.persamaan_kuadrat("12", 2, 3)
-        self.assertEqual(hasil, error.error_tipe_data(["float", "int"]))
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
 
     def test_nilai_complex(self):
         hasil = matematika.persamaan_kuadrat(1, 2, 5)
-        self.assertEqual(hasil, error.error_format("Persamaan memiliki solusi complex"))
+        with self.assertRaises(error.Error):
+            raise hasil
 
 
 class TestRataRata(unittest.TestCase):
@@ -88,7 +88,8 @@ class TestRataRata(unittest.TestCase):
 
     def test_list_kosong(self):
         hasil = matematika.rata_rata([])
-        self.assertEqual(hasil, error.error_format("List tidak boleh kosong"))
+        with self.assertRaises(error.Error):
+            raise hasil
 
 
 class TestFaktorial(unittest.TestCase):
@@ -102,13 +103,13 @@ class TestFaktorial(unittest.TestCase):
 
     def test_faktorial_nilai_float(self):
         hasil = matematika.faktorial(2.5)
-        self.assertEqual(hasil, error.error_tipe_data(["int"]))
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
 
     def test_faktorial_nilai_negatif(self):
         hasil = matematika.faktorial(-20)
-        self.assertEqual(
-            hasil, error.error_format("Tidak bisa menggunakan angka negatif")
-        )
+        with self.assertRaises(error.Error):
+            raise hasil
 
 
 class TestPermutasi(unittest.TestCase):
@@ -118,11 +119,13 @@ class TestPermutasi(unittest.TestCase):
 
     def test_input_invalid_float(self):
         hasil = matematika.permutasi(5.2, 2.0)
-        self.assertEqual(hasil, error.error_tipe_data(["int"]))
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
 
     def test_nilai_input_tidak_valid(self):
         hasil = matematika.permutasi("12", "14")
-        self.assertEqual(hasil, error.error_tipe_data(["int"]))
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
 
 
 class TestKombinasi(unittest.TestCase):
@@ -132,11 +135,13 @@ class TestKombinasi(unittest.TestCase):
 
     def test_input_invalid_float(self):
         hasil = matematika.kombinasi(5.2, 2.0)
-        self.assertEqual(hasil, error.error_tipe_data(["int"]))
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
 
     def test_nilai_input_tidak_valid(self):
         hasil = matematika.kombinasi("12", "14")
-        self.assertEqual(hasil, error.error_tipe_data(["int"]))
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
 
 
 class TestFPB(unittest.TestCase):
@@ -150,7 +155,8 @@ class TestFPB(unittest.TestCase):
 
     def test_angka_invalid(self):
         hasil = matematika.fpb(-36, -40)
-        self.assertEqual(hasil, error.error_format("Angka tidak boleh negatif"))
+        with self.assertRaises(error.Error):
+            raise hasil
 
     def test_angka_nol(self):
         hasil = matematika.fpb(0, 48)
@@ -164,7 +170,8 @@ class TestFaktorPrima(unittest.TestCase):
 
     def test_input_float(self):
         hasil = matematika.faktor_prima(25.0)
-        self.assertEqual(hasil, [5, 5])
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
 
     def test_faktor_prima_kosong(self):
         hasil = matematika.faktor_prima(1)
@@ -172,7 +179,8 @@ class TestFaktorPrima(unittest.TestCase):
 
     def test_input_negatif(self):
         hasil = matematika.faktor_prima(-30)
-        self.assertEqual(hasil, error.error_format("Angka tidak boleh negatif"))
+        with self.assertRaises(error.Error):
+            raise hasil
 
 
 class TestMatriksTranspose(unittest.TestCase):
@@ -190,16 +198,15 @@ class TestFungsiEuler(unittest.TestCase):
 
     def test_nilai_tidak_integer(self):
         hasil = matematika.euler_pi(3.14)
-        self.assertEqual(hasil, error.error_tipe_data(["int"]))
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
 
     def test_nilai_negatif(self):
         hasil = matematika.euler_pi(-20)
-        self.assertEqual(
-            hasil, error.error_format("nilai dari bilangan tidak boleh negatif atau 0")
-        )
+        with self.assertRaises(error.Error):
+            raise hasil
 
     def test_nilai_nol(self):
         hasil = matematika.euler_pi(0)
-        self.assertEqual(
-            hasil, error.error_format("nilai dari bilangan tidak boleh negatif atau 0")
-        )
+        with self.assertRaises(error.Error):
+            raise hasil

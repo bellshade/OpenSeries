@@ -168,3 +168,54 @@ def ketinggian_barometrik(
         else:
             hasil = 44_330 * (1 - (tekanan / 101_325) ** (1 / 5.5255))
     return hasil
+
+
+def gaya_sentripental(
+    massa: Union[float, int], velocity: Union[float, int], radius: Union[float, int]
+) -> Union[float, int, error.Error, error.ErrorTipeData]:
+    """
+    fungsi untuk menghitung gaya sentripental. gaya sentripental adalah gaya yang bekerja
+    pada benda dalam gerak lengkung arahnya menuju ke sumbu rotasi atau pusat kelengkungan
+
+    Parameter:
+        massa (float): masa benda
+        v (float): kecepatan dari benda
+        radius (float): jari-jari lintasan melingkar
+    """
+    if not all(isinstance(data, (float, int)) for data in [massa, velocity, radius]):
+        return error.ErrorTipeData(["float", "int"])
+    if massa < 0:
+        return error.Error("Massa tidak boleh negatif")
+    if radius <= 0:
+        return error.Error("Radius selalu angka positif")
+    return (massa * (velocity) ** 2) / radius
+
+
+def efek_doppler(
+    org_frek: Union[float, int],
+    gelombang_vel: Union[float, int],
+    obs_vel: Union[float, int],
+    src_vel: Union[float, int],
+) -> Union[float, error.ErrorDibagiNol, error.ErrorTipeData, error.Error]:
+    """
+    fungsi untuk menghitung efek doppler
+
+    parameter:
+        org_frek (int atau float): frekuensi gelombang sumber diam
+        gelombang_vel_vel (int atau float): kecepatan gelombang dalam medium
+        obs_vel (int atau float): kecepatan pengamatan
+        src_vel (int atau float): kecepatan sumber
+    """
+    if not all(
+        isinstance(data, (float, int))
+        for data in [org_frek, gelombang_vel, obs_vel, src_vel]
+    ):
+        return error.ErrorTipeData(["int", "float"])
+    if gelombang_vel == src_vel:
+        return error.ErrorDibagiNol()
+    doppler = (org_frek * (gelombang_vel + obs_vel)) / (gelombang_vel - src_vel)
+    if doppler <= 0:
+        return error.Error(
+            "frekuensi tidak positif, kecepatan sumber relatif lebih besar dari kecepatan gelombang dalam medium"
+        )
+    return doppler

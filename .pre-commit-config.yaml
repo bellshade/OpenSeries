@@ -35,6 +35,7 @@ repos:
           - --ignore-missing-imports
           - --non-interactive
           - --install-types
+        exclude: example
         additional_dependencies: [types-requests]
 
   - repo: https://github.com/pre-commit/mirrors-prettier

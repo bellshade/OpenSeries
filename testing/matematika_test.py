@@ -1,6 +1,7 @@
 import unittest
 from OpenSeries import matematika as matematika
 from OpenSeries.util import error as error
+import numpy as np
 
 
 class TestKonversi(unittest.TestCase):
@@ -209,4 +210,18 @@ class TestFungsiEuler(unittest.TestCase):
     def test_nilai_nol(self):
         hasil = matematika.euler_pi(0)
         with self.assertRaises(error.Error):
+            raise hasil
+
+
+class TestSigmoid(unittest.TestCase):
+    def test_sigmoid(self):
+        input_nilai_array = np.array([1, 2, 3])
+        hasil = matematika.sigmoid(input_nilai_array)
+        nilai_ekspetasi = np.array([0.73105858, 0.88079708, 0.95257413])
+        np.testing.assert_allclose(hasil, nilai_ekspetasi, rtol=1e-7)
+
+    def test_invalid_input(self):
+        hasil = matematika.sigmoid(5)
+        self.assertIsInstance(hasil, error.ErrorTipeData)
+        with self.assertRaises(error.ErrorTipeData):
             raise hasil

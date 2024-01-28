@@ -12,6 +12,7 @@ from testing.matematika_test import (
     TestFaktorPrima,
     TestMatriksTranspose,
     TestFungsiEuler,
+    TestSigmoid,
 )
 
 from testing.fisika_test import (
@@ -40,6 +41,7 @@ if __name__ == "__main__":
         TestFaktorPrima,
         TestMatriksTranspose,
         TestFungsiEuler,
+        TestSigmoid,
     ]
 
     testing_fisika: list = [

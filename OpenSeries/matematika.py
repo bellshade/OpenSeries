@@ -1,6 +1,7 @@
 from OpenSeries.util import constant as constant
 from OpenSeries.util import error as error
 from typing import Union, Sequence
+import numpy as np
 import math
 
 
@@ -368,3 +369,17 @@ def euler_pi(
             return s
         else:
             return faktor_prima_n
+
+
+def sigmoid(vektor: np.ndarray) -> Union[error.ErrorTipeData, np.ndarray]:
+    """
+    fungsi sigmoid adalah fungsi yang berbentuk huruf S. fungsi ini biasanya
+    digunakan untuk mengubah nilai input dari neuron menjadi nilai output yang
+    lebih mudah diproses oleh neuron lain
+
+    parameter:
+        vektor (np.ndarray): rentang nilai array yang ingin dimasukkan
+    """
+    if not isinstance(vektor, np.ndarray):
+        return error.ErrorTipeData(["numpy.narray"])
+    return 1 / (1 + np.exp(-vektor))

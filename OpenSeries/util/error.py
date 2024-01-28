@@ -13,7 +13,7 @@ class ErrorTipeData(TypeError):
     """
 
     def __init__(self, expected_types: list[str]):
-        message = f"{warna.red}Error:{warna.reset_warna} tipe data Harus {' atau '.join(expected_types)}"
+        message = f"{warna.red}Error Tipe:{warna.reset_warna} tipe data Harus {' atau '.join(expected_types)}"
         super().__init__(message)
 
 
@@ -30,6 +30,26 @@ class Error(Exception):
         super().__init__(message)
 
 
+class IndeksError(IndexError):
+    """
+    kelas untuk membuat error dari index jika tidak selaras dengan dimensi atau lain
+    """
+
+    def __init__(self, pesan: str):
+        message = f"{warna.red}Indeks Error:{warna.reset_warna} {pesan}"
+        super().__init__(message)
+
+
+class ErrorValue(ValueError):
+    """
+    kelas untuk membuat error dari index dengan throw dari ValueError
+    """
+
+    def __init__(self, pesan: str):
+        message = f"{warna.red}Error Value:{warna.reset_warna} {pesan}"
+        super().__init__(message)
+
+
 class ErrorDibagiNol(ZeroDivisionError):
     """
     kelas untuk menampilkan error yang tidak bisa dibagi dengan nol
@@ -37,5 +57,5 @@ class ErrorDibagiNol(ZeroDivisionError):
 
     def __init__(self):
         super().__init__(
-            f"{warna.red}Error:{warna.reset_warna} Tidak bisa dibagi dengan nol"
+            f"{warna.red}Error Dibagi Nol:{warna.reset_warna} Tidak bisa dibagi dengan nol"
         )

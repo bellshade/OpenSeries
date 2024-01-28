@@ -80,3 +80,52 @@ class TestKetinggianBarometrik(unittest.TestCase):
         hasil = fisika.ketinggian_barometrik("12")
         with self.assertRaises(error.ErrorTipeData):
             raise hasil
+
+
+class TestGayaSentripental(unittest.TestCase):
+    def test_gaya_sentripental(self):
+        hasil = fisika.gaya_sentripental(10, 5, 2)
+        self.assertEqual(hasil, 125.0)
+
+    def test_gaya_sentripental_error_tipe_data(self):
+        hasil = fisika.gaya_sentripental("12", 5, 2)
+        self.assertIsInstance(hasil, error.ErrorTipeData)
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+    def test_gaya_sentripental_minus(self):
+        hasil = fisika.gaya_sentripental(-10, 5, 2)
+        self.assertIsInstance(hasil, error.Error)
+        with self.assertRaises(error.Error):
+            raise hasil
+
+    def test_gaya_sentripental_nol(self):
+        hasil = fisika.gaya_sentripental(10, 5, 0)
+        self.assertIsInstance(hasil, error.Error)
+        with self.assertRaises(error.Error):
+            raise hasil
+
+
+class TestEfekDoppler(unittest.TestCase):
+    def test_efek_doppler(self):
+        hasil = fisika.efek_doppler(100, 340, 20, 10)
+        rounding_hasil = round(hasil)
+        self.assertEqual(rounding_hasil, 109)
+
+    def test_efek_doppler_invalid_tipe_data(self):
+        hasil = fisika.efek_doppler("12", "340", "20", 10)
+        self.assertIsInstance(hasil, error.ErrorTipeData)
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+    def test_efek_doppler_dibagi_nol(self):
+        hasil = fisika.efek_doppler(0, 0, 0, 0)
+        self.assertIsInstance(hasil, error.ErrorDibagiNol)
+        with self.assertRaises(error.ErrorDibagiNol):
+            raise hasil
+
+    def test_efek_doppler_nilai_negatif(self):
+        hasil = fisika.efek_doppler(-100, -340, 20, 10)
+        self.assertIsInstance(hasil, error.Error)
+        with self.assertRaises(error.Error):
+            raise hasil

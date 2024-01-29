@@ -61,5 +61,18 @@ export const documentations = [
                 href: "/docs/fisika/hukum-ohm"
             }
         ]
+    },
+    {
+        parent: "Statistika",
+        childs: [
+            {
+                title: "Entropy",
+                href: "/docs/statistika/entropy"
+            },
+            {
+                title: "Standar Deviasi",
+                href: "/docs/statistika/standar-deviasi"
+            }
+        ]
     }
 ];

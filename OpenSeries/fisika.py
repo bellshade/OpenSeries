@@ -9,11 +9,13 @@ def kecepatan(
     fungsi untuk menghitung kecepatan
 
     Parameter:
-    jarak (float atau int): jarak tempuh
-    waktu (float atau int): waktu tempuh (sekon)
+        jarak (float atau int): jarak tempuh
+        waktu (float atau int): waktu tempuh (sekon)
 
     Return:
-    float: hasil dari jarak / waktu
+        float: hasil dari jarak / waktu
+        error.ErrorTipeData: error jika tipe data data salah
+        error.ErrorDibagiNol: error jika angka dibagikan dengan 0
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -34,11 +36,13 @@ def percepatan(
     fungsi untuk menghitung percepatan
 
     parameter:
-    kecepatan (float atau int): kecepatan (m/s)
-    waktu (float atau int): waktu tempuh (sekon)
+        kecepatan (float atau int): kecepatan (m/s)
+        waktu (float atau int): waktu tempuh (sekon)
 
     Return:
-    float: hasil dari kecepatan / waktu
+        float: hasil dari kecepatan / waktu
+        error.ErrorTipeData: error jika tipe data data salah
+        error.ErrorDibagiNol: jika angka dibagikan dengan 0
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -58,10 +62,14 @@ def gerak_lurus_beraturan(
     """
     fungsi untuk menghitung jarak yang ditempuh oleh benda yang bergerak lurus beraturan
 
-    parameter:
+    Parameter:
         kecepatan_awal (float): kecepatan awal (m/s)
         a (float): percepatan (m/s**2)
         t (float): waktu (s)
+
+    Return:
+        float: jarak yang ditempuh oleh benda
+        error.ErrorTipeData: error jika tipe data salah
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -77,9 +85,13 @@ def energi_kinetik(
     """
     menghitung energi kinetik
 
-    parameter:
+    Parameter:
         massa (float): massa benda
         kecepatan (float atau int): kecepatan benda
+
+    Return:
+        (int, float): hasil dari perhitungan energi kinetik
+        error.ErrorTipeData: error jika tipe data data salah
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -95,9 +107,14 @@ def masa_jenis(
     """
     menghitung masa jenis suatu benda
 
-    parameter:
+    Parameter:
         massa (float atau int): massa benda
         volume (float atau int): volume benda
+
+    Return:
+        (int, flloat): hasil dari kalkulasi fungsi dari masa jenis
+        error.ErrorTipeData: error jika tipe data data salah
+        error.ErrorDibagiNol: error jika angka dibagikan dengan 0
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -121,7 +138,12 @@ def energi_potensial(
         m (float atau int): masa benda
         g (float atau int): gravitasi bumi
         h (float atau int): ketinggian suatu benda
+
+    Return:
+        (float, int): hasil dari kalkulasi energei potensial
+        error.ErrorTipeData: error jika tipe data data salah
     """
+    # melakukan pengecekan apakah semua parameter memiliki tipe data dari float atau int
     if not all(isinstance(data, (float, int)) for data in [m, g, h]):
         return error.ErrorTipeData(["float", "int"])
     else:
@@ -139,6 +161,10 @@ def hukum_ohm(
     Parameter:
         i (float atau int): kuat arus
         r (float atau int): hambatan (ditulis omega)
+
+    Return:
+        (float, int): hasil dari kalkulasi dari hukum ohm
+        error.ErrorTipeData: error jika tipe data data salah
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -157,7 +183,15 @@ def ketinggian_barometrik(
 
     Parameter:
         tekanan (float): tekanan udara
+
+    Return:
+        (float): hasil dari kalkulasi ketinggian barometrik
+        error.ErrorTipeData: error jika tipe data data salah
+        error.Error: jika nilai lebih tinggi dari tekanan di permukaan laut
+        error.Error: jika tekanan atmosfir tidak bisa negatif
     """
+    # mengecek apakah variable tersebut bertipe data float
+    # jika tidak maka error
     if not isinstance(tekanan, float):
         return error.ErrorTipeData(["float"])
     else:
@@ -181,7 +215,15 @@ def gaya_sentripental(
         massa (float): masa benda
         v (float): kecepatan dari benda
         radius (float): jari-jari lintasan melingkar
+
+    Return:
+        (float, int): hasil dari kalkulasi nilai sentripental
+        error.ErrorTipeData: error jika tipe data data salah
+        error.Error: jika massa negatif
+        error.Error: jika radius negatif
     """
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
     if not all(isinstance(data, (float, int)) for data in [massa, velocity, radius]):
         return error.ErrorTipeData(["float", "int"])
     if massa < 0:
@@ -200,12 +242,19 @@ def efek_doppler(
     """
     fungsi untuk menghitung efek doppler
 
-    parameter:
+    Parameter:
         org_frek (int atau float): frekuensi gelombang sumber diam
         gelombang_vel_vel (int atau float): kecepatan gelombang dalam medium
         obs_vel (int atau float): kecepatan pengamatan
         src_vel (int atau float): kecepatan sumber
+
+    Return:
+        (float): hasil dari kalkulasi efek doppler
+        error.ErrorTipeData: error jika tipe data data salah
+        error.Error: jika nilai doppler negatif
     """
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
     if not all(
         isinstance(data, (float, int))
         for data in [org_frek, gelombang_vel, obs_vel, src_vel]

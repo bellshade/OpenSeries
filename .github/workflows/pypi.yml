@@ -1,3 +1,6 @@
+# git action yang digunakan untuk mengupload project dari github
+# kemudian di upload ke pypi
+
 name: upload OpenSeries ke pypi
 
 on:

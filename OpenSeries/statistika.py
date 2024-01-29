@@ -9,8 +9,14 @@ def entropy(
     """
     fungsi menghitung entropy dari suatu fitur pada suatu dataset
 
-    parameter:
+    Parameter:
         label (list (int)): label fitur yang akan di hitung entropynya
+        base (int): label dari entropy
+
+    Return:
+        (float, int): hasil dari kalkulasi dari entropy
+        error.ErrorTipeData: error jika tipe data salah
+        error.Error: jika nilai label yang diberikan kosong
     """
     if not isinstance(label, (list)):
         return error.ErrorTipeData(["list"])
@@ -32,8 +38,13 @@ def standar_deviasi(
     """
     fungsi untuk mengukur penyebaran data terhadap nilai rata-ratanya
 
-    parameter:
+    Parameter:
         vektor (np.array)
+
+    Return:
+        (float): hasil dari kalkulasi standar deviasi
+        error.ErrorTipeData: error jika tipe data salah
+        error.Error: jika vektor yang diberikan kosong
     """
     if not isinstance(vektor, np.ndarray):
         return error.ErrorTipeData(["numpy array"])

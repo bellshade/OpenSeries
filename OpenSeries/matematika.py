@@ -9,9 +9,15 @@ def radian_ke_derajat(radian: Union[float, int]) -> Union[float, error.ErrorTipe
     """
     mengubah nilai radian ke derajat
 
-    parameter:
+    Parameter:
         radian (float atau integer): nilai radian
+
+    Return:
+        (float): hasil dari kalkulasi radian ke derajat
+        error.ErrorTipeData: error jika tipe data salah
     """
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
     if not isinstance(radian, (float, int)):
         return error.ErrorTipeData(["float", "int"])
     else:
@@ -22,9 +28,15 @@ def derajat_ke_radian(derajat: Union[float, int]) -> Union[float, error.ErrorTip
     """
     mengubah nilai derajat ke nilai radian
 
-    parameter:
+    Parameter:
         derajat (float atau int): nilai derajat
+
+    Return:
+        (float): hasil dari kalkulasi derajat ke radian
+        error.ErrorTipeData: error jika tipe data salah
     """
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
     if not isinstance(derajat, (float, int)):
         return error.ErrorTipeData(["float", "int"])
     else:
@@ -37,7 +49,13 @@ def radian_ke_gradian(radian: Union[float, int]) -> Union[float, error.ErrorTipe
 
     Parameter:
         radian (float atau int): nilai radian
+
+    Return:
+        (float): hasil dari kalkulasi radian ke gradian
+        error.ErrorTipeData: error jika tipe data salah
     """
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
     if not isinstance(radian, (float, int)):
         return error.ErrorTipeData(["float", "int"])
     else:
@@ -48,9 +66,15 @@ def gradian_ke_radian(gradian: Union[float, int]) -> Union[float, error.ErrorTip
     """
     mengubah nilai gradian ke radian
 
-    parameter:
+    Parameter:
         gradian (float atau int): nilai gradian
+
+    Return:
+        (float): hasil dari kalkulasi gradian ke radian
+        error.ErrorTipeData: error jika tipe data salah
     """
+    # mengecek apakah variable tersebut bertipe data int atau float
+    # jika tidak maka error
     if not isinstance(gradian, (float, int)):
         return error.ErrorTipeData(["float", "int"])
     else:
@@ -62,7 +86,11 @@ def luas_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeData]
     menghitung luas lingkaran
 
     Parameter:
-    jari-jari (float atau integer): jari jari yang akan dihitung
+        jari-jari (float atau integer): jari jari yang akan dihitung
+
+    Return:
+        (float): hasil dari kalkulasi luas lingkaran
+        error.ErrorTipeData: error jika tipe data salah
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -76,8 +104,11 @@ def keliling_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeD
     """
     menghitung keliling lingkaran
 
-    parameter:
+    Parameter:
         jari (float atau integer): jari-jari lingkaran
+
+    Return:
+        (float): hasil dari kalkulasi keliling lingkaran
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -91,8 +122,12 @@ def diameter_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeD
     """
     menghitung diameter lingkaran
 
-    parameter:
+    Parameter:
         jari (float atau integer): jari-jari lingkaran
+
+    Return:
+        (float): hasil dari kalkulasi diameter lingkaran
+        error.ErrorTipeData: error jika tipe data salah
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -108,13 +143,15 @@ def persamaan_kuadrat(
     """
     menghitung persamaan linear
 
-    parameter:
+    Parameter:
         a (float atau integer): nilai a
         b (float atau integer): nilai b
         c (float atau integer): nilai c
 
-    return:
+    Return:
         (float atau integer): hasil persamaan linear dari 3 bilangan a, b, dan c
+        error.ErrorTipeData: error jika tipe data salah
+        error.Error: jika memiliki nilai complex
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -135,8 +172,13 @@ def rata_rata(
     """
     menghitung nilai rata-rata
 
-    parameter:
+    Parameter:
         nilai (list(float atau integer)): nilai yang dihitung
+
+    Return:
+        (int, float): hasil dari kalkulasi nilai rata-rata
+        error.ErrorTipeData: error jika tipe data error
+        error.Error: jika di dalam list nilai kosong
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -161,8 +203,13 @@ def faktorial(nilai: int) -> Union[int, float, error.Error, error.ErrorTipeData]
     menghitung produk dari semua bilangan bulat positif
     contoh `4! = 24 = 4 x 3 x 2 x 1`
 
-    parameter:
+    Parameter:
         nilai (int): nilai yang akan di faktorial
+
+    Return:
+        (int, float): hasil dari kalkulasi faktorial
+        error.ErrorTipeData: error jika tipe data salah
+        error.Error: jika nilai dimasukkan negatif
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -185,9 +232,13 @@ def permutasi(nilai: int, r: int) -> Union[int, float, error.ErrorTipeData]:
     """
     menghitung nilai permutasi dari n objek yang diambil dari r
 
-    parameter:
+    Parameter:
         nilai (int): nilai objek
         r (int): jumlah objek yang diambil
+
+    Return:
+        (int, float): hasil dari kalkulasi permutasi
+        error.ErrorTipeData: error jika tipe data salah
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -205,11 +256,15 @@ def permutasi(nilai: int, r: int) -> Union[int, float, error.ErrorTipeData]:
 
 def kombinasi(nilai: int, r: int) -> Union[int, float, error.ErrorTipeData]:
     """
-    menghitung nilai kombasi dari n objek yang diambil dari r
+    menghitung nilai kombinasi dari n objek yang diambil dari r
 
-    parameter:
+    Parameter:
         nilai (int): nilai objek
         r (int): jumlah objek yang diambil
+
+    Return:
+        (int, float): hasil dari kalkulasi kombinasi
+        error.ErrorTipeData: error jika tipe data salah
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -236,9 +291,14 @@ def fpb(
     """
     menghitung faktor persekutuan terbesar dari dua buah bilangan
 
-    parameter:
+    Parameter:
         bilangan_pertama (float atau integer): bilagan pertama
         bilangan_kedua (float atau integer): bilangan kedua
+
+    Return:
+        (int, float): hasil dari kalkulasi fpb
+        error.ErrorTipeData: error jika tipe data salah
+        error.Error: jika nilai yang diberikan negatif
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
@@ -262,8 +322,13 @@ def faktor_prima(n: int) -> Union[list[int], error.Error, error.ErrorTipeData]:
     """
     membuat fungsi untuk mengurutkan nilai faktor prima
 
-    parameter:
+    Parameter:
         n (int): rentang angka yang mau di tampilkan bilangan faktor prima
+
+    Return:
+        (list[int]): hasil dari kalkulasi dari faktor prima
+        error.ErrorTipeData: jika tipe data yang dimasukkan salah
+        error.Error: jika angka diberikan nilai negatif
     """
     # mengecek apakah variable n bertipe data integer atau float
     if not isinstance(n, (int)):
@@ -295,9 +360,14 @@ def peluang_kejadian(
     """
     menghitung probabilitas dari suatu kejadian
 
-    parameter:
+    Parameter:
         kejadian (float atau integer): jumlah hasil yang menguntungkan (n(A))
         ukuran sampel (float atau integer): ukurang ruang sampel (n(S))
+
+    Return:
+        (int, float): hasil dari kalkulasi peluang kejadian
+        error.ErrorTipeData: error jika tipe data salah
+        error.ErrorDibagiNol: error jika nilai dibagi dengan 0
     """
     # mengecek apakah variable kejadian, ukuran sampel bertipe data integer atau float
     if not isinstance(kejadian, (float, int)) and not isinstance(
@@ -318,10 +388,14 @@ def hitung_jumlah_deret(
     """
     menghitung jumlah deret aritmatika
 
-    parameter:
+    Parameter:
         n (float atau integer): jumlah suku dalam deret
         a (float atau integer): suku pertama dalam deret
         b (float atau integer): selisih antara dua suku berturut-turut
+
+    Return:
+        (float, int): hasil dari kalkulasi jumlah deret
+        error.ErrorTipeData: error jika tipe data salah
     """
     # mengecek apakah variable n, a dan b bertipe data integer atau float
     if all(isinstance(data, (float, int)) for data in [n, a, b]):
@@ -336,8 +410,12 @@ def transpose_matriks(
     """
     fungsi untuk transpose matrix
 
-    parameter:
+    Parameter:
         matriks: list[float, int]: matriks yang akan di transpose
+
+    Return:
+        (list[float atau int]): hasil dari kalkulasi transpose matriks
+        error.ErrorTipeData: jika error tipe data yang diberikan salah
     """
     if not isinstance(matriks, list):
         return error.ErrorTipeData(["list"])
@@ -353,8 +431,13 @@ def euler_pi(
     """
     menghitung fungsi dari euler pi
 
-    parameter:
+    Parameter:
         n (int): bilangan untuk menghitung fungsi dari euler phi
+
+    Return:
+        (int, float): hasil dari kalkulasi fungsi euler pi
+        error.ErrorTipeData: error jika tipe data salah
+        error.Error: jika nilai yang diberikan negatif
     """
     if not isinstance(n, int):
         return error.ErrorTipeData(["int"])
@@ -377,8 +460,12 @@ def sigmoid(vektor: np.ndarray) -> Union[error.ErrorTipeData, np.ndarray]:
     digunakan untuk mengubah nilai input dari neuron menjadi nilai output yang
     lebih mudah diproses oleh neuron lain
 
-    parameter:
+    Parameter:
         vektor (np.ndarray): rentang nilai array yang ingin dimasukkan
+
+    Return:
+        (np.ndarray): hasil dari kalkulasi sigmoid
+        error.ErrorTipeData: error jika tipe data salah
     """
     if not isinstance(vektor, np.ndarray):
         return error.ErrorTipeData(["numpy.narray"])

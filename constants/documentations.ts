@@ -66,11 +66,11 @@ export const documentations = [
         parent: "Statistika",
         childs: [
             {
-                title: "entropy",
+                title: "Entropy",
                 href: "/docs/statistika/entropy"
             },
             {
-                title: "standar deviasi",
+                title: "Standar Deviasi",
                 href: "/docs/statistika/standar-deviasi"
             }
         ]

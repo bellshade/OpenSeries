@@ -13,17 +13,20 @@ class TestFungsiEntropy(unittest.TestCase):
     def test_nilai_kosong(self):
         label = []
         hasil = statistika.entropy(label, base=2)
-        self.assertEqual(hasil, pesan_error.error_format("label tidak boleh kosong"))
+        with self.assertRaises(pesan_error.Error):
+            raise hasil
 
     def test_nilai_element_dalam_label(self):
         label = [1, 2, "3", 4]
         hasil = statistika.entropy(label, base=2)
-        self.assertEqual(hasil, pesan_error.error_tipe_data(["int"]))
+        with self.assertRaises(pesan_error.ErrorTipeData):
+            raise hasil
 
     def test_tipe_data_tuple(self):
         label = (1, 2, 3)
         hasil = statistika.entropy(label, base=2)
-        self.assertEqual(hasil, pesan_error.error_tipe_data(["list"]))
+        with self.assertRaises(pesan_error.ErrorTipeData):
+            raise hasil
 
 
 class TestFungiStandardDeviasi(unittest.TestCase):
@@ -35,9 +38,11 @@ class TestFungiStandardDeviasi(unittest.TestCase):
     def test_standard_deviasi_dengan_list(self):
         vektor = [1, 2, 3, 4, 5]
         hasil = statistika.standar_deviasi(vektor)
-        self.assertEqual(hasil, pesan_error.error_tipe_data(["numpy array"]))
+        with self.assertRaises(pesan_error.ErrorTipeData):
+            raise hasil
 
     def test_standard_deviasi_dengan_numpy_kosong(self):
         vektor = np.array([])
         hasil = statistika.standar_deviasi(vektor)
-        self.assertEqual(hasil, pesan_error.error_format("vektor tidak boleh kosong"))
+        with self.assertRaises(pesan_error.Error):
+            raise hasil

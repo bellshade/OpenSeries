@@ -11,6 +11,8 @@ from testing.matematika_test import (
     TestFPB,
     TestFaktorPrima,
     TestMatriksTranspose,
+    TestFungsiEuler,
+    TestSigmoid,
 )
 
 from testing.fisika_test import (
@@ -18,6 +20,9 @@ from testing.fisika_test import (
     TestPercepatan,
     TestGerakLurusBeraturan,
     TestEnergiKinetik,
+    TestKetinggianBarometrik,
+    TestGayaSentripental,
+    TestEfekDoppler,
 )
 
 from testing.statistika_test import TestFungsiEntropy, TestFungiStandardDeviasi
@@ -35,6 +40,8 @@ if __name__ == "__main__":
         TestFPB,
         TestFaktorPrima,
         TestMatriksTranspose,
+        TestFungsiEuler,
+        TestSigmoid,
     ]
 
     testing_fisika: list = [
@@ -42,6 +49,9 @@ if __name__ == "__main__":
         TestPercepatan,
         TestGerakLurusBeraturan,
         TestEnergiKinetik,
+        TestKetinggianBarometrik,
+        TestGayaSentripental,
+        TestEfekDoppler,
     ]
 
     testing_statistika: list = [

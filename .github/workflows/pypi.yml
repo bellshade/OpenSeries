@@ -1,8 +1,11 @@
-name: Upload Python Package
+# git action yang digunakan untuk mengupload project dari github
+# kemudian di upload ke pypi
+
+name: upload OpenSeries ke pypi
 
 on:
   push:
-    branches: [release]
+    branches: [main]
 
 jobs:
   deploy:
@@ -20,6 +23,6 @@ jobs:
       - name: Build package
         run: python -m build
       - name: Publish package
-        uses: pypa/gh-action-pypi-publish@v1
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}

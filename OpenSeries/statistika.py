@@ -1,21 +1,29 @@
 import numpy as np
 from typing import Union
-from OpenSeries.util import error as pesan_error
+from OpenSeries.util import error as error
 
 
-def entropy(label: list[int], base: int) -> Union[float, int, str]:
+def entropy(
+    label: list[int], base: int
+) -> Union[float, int, error.Error, error.ErrorTipeData]:
     """
     fungsi menghitung entropy dari suatu fitur pada suatu dataset
 
-    parameter:
+    Parameter:
         label (list (int)): label fitur yang akan di hitung entropynya
+        base (int): label dari entropy
+
+    Return:
+        (float, int): hasil dari kalkulasi dari entropy
+        error.ErrorTipeData: error jika tipe data salah
+        error.Error: jika nilai label yang diberikan kosong
     """
     if not isinstance(label, (list)):
-        return pesan_error.error_tipe_data(["list"])
+        return error.ErrorTipeData(["list"])
     if not label:
-        return pesan_error.error_format("label tidak boleh kosong")
+        return error.Error("label tidak boleh kosong")
     if not all(isinstance(cek_nilai, int) for cek_nilai in label):
-        return pesan_error.error_tipe_data(["int"])
+        return error.ErrorTipeData(["int"])
     _, count = np.unique(label, return_counts=True)
     probabilitas = count / len(label)
     probabilitas[probabilitas == 0] = 1
@@ -24,17 +32,24 @@ def entropy(label: list[int], base: int) -> Union[float, int, str]:
     return np.sum(abs(probabilitas * log))
 
 
-def standar_deviasi(vektor: np.ndarray) -> Union[float, str]:
+def standar_deviasi(
+    vektor: np.ndarray,
+) -> Union[float, error.Error, error.ErrorTipeData]:
     """
     fungsi untuk mengukur penyebaran data terhadap nilai rata-ratanya
 
-    parameter:
+    Parameter:
         vektor (np.array)
+
+    Return:
+        (float): hasil dari kalkulasi standar deviasi
+        error.ErrorTipeData: error jika tipe data salah
+        error.Error: jika vektor yang diberikan kosong
     """
     if not isinstance(vektor, np.ndarray):
-        return pesan_error.error_tipe_data(["numpy array"])
+        return error.ErrorTipeData(["numpy array"])
     if len(vektor) == 0:
-        return pesan_error.error_format("vektor tidak boleh kosong")
+        return error.Error("vektor tidak boleh kosong")
 
     mean_value = np.mean(vektor)
     squared_diff = np.square(vektor - mean_value)

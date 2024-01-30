@@ -1,10 +1,12 @@
 name: openseries testing
 
 on:
+  # membuat unittesting untuk mengecek dari pull request dan push
+  # branch dari yang akan di cek adalah main dan develop-library
   pull_request:
-    branches: [main]
+    branches: [main, develop-library]
   push:
-    branches: [main]
+    branches: [main, develop-library]
 
 jobs:
   build:
@@ -12,21 +14,27 @@ jobs:
 
     strategy:
       matrix:
+        # operasi sistem yang dijadikan sebagai environment dari testnya
         os: [macos-latest, windows-latest, ubuntu-latest]
 
     steps:
+      # check out kode dimana adalah git action
+      # mengecek kode daripada project
       - name: checkout kode
         uses: actions/checkout@v4
 
+      # memanggil environment dari python
       - name: setting python
         uses: actions/setup-python@v4
 
+      # install requirement yang sudah disedikan dari project
       - name: install requirement
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
           python -m pip install -r dev-requirements.txt
 
+      # testing kode dengan pytest
       - name: testing kode dengan pytest
         run: |
           pytest testing/main_test.py --verbose

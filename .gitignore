@@ -26,3 +26,5 @@ next-env.d.ts
 
 # cache dari dist
 dist
+
+.DS_Store

@@ -37,10 +37,10 @@ pip install OpenSeriesBellshade
 ```
 
 ## Docker
-kamu juga bisa testing package via docker dengan cara
+kamu juga bisa testing package via `docker`` dengan cara
 
 ```bash
-bash main.sh
+bash docker.sh
 ```
 > Note: untuk windows kalian bisa install dulu dockernya dengan panduan yang ada di [`Docker Docs`](https://docs.docker.com/desktop/install/windows-install/)
 

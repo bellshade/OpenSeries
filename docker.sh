@@ -16,7 +16,7 @@ os_checking(){
 }
 
 running_docker() {
-    docker build -t openseries:1.0 -f Dockerfile.openseries_test.
+    docker build -t openseries:1.0 -f Dockerfile.openseries_test .
     docker run openseries:1.0
 }
 

@@ -36,6 +36,14 @@ kamu bisa menginstall package `OpenSeries` via pip dengan cara
 pip install OpenSeriesBellshade
 ```
 
+## Docker
+kamu juga bisa testing package via docker dengan cara
+
+```bash
+bash main.sh
+```
+> Note: untuk windows kalian bisa install dulu dockernya dengan panduan yang ada di [`Docker Docs`](https://docs.docker.com/desktop/install/windows-install/)
+
 Informasi:
 
 kamu bisa melihat pada [wiki](https://github.com/bellshade/OpenSeries/wiki) atau ke [website](openseries.pages.dev/), untuk dokumentasi installasi dan pengunaan dari `OpenSeries`

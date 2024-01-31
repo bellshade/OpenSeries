@@ -21,7 +21,7 @@ def radian_ke_derajat(radian: Union[float, int]) -> Union[float, error.ErrorTipe
     if not isinstance(radian, (float, int)):
         return error.ErrorTipeData(["float", "int"])
     else:
-        return radian * (180 / constant.pi)
+        return radian * (180 / constant.PI)
 
 
 def derajat_ke_radian(derajat: Union[float, int]) -> Union[float, error.ErrorTipeData]:
@@ -40,7 +40,7 @@ def derajat_ke_radian(derajat: Union[float, int]) -> Union[float, error.ErrorTip
     if not isinstance(derajat, (float, int)):
         return error.ErrorTipeData(["float", "int"])
     else:
-        return derajat * (constant.pi / 180)
+        return derajat * (constant.PI / 180)
 
 
 def radian_ke_gradian(radian: Union[float, int]) -> Union[float, error.ErrorTipeData]:
@@ -59,7 +59,7 @@ def radian_ke_gradian(radian: Union[float, int]) -> Union[float, error.ErrorTipe
     if not isinstance(radian, (float, int)):
         return error.ErrorTipeData(["float", "int"])
     else:
-        return radian * (200 / constant.pi)
+        return radian * (200 / constant.PI)
 
 
 def gradian_ke_radian(gradian: Union[float, int]) -> Union[float, error.ErrorTipeData]:
@@ -78,7 +78,7 @@ def gradian_ke_radian(gradian: Union[float, int]) -> Union[float, error.ErrorTip
     if not isinstance(gradian, (float, int)):
         return error.ErrorTipeData(["float", "int"])
     else:
-        return gradian * (constant.pi / 200)
+        return gradian * (constant.PI / 200)
 
 
 def luas_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeData]:
@@ -95,7 +95,7 @@ def luas_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeData]
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
     if isinstance(jari, (float, int)):
-        return constant.pi * jari**2
+        return constant.PI * jari**2
     else:
         return error.ErrorTipeData(["float", "int"])
 
@@ -113,7 +113,7 @@ def keliling_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeD
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
     if isinstance(jari, (float, int)):
-        return 2 * constant.pi * jari
+        return 2 * constant.PI * jari
     else:
         return error.ErrorTipeData(["float", "int"])
 

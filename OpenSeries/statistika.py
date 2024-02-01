@@ -1,7 +1,24 @@
 import numpy as np
-from typing import Union
+from typing import Union,List
 from OpenSeries.util import error as error
 
+
+def nilai_tengah(vector: Union[List[Union[int, float]], np.ndarray]):
+    # check data type
+    if not isinstance(vector,(list,np.ndarray)):
+        return error.ErrorTipeData(["List"])
+    # check length data
+    n = len(vector)
+    if n == 0:
+        return error.Error("vektor tidak boleh kosong")
+    # if length data is odd
+    if n%2 != 0:
+        idx = n//2
+        return vector[idx]
+    elif n%2 ==0 :
+        idx = n//2
+        return np.mean(vector[idx-1:idx+1])
+    
 
 def entropy(
     label: list[int], base: int
@@ -56,3 +73,14 @@ def standar_deviasi(
     variansi = np.mean(squared_diff)
     std_deviasi = np.sqrt(variansi)
     return std_deviasi
+
+def varian(vector:np.ndarray)-> Union[float,error.Error,
+                                      error.ErrorTipeData]:
+    if not isinstance(vector,np.ndarray):
+        return error.ErrorTipeData(["Numpy array"])
+    if len(vector) == 0:
+        return error.Error("Vector tidak boleh kosong")
+    mean_value = np.mean(vector)
+    squared_diff = np.square(vector - mean_value)
+    return np.mean(squared_diff)
+    

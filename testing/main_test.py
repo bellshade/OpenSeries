@@ -13,6 +13,7 @@ from testing.matematika_test import (
     TestMatriksTranspose,
     TestFungsiEuler,
     TestSigmoid,
+    TestDistribusiBinomial,
 )
 
 from testing.fisika_test import (
@@ -42,6 +43,7 @@ if __name__ == "__main__":
         TestMatriksTranspose,
         TestFungsiEuler,
         TestSigmoid,
+        TestDistribusiBinomial,
     ]
 
     testing_fisika: list = [

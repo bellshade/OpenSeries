@@ -470,3 +470,42 @@ def sigmoid(vektor: np.ndarray) -> Union[error.ErrorTipeData, np.ndarray]:
     if not isinstance(vektor, np.ndarray):
         return error.ErrorTipeData(["numpy.narray"])
     return 1 / (1 + np.exp(-vektor))
+
+
+def distribusi_binomial(
+    keberhasilan: int,
+    percobaan: int,
+    probabilitas: Union[float, int],
+) -> Union[float, error.ErrorTipeData, error.ErrorValue]:
+    """
+    mengembalikan probabilitas k keberhasilan dari n percobaan, dengan probabilitas p
+    untuk satu keberhasilan
+
+    fungsi ini menggunakan fungsi faktorial untuk menghitung koefisien binomial
+
+    Parameter:
+        keberhasilan (int): probabilitas
+        percobaan (int): percobaan dari distribusi binomial
+        probabilitas (int): probabilitas dari suatu keberhasilan
+
+    Return:
+        (float): hasil dari distribusi binomial
+    """
+    if keberhasilan > percobaan:
+        return error.ErrorValue(
+            "jumlah keberhasilan harus kurang dari atau sama dengan jumlah percobaan"
+        )
+    if percobaan < 0 or keberhasilan < 0:
+        return error.ErrorValue("nilai percobaan dan keberhasilan tidak boleh negatif")
+    if not all(isinstance(data, (int)) for data in [keberhasilan, percobaan]):
+        return error.ErrorTipeData(["int"])
+    if not 0 < probabilitas < 1:
+        return error.ErrorValue("nilai probabilitas harus 0 atau 1")
+
+    probabilitas_kejadian = (probabilitas**keberhasilan) * (
+        (1 - probabilitas) ** (percobaan - keberhasilan)
+    )
+
+    koefisien = float(math.factorial(percobaan))
+    koefisien /= math.factorial(keberhasilan) * math.factorial(percobaan - keberhasilan)
+    return probabilitas_kejadian * koefisien

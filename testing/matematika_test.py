@@ -225,3 +225,24 @@ class TestSigmoid(unittest.TestCase):
         self.assertIsInstance(hasil, error.ErrorTipeData)
         with self.assertRaises(error.ErrorTipeData):
             raise hasil
+
+
+class TestDistribusiBinomial(unittest.TestCase):
+    def test_valid_input(self):
+        hasil = matematika.distribusi_binomial(2, 5, 0.7)
+        self.assertAlmostEqual(hasil, 0.13230000000000006)
+
+    def test_invalid_input_keberhasilan_lebih_besar_percobaan(self):
+        hasil = matematika.distribusi_binomial(5, 3, 0.5)
+        with self.assertRaises(error.ErrorValue):
+            raise hasil
+
+    def test_invalid_input_negatif(self):
+        hasil = matematika.distribusi_binomial(-2, 4, 0.1)
+        with self.assertRaises(error.ErrorValue):
+            raise hasil
+
+    def test_input_angka_tidak_integer(self):
+        hasil = matematika.distribusi_binomial(2.4, 4.2, 0.5)
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil

@@ -26,6 +26,8 @@ from testing.fisika_test import (
     TestEfekDoppler,
 )
 
+from testing.bilangan_istimewa_test import TestAngkaArmstrong
+
 from testing.statistika_test import TestFungsiEntropy, TestFungiStandardDeviasi
 
 if __name__ == "__main__":
@@ -61,6 +63,10 @@ if __name__ == "__main__":
         TestFungiStandardDeviasi,
     ]
 
+    testing_angka_istimewa: list = [
+        TestAngkaArmstrong,
+    ]
+
     all_tests = unittest.TestSuite()
 
     for testing_math in testing_matematika:
@@ -72,6 +78,11 @@ if __name__ == "__main__":
     for testing_statistik in testing_statistika:
         all_tests.addTest(
             unittest.TestLoader().loadTestsFromTestCase(testing_statistik)
+        )
+
+    for testing_special_number in testing_angka_istimewa:
+        all_tests.addTest(
+            unittest.TestLoader().loadTestsFromTestCase(testing_special_number)
         )
 
     unittest.TextTestRunner(verbosity=2).run(all_tests)

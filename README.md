@@ -55,7 +55,7 @@ Untuk berkontribusi pada website OpenSeries, ikuti langkah-langkah berikut:
 4. Format kode menggunakan Bun Prettier:
 
     ```bash
-    bun prettier
+    bun format
     ```
 
 5. Lakukan commit perubahan Anda dengan menggunakan salah satu awalan pesan commit berikut:

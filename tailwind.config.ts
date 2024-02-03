@@ -16,7 +16,7 @@ const config: Config = {
         }
     },
     plugins: [require("@tailwindcss/typography"), addDynamicIconSelectors()],
-    darkMode: ['class'],
+    darkMode: ["class"]
 };
 
 export default config;

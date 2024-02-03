@@ -1,10 +1,12 @@
 "use client";
 
 import { documentations } from "@/constants/documentations";
+import { featuredLinks } from "@/constants/featuredLinks";
 import { socialLinks } from "@/constants/socialLinks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
+
 type Props = {};
 
 export default function Sidebar({}: Props) {
@@ -14,7 +16,7 @@ export default function Sidebar({}: Props) {
     return (
         <>
             <aside
-                className={`absolute inset-y-0 z-20 flex min-w-[300px] max-w-[300px]  grow flex-col gap-4 overflow-y-auto border-r bg-white p-10 transition-all duration-300 md:static md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-[calc(100%+0.6rem)]"}`}
+                className={`absolute inset-y-0 z-20 flex min-w-[300px] max-w-[300px]  grow flex-col gap-8 overflow-y-auto border-r bg-white p-10 transition-all duration-300 md:static md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
             >
                 <header className="flex items-center justify-between border-b pb-3">
                     <Link
@@ -34,23 +36,42 @@ export default function Sidebar({}: Props) {
                         ))}
                     </div>
                 </header>
-                {documentations.map((documentation) => (
-                    <Fragment key={documentation.parent}>
-                        <span className="text-xs font-bold uppercase text-zinc-800">{documentation.parent}</span>
-                        <div className="flex flex-col">
-                            {documentation.childs.map((link) => (
-                                <Link
-                                    key={link.href}
-                                    className={`border-l-2 py-2 pl-6 text-sm transition-all duration-200 hover:border-l-indigo-600 hover:text-indigo-600 ${link.href === pathname ? "border-l-indigo-600 text-indigo-600" : "text-zinc-400"}`}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {link.title}
-                                </Link>
-                            ))}
+                <div className="grid gap-2">
+                    {featuredLinks.map((link) => (
+                        <Link
+                            href={link.href}
+                            key={link.name}
+                            target={link.target}
+                            className="group flex items-center gap-2 font-medium text-zinc-500 transition-all duration-200 hover:text-zinc-800"
+                        >
+                            <div
+                                className={`grid h-10 w-10 place-items-center rounded-lg transition-all duration-200 ${link.href === pathname ? "bg-indigo-600 text-white" : "bg-indigo-100 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white"}`}
+                            >
+                                <span className={`${link.icon} text-xl`}></span>
+                            </div>
+                            {link.name}
+                        </Link>
+                    ))}
+                </div>
+                <div className="space-y-4">
+                    {documentations.map((documentation) => (
+                        <div key={documentation.parent} className="space-y-4">
+                            <span className="text-xs font-bold uppercase text-zinc-800">{documentation.parent}</span>
+                            <div className="flex flex-col">
+                                {documentation.childs.map((link) => (
+                                    <Link
+                                        key={link.href}
+                                        className={`border-l-2 py-2 pl-6 text-sm transition-all duration-200 hover:border-l-indigo-600 hover:text-indigo-600 ${link.href === pathname ? "border-l-indigo-600 text-indigo-600" : "text-zinc-400"}`}
+                                        href={link.href}
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        {link.title}
+                                    </Link>
+                                ))}
+                            </div>
                         </div>
-                    </Fragment>
-                ))}
+                    ))}
+                </div>
             </aside>
             <button
                 onClick={() => setIsOpen(!isOpen)}

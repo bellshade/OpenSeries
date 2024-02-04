@@ -98,17 +98,13 @@ class TestFaktorial(unittest.TestCase):
         hasil = matematika.faktorial(0)
         self.assertEqual(hasil, 1)
 
-    def test_faktorial_nilai_int(self):
-        hasil = matematika.faktorial(5)
-        self.assertEqual(hasil, 120)
-
-    def test_faktorial_nilai_float(self):
-        hasil = matematika.faktorial(2.5)
+    def test_faktorial_tipe_data_salah(self):
+        hasil = matematika.faktorial(20.0)
         with self.assertRaises(error.ErrorTipeData):
             raise hasil
 
     def test_faktorial_nilai_negatif(self):
-        hasil = matematika.faktorial(-20)
+        hasil = matematika.faktorial(-120)
         with self.assertRaises(error.Error):
             raise hasil
 

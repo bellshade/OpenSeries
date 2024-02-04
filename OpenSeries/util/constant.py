@@ -1,3 +1,5 @@
+from colorama import Fore, Style
+
 # bilangan pi adalah nilai konstant dalam matematika yang merupakan perbandingan keliling
 # lingkaran dengan diameternya
 PI: float = 3.14159265358979323846
@@ -17,6 +19,6 @@ KONSTANTA_PLANCK = 4.1357 * pow(10, -15)
 
 # default error dari warna menggunakan kode ANSI escape
 # merah
-red: str = "\033[91m"
+red: str = Fore.RED
 # reset kembali warna ke default
-reset_warna: str = "\033[0m"
+reset_warna: str = Style.RESET_ALL

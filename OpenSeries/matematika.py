@@ -131,10 +131,9 @@ def diameter_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeD
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance(jari, (float, int)):
-        return 2 * jari
-    else:
+    if not isinstance(jari, (float, int)):
         return error.ErrorTipeData(["float", "int"])
+    return 2 * jari
 
 
 def persamaan_kuadrat(
@@ -213,19 +212,15 @@ def faktorial(nilai: int) -> Union[int, float, error.Error, error.ErrorTipeData]
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance(nilai, int):
-        if nilai == 0 or nilai == 1:
-            return 1
-        elif nilai < 0:
-            return error.Error("Tidak bisa menggunakan angka negatif")
-        else:
-            hasil_rekursif = faktorial(nilai - 1)
-            if isinstance(hasil_rekursif, int):
-                return nilai * hasil_rekursif
-            else:
-                return hasil_rekursif
-    else:
+    if not isinstance(nilai, int):
         return error.ErrorTipeData(["int"])
+    if nilai < 0:
+        return error.Error("Tidak bisa menggunakan angka negatif")
+    try:
+        return math.factorial(nilai)
+    except OverflowError:
+        # faktorial untuk nilai yang cukup besar sehingga menghasilkan overflow
+        return error.Error("Nilai terlalu besar untuk dihitung faktorialnya")
 
 
 def permutasi(nilai: int, r: int) -> Union[int, float, error.ErrorTipeData]:

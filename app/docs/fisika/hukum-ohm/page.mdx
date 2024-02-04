@@ -1,3 +1,5 @@
+import Codeblock from "@/components/Codeblock";
+
 # Hukum Ohm
 
 Rumus:
@@ -24,4 +26,9 @@ print(fisika.hukum_ohm(kuat_arus, hambatan))
 
 ## Coba Sekarang
 
-<iframe src="https://replit.com/@ItsArul/HukumOhm?embed=1&theme=light" className="aspect-video w-full" />
+<Codeblock code={`import OpenSeries.fisika as fisika
+
+kuat_arus = 30
+hambatan = 3
+print(fisika.hukum_ohm(kuat_arus, hambatan))
+`} />

@@ -1,3 +1,5 @@
+import Codeblock from "@/components/Codeblock";
+
 # Standar Deviasi
 
 Rumus:
@@ -20,13 +22,17 @@ Contoh Kode
 import numpy as np
 from OpenSeries import statistika as statistika
 
-# contoh dari standar deviasi
 vektor = np.array([1, 2, 3, 4, 5])
 hasil = statistika.standar_deviasi(vektor)
 print(hasil)
-
 ```
 
 ## Coba Sekarang
 
-<iframe src="https://replit.com/@ItsArul/StandarDeviasi?embed=1&theme=light" className="aspect-video w-full" />
+<Codeblock code={`import numpy as np
+from OpenSeries import statistika as statistika
+
+vektor = np.array([1, 2, 3, 4, 5])
+hasil = statistika.standar_deviasi(vektor)
+print(hasil)
+`} />

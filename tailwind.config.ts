@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 import { addDynamicIconSelectors } from "@iconify/tailwind";
 import typography from "@tailwindcss/typography";
-import plugin from "tailwindcss/plugin";
 
 const config: Config = {
     darkMode: ["class"],
@@ -18,17 +17,7 @@ const config: Config = {
             }
         }
     },
-    plugins: [
-        typography(),
-        addDynamicIconSelectors(),
-        plugin(function ({ addUtilities, theme }) {
-            addUtilities({
-                ".text-openseries": {
-                    "background-image:": theme("backgroundImage.gradient-to-br")
-                }
-            });
-        })
-    ]
+    plugins: [typography(), addDynamicIconSelectors()]
 };
 
 export default config;

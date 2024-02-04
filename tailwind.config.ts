@@ -1,7 +1,10 @@
 import type { Config } from "tailwindcss";
 import { addDynamicIconSelectors } from "@iconify/tailwind";
+import typography from "@tailwindcss/typography";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
+    darkMode: ["class"],
     content: [
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
         "./constants/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,8 +18,17 @@ const config: Config = {
             }
         }
     },
-    plugins: [require("@tailwindcss/typography"), addDynamicIconSelectors()],
-    darkMode: ["class"]
+    plugins: [
+        typography(),
+        addDynamicIconSelectors(),
+        plugin(function ({ addUtilities, theme }) {
+            addUtilities({
+                ".text-openseries": {
+                    "background-image:": theme("backgroundImage.gradient-to-br")
+                }
+            });
+        })
+    ]
 };
 
 export default config;

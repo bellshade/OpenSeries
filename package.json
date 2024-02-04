@@ -15,12 +15,14 @@
         "@next/mdx": "^14.0.4",
         "@types/mdx": "^2.0.10",
         "next": "14.0.4",
+        "next-themes": "^0.2.1",
         "nextjs-toploader": "^1.6.4",
         "react": "^18",
         "react-dom": "^18",
         "rehype-pretty-code": "^0.12.6",
         "remark-gfm": "^4.0.0",
-        "shikiji": "^0.9.0"
+        "shikiji": "^0.9.0",
+        "zustand": "^4.5.0"
     },
     "devDependencies": {
         "@iconify/json": "^2.2.169",

@@ -11,7 +11,8 @@ const options = {
     theme: {
         light: "light-plus",
         dark: "dark-plus"
-    }
+    },
+    defaultLang: "plaintext"
 };
 
 const withMDX = createMDX({

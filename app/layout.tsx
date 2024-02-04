@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
+import Provider from "@/components/Provider";
+import Navbar from "@/components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "OpenSeries",
@@ -14,9 +16,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className={`${inter.className}`}>
-                <NextTopLoader color="#4f46e5" />
-                {children}
+            <body className={`${montserrat.className} dark:bg-zinc-800`}>
+                <Provider>
+                    <Navbar />
+                    <NextTopLoader color="#4f46e5" />
+                    {children}
+                </Provider>
             </body>
         </html>
     );

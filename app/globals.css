@@ -3,17 +3,21 @@
 @tailwind utilities;
 
 @layer base {
+    * {
+        @apply transition-all duration-200;
+    }
+
     h1,
     h2,
     h3,
     h4,
     h5,
     h6 {
-        @apply text-zinc-800;
+        @apply text-zinc-800 dark:text-zinc-200;
     }
 
     p {
-        @apply text-zinc-600;
+        @apply text-zinc-500 dark:text-zinc-400;
     }
 
     pre[data-theme*=" "] {
@@ -23,16 +27,6 @@
     code[data-theme*=" "],
     code[data-theme*=" "] span {
         @apply bg-[var(--shiki-light-bg)] text-[var(--shiki-light)];
-    }
-
-    @media (prefers-color-scheme: dark) {
-        code[data-theme*=" "],
-        code[data-theme*=" "] span {
-            @apply bg-[var(--shiki-dark-bg)] text-[var(--shiki-dark)];
-        }
-        pre[data-theme*=" "] {
-            background-color: var(--shiki-dark-bg);
-        }
     }
 
     html.dark code[data-theme*=" "],

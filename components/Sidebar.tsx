@@ -58,14 +58,14 @@ export default function Sidebar({}: Props) {
             </aside>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`absolute bottom-5 right-5 flex items-center gap-1 rounded-full bg-zinc-700 px-2 py-2 text-white sm:px-6 lg:hidden`}
+                className={`fixed bottom-5 right-5 z-30 flex items-center gap-1 rounded-full bg-zinc-700 px-3 py-3 text-white sm:px-6 lg:hidden`}
             >
-                <span className="hidden sm:block">{isOpen ? "Close" : "Open"} Sidebar</span>
                 {isOpen ? (
-                    <span className="icon-[ph--x] text-xl"></span>
+                    <span className="icon-[ph--x] text-2xl"></span>
                 ) : (
-                    <span className="icon-[ic--round-menu] text-xl"></span>
+                    <span className="icon-[ic--round-menu] text-2xl"></span>
                 )}
+                <span className="hidden text-lg sm:block">{isOpen ? "Close" : "Open"} Sidebar</span>
             </button>
         </>
     );

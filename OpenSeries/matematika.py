@@ -21,7 +21,7 @@ def radian_ke_derajat(radian: Union[float, int]) -> Union[float, error.ErrorTipe
     if not isinstance(radian, (float, int)):
         return error.ErrorTipeData(["float", "int"])
     else:
-        return radian * (180 / constant.pi)
+        return radian * (180 / constant.PI)
 
 
 def derajat_ke_radian(derajat: Union[float, int]) -> Union[float, error.ErrorTipeData]:
@@ -40,7 +40,7 @@ def derajat_ke_radian(derajat: Union[float, int]) -> Union[float, error.ErrorTip
     if not isinstance(derajat, (float, int)):
         return error.ErrorTipeData(["float", "int"])
     else:
-        return derajat * (constant.pi / 180)
+        return derajat * (constant.PI / 180)
 
 
 def radian_ke_gradian(radian: Union[float, int]) -> Union[float, error.ErrorTipeData]:
@@ -59,7 +59,7 @@ def radian_ke_gradian(radian: Union[float, int]) -> Union[float, error.ErrorTipe
     if not isinstance(radian, (float, int)):
         return error.ErrorTipeData(["float", "int"])
     else:
-        return radian * (200 / constant.pi)
+        return radian * (200 / constant.PI)
 
 
 def gradian_ke_radian(gradian: Union[float, int]) -> Union[float, error.ErrorTipeData]:
@@ -78,7 +78,7 @@ def gradian_ke_radian(gradian: Union[float, int]) -> Union[float, error.ErrorTip
     if not isinstance(gradian, (float, int)):
         return error.ErrorTipeData(["float", "int"])
     else:
-        return gradian * (constant.pi / 200)
+        return gradian * (constant.PI / 200)
 
 
 def luas_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeData]:
@@ -95,7 +95,7 @@ def luas_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeData]
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
     if isinstance(jari, (float, int)):
-        return constant.pi * jari**2
+        return constant.PI * jari**2
     else:
         return error.ErrorTipeData(["float", "int"])
 
@@ -113,7 +113,7 @@ def keliling_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeD
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
     if isinstance(jari, (float, int)):
-        return 2 * constant.pi * jari
+        return 2 * constant.PI * jari
     else:
         return error.ErrorTipeData(["float", "int"])
 
@@ -131,10 +131,9 @@ def diameter_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeD
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance(jari, (float, int)):
-        return 2 * jari
-    else:
+    if not isinstance(jari, (float, int)):
         return error.ErrorTipeData(["float", "int"])
+    return 2 * jari
 
 
 def persamaan_kuadrat(
@@ -213,19 +212,15 @@ def faktorial(nilai: int) -> Union[int, float, error.Error, error.ErrorTipeData]
     """
     # mengecek apakah variable tersebut bertipe data int atau float
     # jika tidak maka error
-    if isinstance(nilai, int):
-        if nilai == 0 or nilai == 1:
-            return 1
-        elif nilai < 0:
-            return error.Error("Tidak bisa menggunakan angka negatif")
-        else:
-            hasil_rekursif = faktorial(nilai - 1)
-            if isinstance(hasil_rekursif, int):
-                return nilai * hasil_rekursif
-            else:
-                return hasil_rekursif
-    else:
+    if not isinstance(nilai, int):
         return error.ErrorTipeData(["int"])
+    if nilai < 0:
+        return error.Error("Tidak bisa menggunakan angka negatif")
+    try:
+        return math.factorial(nilai)
+    except OverflowError:
+        # faktorial untuk nilai yang cukup besar sehingga menghasilkan overflow
+        return error.Error("Nilai terlalu besar untuk dihitung faktorialnya")
 
 
 def permutasi(nilai: int, r: int) -> Union[int, float, error.ErrorTipeData]:
@@ -470,3 +465,60 @@ def sigmoid(vektor: np.ndarray) -> Union[error.ErrorTipeData, np.ndarray]:
     if not isinstance(vektor, np.ndarray):
         return error.ErrorTipeData(["numpy.narray"])
     return 1 / (1 + np.exp(-vektor))
+
+
+def distribusi_binomial(
+    keberhasilan: int,
+    percobaan: int,
+    probabilitas: Union[float, int],
+) -> Union[float, error.ErrorTipeData, error.ErrorValue]:
+    """
+    mengembalikan probabilitas k keberhasilan dari n percobaan, dengan probabilitas p
+    untuk satu keberhasilan
+
+    fungsi ini menggunakan fungsi faktorial untuk menghitung koefisien binomial
+
+    Parameter:
+        keberhasilan (int): probabilitas
+        percobaan (int): percobaan dari distribusi binomial
+        probabilitas (int): probabilitas dari suatu keberhasilan
+
+    Return:
+        (float): hasil dari distribusi binomial
+    """
+    if keberhasilan > percobaan:
+        return error.ErrorValue(
+            "jumlah keberhasilan harus kurang dari atau sama dengan jumlah percobaan"
+        )
+    if percobaan < 0 or keberhasilan < 0:
+        return error.ErrorValue("nilai percobaan dan keberhasilan tidak boleh negatif")
+    if not all(isinstance(data, (int)) for data in [keberhasilan, percobaan]):
+        return error.ErrorTipeData(["int"])
+    if not 0 < probabilitas < 1:
+        return error.ErrorValue("nilai probabilitas harus 0 atau 1")
+
+    probabilitas_kejadian = (probabilitas**keberhasilan) * (
+        (1 - probabilitas) ** (percobaan - keberhasilan)
+    )
+
+    koefisien = float(math.factorial(percobaan))
+    koefisien /= math.factorial(keberhasilan) * math.factorial(percobaan - keberhasilan)
+    return probabilitas_kejadian * koefisien
+
+
+def gaussian(
+    x: int, mu: Union[float, int] = 0.0, sigma: Union[float, int] = 1.0
+) -> Union[float, error.ErrorTipeData]:
+    """
+    fungsi gaussian, yang biasa disebut fungsi kurva lonceng adalah fungsi
+    untuk mendeskripsikan probabilitas distribusi data yang normal
+    """
+    if not all(
+        isinstance(data, (float, int)) for data in [sigma, mu]
+    ) and not isinstance(x, int):
+        return error.ErrorTipeData(["float", "int"])
+    return (
+        1
+        / np.sqrt(2 * constant.PI * sigma**2)
+        * np.exp(-((x - mu) ** 2) / (2 * sigma**2))
+    )

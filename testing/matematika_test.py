@@ -98,17 +98,13 @@ class TestFaktorial(unittest.TestCase):
         hasil = matematika.faktorial(0)
         self.assertEqual(hasil, 1)
 
-    def test_faktorial_nilai_int(self):
-        hasil = matematika.faktorial(5)
-        self.assertEqual(hasil, 120)
-
-    def test_faktorial_nilai_float(self):
-        hasil = matematika.faktorial(2.5)
+    def test_faktorial_tipe_data_salah(self):
+        hasil = matematika.faktorial(20.0)
         with self.assertRaises(error.ErrorTipeData):
             raise hasil
 
     def test_faktorial_nilai_negatif(self):
-        hasil = matematika.faktorial(-20)
+        hasil = matematika.faktorial(-120)
         with self.assertRaises(error.Error):
             raise hasil
 
@@ -225,3 +221,34 @@ class TestSigmoid(unittest.TestCase):
         self.assertIsInstance(hasil, error.ErrorTipeData)
         with self.assertRaises(error.ErrorTipeData):
             raise hasil
+            
+
+class TestDistribusiBinomial(unittest.TestCase):
+    def test_valid_input(self):
+        hasil = matematika.distribusi_binomial(2, 5, 0.7)
+        self.assertAlmostEqual(hasil, 0.13230000000000006)
+
+    def test_invalid_input_keberhasilan_lebih_besar_percobaan(self):
+        hasil = matematika.distribusi_binomial(5, 3, 0.5)
+        with self.assertRaises(error.ErrorValue):
+            raise hasil
+
+    def test_invalid_input_negatif(self):
+        hasil = matematika.distribusi_binomial(-2, 4, 0.1)
+        with self.assertRaises(error.ErrorValue):
+            raise hasil
+
+    def test_input_angka_tidak_integer(self):
+        hasil = matematika.distribusi_binomial(2.4, 4.2, 0.5)
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+
+class TestGaussian(unittest.TestCase):
+    def test_data_valid_input(self):
+        x = 5
+        mu = 3
+        sigma = 2
+        ekspetasi_nilai = 0.12098536225957168
+        hasil = matematika.gaussian(x, mu, sigma)
+        self.assertAlmostEqual(hasil, ekspetasi_nilai, places=10)

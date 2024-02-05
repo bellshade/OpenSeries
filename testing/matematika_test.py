@@ -221,7 +221,7 @@ class TestSigmoid(unittest.TestCase):
         self.assertIsInstance(hasil, error.ErrorTipeData)
         with self.assertRaises(error.ErrorTipeData):
             raise hasil
-            
+
 
 class TestDistribusiBinomial(unittest.TestCase):
     def test_valid_input(self):

@@ -70,14 +70,17 @@ class ErrorValue(ValueError):
     Parameter:
         pesan (str): Pesan yang menjelaskan kesalahan nilai
     """
+
     def __init__(self, pesan: str):
         message = f"{warna.red}Error:{warna.reset_warna} {pesan}"
         super().__init__(message)
+
 
 class ErrorDibagiNol(ZeroDivisionError):
     """
     Kelas untuk menampilkan error yang tidak bisa dibagi dengan nol
     """
+
     def __init__(self):
         super().__init__(
             f"{warna.red}Error Dibagi Nol:{warna.reset_warna} Tidak bisa dibagi dengan nol"

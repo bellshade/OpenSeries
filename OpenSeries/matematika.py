@@ -504,3 +504,21 @@ def distribusi_binomial(
     koefisien = float(math.factorial(percobaan))
     koefisien /= math.factorial(keberhasilan) * math.factorial(percobaan - keberhasilan)
     return probabilitas_kejadian * koefisien
+
+
+def gaussian(
+    x: int, mu: Union[float, int] = 0.0, sigma: Union[float, int] = 1.0
+) -> Union[float, error.ErrorTipeData]:
+    """
+    fungsi gaussian, yang biasa disebut fungsi kurva lonceng adalah fungsi
+    untuk mendeskripsikan probabilitas distribusi data yang normal
+    """
+    if not all(
+        isinstance(data, (float, int)) for data in [sigma, mu]
+    ) and not isinstance(x, int):
+        return error.ErrorTipeData(["float", "int"])
+    return (
+        1
+        / np.sqrt(2 * constant.PI * sigma**2)
+        * np.exp(-((x - mu) ** 2) / (2 * sigma**2))
+    )

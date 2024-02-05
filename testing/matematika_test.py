@@ -242,3 +242,13 @@ class TestDistribusiBinomial(unittest.TestCase):
         hasil = matematika.distribusi_binomial(2.4, 4.2, 0.5)
         with self.assertRaises(error.ErrorTipeData):
             raise hasil
+
+
+class TestGaussian(unittest.TestCase):
+    def test_data_valid_input(self):
+        x = 5
+        mu = 3
+        sigma = 2
+        ekspetasi_nilai = 0.12098536225957168
+        hasil = matematika.gaussian(x, mu, sigma)
+        self.assertAlmostEqual(hasil, ekspetasi_nilai, places=10)

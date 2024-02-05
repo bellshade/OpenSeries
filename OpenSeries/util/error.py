@@ -5,7 +5,6 @@
 # - menangani error terkait indeks saat melakukan indexing pada struktur data
 # - menangani error terkait dengan validasi dari values
 # - menampilkan error saat mencoba dengan pembagian dengan error
-
 from OpenSeries.util import constant as warna
 
 
@@ -73,7 +72,7 @@ class ErrorValue(ValueError):
     """
 
     def __init__(self, pesan: str):
-        message = f"{warna.red}Error Value:{warna.reset_warna} {pesan}"
+        message = f"{warna.red}Error:{warna.reset_warna} {pesan}"
         super().__init__(message)
 
 

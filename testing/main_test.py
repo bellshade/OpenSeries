@@ -1,4 +1,5 @@
 import unittest
+
 from testing.matematika_test import (
     TestKonversi,
     TestKelilingLingkaran,
@@ -14,6 +15,7 @@ from testing.matematika_test import (
     TestFungsiEuler,
     TestSigmoid,
     TestDistribusiBinomial,
+    TestGaussian,
 )
 
 from testing.fisika_test import (
@@ -46,6 +48,7 @@ if __name__ == "__main__":
         TestFungsiEuler,
         TestSigmoid,
         TestDistribusiBinomial,
+        TestGaussian,
     ]
 
     testing_fisika: list = [

@@ -525,7 +525,7 @@ def gaussian(
 
 
 def integral(
-    f: Callable[[float], float], a: float, b: float, iterasi: int = 4
+    f: Callable[[float], float], a: int, b: int, iterasi: int = 4
 ) -> Union[float, error.ErrorTipeData]:
     """
     integral merupakan suatu konsep yang merupakan operasi kebalikan dari diferensiasi.
@@ -538,11 +538,10 @@ def integral(
         iterable (int, optional): mengatur putaran. Defaults to 4.
 
     """
-    if not all(isinstance(data, float) for data in [a, b]) and not isinstance(
-        iterasi, int
-    ):
-        raise error.ErrorTipeData(["float", "int"])
-
+    if not all(isinstance(data, (int)) for data in [a, b]):
+        return error.ErrorTipeData(["int"])
+    if not isinstance(iterasi, int):
+        return error.ErrorTipeData(["int"])
     delta = (b - a) / iterasi
     result = 0.5 * (f(a) + f(b))
     for i in range(1, iterasi):

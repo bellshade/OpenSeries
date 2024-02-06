@@ -1,6 +1,6 @@
 from OpenSeries.util import constant as constant
 from OpenSeries.util import error as error
-from typing import Union, Sequence
+from typing import Union, Sequence, Callable
 import numpy as np
 import math
 
@@ -522,3 +522,24 @@ def gaussian(
         / np.sqrt(2 * constant.PI * sigma**2)
         * np.exp(-((x - mu) ** 2) / (2 * sigma**2))
     )
+
+
+def integral(
+    f: Callable[[float], float], a: float, b: float, iterable: int = 4
+) -> float:
+    """
+    integral merupakan suatu konsep yang merupakan operasi kebalikan dari diferensiasi.
+    Integral memiliki dua bentuk utama: integral tak tentu (indefinite integral)
+    dan integral tentu (definite integral).
+    Args:
+        f (Callable[[float],float]): fungsi input
+        a (float): nilai awal
+        b (float): nilai atas
+        iterable (int, optional): mengatur putaran. Defaults to 4.
+
+    """
+    delta = (b - a) / iterable
+    result = 0.5 * (f(a) + f(b))
+    for i in range(1, iterable):
+        result += f(a + i * delta)
+    return round(result * delta)

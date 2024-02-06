@@ -252,3 +252,15 @@ class TestGaussian(unittest.TestCase):
         ekspetasi_nilai = 0.12098536225957168
         hasil = matematika.gaussian(x, mu, sigma)
         self.assertAlmostEqual(hasil, ekspetasi_nilai, places=10)
+
+
+class TestIntegral(unittest.TestCase):
+    def test_nilai_integral(self):
+        def f(x):
+            return x * x
+
+        a = 0
+        b = 3
+        hasil = matematika.integral(f, a, b)
+
+        self.assertAlmostEqual(hasil, 9.00, places=2)

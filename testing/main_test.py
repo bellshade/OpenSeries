@@ -32,6 +32,7 @@ from testing.bilangan_istimewa_test import (
     TestAngkaArmstrong,
     TestAngkaAutomorphic,
     TestAngkaPronic,
+    TestAngkaSegitiga,
 )
 
 from testing.statistika_test import TestFungsiEntropy, TestFungiStandardDeviasi
@@ -74,6 +75,7 @@ if __name__ == "__main__":
         TestAngkaArmstrong,
         TestAngkaAutomorphic,
         TestAngkaPronic,
+        TestAngkaSegitiga,
     ]
 
     all_tests = unittest.TestSuite()

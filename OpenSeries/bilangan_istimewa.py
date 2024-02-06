@@ -94,3 +94,22 @@ def angka_pronic(angka: int) -> Union[str, error.ErrorTipeData]:
         if angka == angka_pangkat * (angka_pangkat + 1)
         else bukan.capitalize()
     )
+
+
+def angka_segitiga(angka: int) -> Union[int, error.ErrorTipeData, error.Error]:
+    """
+    bilangan segitiga adalah bilangan yang dapat disusun dalam bentuk segitiga sama sisi
+
+    Parameter:
+        angka (int): angka yang ingin dimasukkan
+
+    Return:
+        int: angka segitiga di posisi yang ditentukan
+        error.Error: jika angka negatif
+        error.ErrorTipeData: jika tipe data salah
+    """
+    if not isinstance(angka, int):
+        return error.ErrorTipeData(["int"])
+    if angka < 0:
+        return error.Error("angka tidak boleh negatif")
+    return angka * (angka + 1) // 2

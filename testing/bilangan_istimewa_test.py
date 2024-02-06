@@ -49,3 +49,19 @@ class TestAngkaPronic(unittest.TestCase):
     def test_angka_pronic_negatif(self):
         hasil = bilangan.angka_pronic(-30)
         self.assertIsInstance(hasil, str)
+
+
+class TestAngkaSegitiga(unittest.TestCase):
+    def test_angka_segitiga(self):
+        self.assertEqual(bilangan.angka_segitiga(0), 0)
+        self.assertEqual(bilangan.angka_segitiga(3), 6)
+
+    def test_angka_negatif(self):
+        hasil = bilangan.angka_segitiga(-1)
+        with self.assertRaises(error.Error):
+            raise hasil
+
+    def test_beda_tipe_data(self):
+        hasil = bilangan.angka_segitiga("12")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil

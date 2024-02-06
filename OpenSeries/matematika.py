@@ -525,8 +525,8 @@ def gaussian(
 
 
 def integral(
-    f: Callable[[float], float], a: float, b: float, iterable: int = 4
-) -> float:
+    f: Callable[[float], float], a: float, b: float, iterasi: int = 4
+) -> Union[float, error.ErrorTipeData]:
     """
     integral merupakan suatu konsep yang merupakan operasi kebalikan dari diferensiasi.
     Integral memiliki dua bentuk utama: integral tak tentu (indefinite integral)
@@ -538,8 +538,13 @@ def integral(
         iterable (int, optional): mengatur putaran. Defaults to 4.
 
     """
-    delta = (b - a) / iterable
+    if not all(isinstance(data, float) for data in [a, b]) and not isinstance(
+        iterasi, int
+    ):
+        raise error.ErrorTipeData(["float", "int"])
+
+    delta = (b - a) / iterasi
     result = 0.5 * (f(a) + f(b))
-    for i in range(1, iterable):
+    for i in range(1, iterasi):
         result += f(a + i * delta)
     return round(result * delta)

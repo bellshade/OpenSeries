@@ -35,3 +35,17 @@ class TestAngkaAutomorphic(unittest.TestCase):
     def test_valid_input(self):
         hasil = bilangan.angka_automorphic(25)
         self.assertEqual(hasil, "angka automorphic".capitalize())
+
+
+class TestAngkaPronic(unittest.TestCase):
+    def test_angka_pronic_return_tipe_data(self):
+        hasil = bilangan.angka_pronic(30)
+        self.assertIsInstance(hasil, str)
+
+        hasil = bilangan.angka_pronic("30")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+    def test_angka_pronic_negatif(self):
+        hasil = bilangan.angka_pronic(-30)
+        self.assertIsInstance(hasil, str)

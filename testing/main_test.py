@@ -28,7 +28,11 @@ from testing.fisika_test import (
     TestEfekDoppler,
 )
 
-from testing.bilangan_istimewa_test import TestAngkaArmstrong, TestAngkaAutomorphic
+from testing.bilangan_istimewa_test import (
+    TestAngkaArmstrong,
+    TestAngkaAutomorphic,
+    TestAngkaPronic,
+)
 
 from testing.statistika_test import TestFungsiEntropy, TestFungiStandardDeviasi
 
@@ -69,6 +73,7 @@ if __name__ == "__main__":
     testing_angka_istimewa: list = [
         TestAngkaArmstrong,
         TestAngkaAutomorphic,
+        TestAngkaPronic,
     ]
 
     all_tests = unittest.TestSuite()

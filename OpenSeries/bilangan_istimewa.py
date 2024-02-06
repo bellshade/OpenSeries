@@ -46,9 +46,13 @@ def angka_automorphic(angka: int) -> Union[str, error.ErrorTipeData]:
 
     Parameter:
         angka (int): mengecek angka tersebut automorphic atau tidak
+
+    Return:
+        str: mengembalikan informasi jika benar atau bukan
         error.ErrorTipeData: jika tipe data yang dimasukkan salah
     """
     benar, bukan = "angka automorphic", "bukan angka automorphic"
+    # cek dari tipe data angka
     if not isinstance(angka, int):
         return error.ErrorTipeData(["int"])
     if angka < 0:
@@ -61,3 +65,32 @@ def angka_automorphic(angka: int) -> Union[str, error.ErrorTipeData]:
         angka //= 10
         kuadrat_angka //= 10
     return benar.capitalize()
+
+
+def angka_pronic(angka: int) -> Union[str, error.ErrorTipeData]:
+    """
+    angka pronic adalah bilangan bulat positif yang merupakan hasil perkalian
+    dari dua bilangan bulat berurutan
+    6 = 2 * (2 + 1) = 2 * 3 = 6
+    12 = 3 * (3 + 1) = 3 * 4 = 12
+    20 = 4 * (4 + 1) = 4 * 5 = 20
+
+    Parameter:
+        angka(int): angka yang akan di cek
+
+    Return:
+        str: mengembalikan informasi jika benar atau bukan
+        error.ErrorTipeData: jika tipe data yang dimasukkan salah
+    """
+    benar, bukan = "angka pronic", "bukan angka pronic"
+    # cek dari tipe data angka
+    if not isinstance(angka, int):
+        return error.ErrorTipeData(["int"])
+    if angka < 0 or angka % 2 == 1:
+        return bukan.capitalize()
+    angka_pangkat = int(angka**0.5)
+    return (
+        benar.capitalize()
+        if angka == angka_pangkat * (angka_pangkat + 1)
+        else bukan.capitalize()
+    )

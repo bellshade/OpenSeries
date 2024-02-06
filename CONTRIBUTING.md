@@ -144,6 +144,11 @@ kendala atau masalah ketika melakukan pull request. Kamu juga bisa bertanya pada
 
 Catatan: pesan commit harus menjelaskan perubahan secara singkat.
 
+jika kamu ingin menjelaskan pesan commit yang panjang kamu bisa menggunakan parameter `-m`
+```
+git commit -m "feat: judul perubahan" -m "deskripsi dari perubahan"
+```
+
 Contoh yang benar:
 
 - &#9746; feat: test_x.py

@@ -17,6 +17,7 @@ from testing.matematika_test import (
     TestDistribusiBinomial,
     TestGaussian,
     TestIntegral,
+    TestDerivative,
 )
 
 from testing.fisika_test import (
@@ -56,6 +57,7 @@ if __name__ == "__main__":
         TestDistribusiBinomial,
         TestGaussian,
         TestIntegral,
+        TestDerivative,
     ]
 
     testing_fisika: list = [

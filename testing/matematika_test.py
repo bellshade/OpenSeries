@@ -285,3 +285,25 @@ class TestIntegral(unittest.TestCase):
         hasil = matematika.integral(a, b, iterasi)
         with self.assertRaises(error.ErrorTipeData):
             raise hasil
+
+
+class TestDerivative(unittest.TestCase):
+    def setUp(self):
+        def f(x):
+            return x * x
+
+        self.inputFungsi = f
+        self.inputValue = 4
+
+    def testing_input_value_integer(self):
+        hasil = matematika.turunan(self.inputFungsi, self.inputValue)
+        self.assertAlmostEqual(hasil, 8.000, places=3)
+
+    def testing_input_value_desimal(self):
+        hasil = matematika.turunan(self.inputFungsi, float(self.inputValue))
+        self.assertAlmostEqual(hasil, 8.000, places=3)
+
+    def testing_input_value_string(self):
+        hasil = matematika.turunan(self.inputFungsi, str(self.inputValue))
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil

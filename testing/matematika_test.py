@@ -286,6 +286,7 @@ class TestIntegral(unittest.TestCase):
         with self.assertRaises(error.ErrorTipeData):
             raise hasil
 
+
 class TestDerivative(unittest.TestCase):
     def setUp(self):
         def f(x):

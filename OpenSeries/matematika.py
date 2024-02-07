@@ -548,6 +548,7 @@ def integral(
         result += f(a + i * delta)
     return round(result * delta)
 
+
 def turunan(f: Callable[[float], float], x: Union[int, float]) -> float:
     """
     Args:
@@ -563,4 +564,3 @@ def turunan(f: Callable[[float], float], x: Union[int, float]) -> float:
         return error.ErrorTipeData(["float", "int"])
     else:
         return (f(x + h) - f(x)) / h
-

@@ -547,3 +547,20 @@ def integral(
     for i in range(1, iterasi):
         result += f(a + i * delta)
     return round(result * delta)
+
+
+def turunan(f: Callable[[float], float], x: Union[int, float]) -> float:
+    """
+    Args:
+        f (Callable[[float]float]: input fungsi
+        x (int) : input value
+    Return:
+        float : hasil dari kalkulasi apromasif
+    """
+    # insial nilai h
+    h: float = 0.0001
+    # mengecek tipe data pada nilai input pada paramter a dan b dan iterasi
+    if not isinstance(x, (float, int)):
+        return error.ErrorTipeData(["float", "int"])
+    else:
+        return (f(x + h) - f(x)) / h

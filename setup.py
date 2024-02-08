@@ -21,7 +21,7 @@ setup(
     # nama dari project
     name="OpenSeries",
     # versi dari project
-    version="1.6.6",
+    version="1.7.0",
     # deskripsi singkat dari project
     description="library untuk membantu temen-temen SMA/SMK/Sederajat",
     # deskripsi detail tentang project

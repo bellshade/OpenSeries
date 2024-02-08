@@ -48,7 +48,7 @@ class Error(Exception):
     def __init__(self, pesan: str):
         message = f"{warna.red}Error:{warna.reset_warna} {pesan}"
         super().__init__(message)
-        
+
 
 class IndeksError(IndexError):
     """

@@ -48,14 +48,11 @@ class Error(Exception):
     def __init__(self, pesan: str):
         message = f"{warna.red}Error:{warna.reset_warna} {pesan}"
         super().__init__(message)
-
+        
 
 class IndeksError(IndexError):
     """
-    Kelas untuk membuat error dari index jika tidak selaras dengan dimensi atau lain
-
-    Parameter:
-        pesan (str): Pesan yang akan menjelaskan kesalahan indeks
+    kelas untuk membuat error dari index jika tidak selaras dengan dimensi atau lain
     """
 
     def __init__(self, pesan: str):
@@ -65,14 +62,11 @@ class IndeksError(IndexError):
 
 class ErrorValue(ValueError):
     """
-    Kelas untuk membuat error dari index dengan throw dari ValueError
-
-    Parameter:
-        pesan (str): Pesan yang menjelaskan kesalahan nilai
+    kelas untuk membuat error dari index dengan throw dari ValueError
     """
 
     def __init__(self, pesan: str):
-        message = f"{warna.red}Error:{warna.reset_warna} {pesan}"
+        message = f"{warna.red}Error Value:{warna.reset_warna} {pesan}"
         super().__init__(message)
 
 

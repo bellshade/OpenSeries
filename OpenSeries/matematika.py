@@ -466,7 +466,7 @@ def sigmoid(vektor: np.ndarray) -> Union[error.ErrorTipeData, np.ndarray]:
         return error.ErrorTipeData(["numpy.narray"])
     return 1 / (1 + np.exp(-vektor))
 
-
+  
 def distribusi_binomial(
     keberhasilan: int,
     percobaan: int,

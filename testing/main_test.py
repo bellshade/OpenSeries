@@ -1,4 +1,5 @@
 import unittest
+
 from testing.matematika_test import (
     TestKonversi,
     TestKelilingLingkaran,
@@ -13,6 +14,10 @@ from testing.matematika_test import (
     TestMatriksTranspose,
     TestFungsiEuler,
     TestSigmoid,
+    TestDistribusiBinomial,
+    TestGaussian,
+    TestIntegral,
+    TestDerivative,
 )
 
 from testing.fisika_test import (
@@ -23,6 +28,13 @@ from testing.fisika_test import (
     TestKetinggianBarometrik,
     TestGayaSentripental,
     TestEfekDoppler,
+)
+
+from testing.bilangan_istimewa_test import (
+    TestAngkaArmstrong,
+    TestAngkaAutomorphic,
+    TestAngkaPronic,
+    TestAngkaSegitiga,
 )
 
 from testing.statistika_test import TestFungsiEntropy, TestFungiStandardDeviasi
@@ -42,6 +54,10 @@ if __name__ == "__main__":
         TestMatriksTranspose,
         TestFungsiEuler,
         TestSigmoid,
+        TestDistribusiBinomial,
+        TestGaussian,
+        TestIntegral,
+        TestDerivative,
     ]
 
     testing_fisika: list = [
@@ -59,6 +75,13 @@ if __name__ == "__main__":
         TestFungiStandardDeviasi,
     ]
 
+    testing_angka_istimewa: list = [
+        TestAngkaArmstrong,
+        TestAngkaAutomorphic,
+        TestAngkaPronic,
+        TestAngkaSegitiga,
+    ]
+
     all_tests = unittest.TestSuite()
 
     for testing_math in testing_matematika:
@@ -70,6 +93,11 @@ if __name__ == "__main__":
     for testing_statistik in testing_statistika:
         all_tests.addTest(
             unittest.TestLoader().loadTestsFromTestCase(testing_statistik)
+        )
+
+    for testing_special_number in testing_angka_istimewa:
+        all_tests.addTest(
+            unittest.TestLoader().loadTestsFromTestCase(testing_special_number)
         )
 
     unittest.TextTestRunner(verbosity=2).run(all_tests)

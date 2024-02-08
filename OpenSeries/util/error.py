@@ -1,27 +1,47 @@
+# kostum error
+# file error.py berisi tentang kustomisasi error dengan beberapa tujuan antara lain:
+# - mendeteksi error terkait tipe data
+# - membuat error kustom dengan pesan tertentu
+# - menangani error terkait indeks saat melakukan indexing pada struktur data
+# - menangani error terkait dengan validasi dari values
+# - menampilkan error saat mencoba dengan pembagian dengan error
 from OpenSeries.util import constant as warna
 
 
 class ErrorTipeData(TypeError):
     """
-    kelas untuk mendeteksi error dari tipe data
+    Kelas untuk mendeteksi error dari tipe data
 
-    parameter:
+    Parameter:
         expected_types (list[str]): tipe data yang dimasukkan
 
-    return:
+    Return:
         (str): pesan error tipe data sesuai dari inputan
     """
 
     def __init__(self, expected_types: list[str]):
-        message = f"{warna.red}Error Tipe:{warna.reset_warna} tipe data Harus {' atau '.join(expected_types)}"
+        # mengecek apakah list expected_types tidak kosong
+        if not expected_types:
+            raise ValueError("tipe data dalam list tidak boleh kosong")
+        # mengecek apakah semua element di dalam expected_types adalah string
+        if not all(isinstance(data, str) for data in expected_types):
+            raise TypeError("element dari tipe data harus str (string)!")
+
+        # membuat pesan error dengan memanggil method format_tipe_data
+        message = self.format_tipe_data(expected_types)
         super().__init__(message)
+
+    def format_tipe_data(self, tipe_data: list[str]) -> str:
+        # gabungkan element list menjadi string terpisah oleh `" atau "`
+        tipe_str = " atau ".join(map(str, tipe_data))
+        return f"{warna.red}Error Tipe Data:{warna.reset_warna} tipe data harus {tipe_str}!"
 
 
 class Error(Exception):
     """
-    kelas untuk membuat kostumisasi error
+    Kelas untuk membuat kostumisasi error
 
-    parameter:
+    Parameter:
         pesan (str): pesan kostum yang ingin dimasukkan
     """
 
@@ -52,7 +72,7 @@ class ErrorValue(ValueError):
 
 class ErrorDibagiNol(ZeroDivisionError):
     """
-    kelas untuk menampilkan error yang tidak bisa dibagi dengan nol
+    Kelas untuk menampilkan error yang tidak bisa dibagi dengan nol
     """
 
     def __init__(self):

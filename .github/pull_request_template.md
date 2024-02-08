@@ -4,15 +4,6 @@
 
 ## Checklist:
 
-### Umum:
-
-<!-- Checklist semua perubahan yang sesuai. -->
-
-- [ ] Saya menambah fungsi / algoritma.
-- [ ] Saya memperbaiki algoritma yang sudah ada.
-- [ ] Saya memperbaiki dokumentasi.
-- [ ] Saya menambah dokumentasi.
-
 ### Contributor Requirements (Syarat Kontributor) dan Lain-Lain:
 
 <!-- Checklist semua perubahan yang sesuai. Wajib checklist opsi pertama. -->

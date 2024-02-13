@@ -3,7 +3,9 @@ from typing import Union
 import math
 
 
-def bulat(angka: Union[int, float], cek: bool = False) -> Union[int, bool, error.ErrorTipeData]:
+def bulat(
+    angka: Union[int, float], cek: bool = False
+) -> Union[int, bool, error.ErrorTipeData]:
     """
     membuat fungsi untuk membulatkan angka
 

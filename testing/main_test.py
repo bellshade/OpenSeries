@@ -39,6 +39,8 @@ from testing.bilangan_istimewa_test import (
 
 from testing.statistika_test import TestFungsiEntropy, TestFungiStandardDeviasi
 
+from testing.dasar import TestBulat
+
 if __name__ == "__main__":
     testing_matematika: list = [
         TestKelilingLingkaran,
@@ -82,6 +84,10 @@ if __name__ == "__main__":
         TestAngkaSegitiga,
     ]
 
+    testing_dasar: list = [
+        TestBulat,
+    ]
+
     all_tests = unittest.TestSuite()
 
     for testing_math in testing_matematika:
@@ -98,6 +104,11 @@ if __name__ == "__main__":
     for testing_special_number in testing_angka_istimewa:
         all_tests.addTest(
             unittest.TestLoader().loadTestsFromTestCase(testing_special_number)
+        )
+
+    for testing_dasar_suite in testing_dasar:
+        all_tests.addTest(
+            unittest.TestLoader().loadTestsFromTestCase(testing_dasar_suite)
         )
 
     unittest.TextTestRunner(verbosity=2).run(all_tests)

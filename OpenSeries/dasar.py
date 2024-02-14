@@ -25,7 +25,9 @@ def bulat(
         return math.ceil(angka)
 
 
-def akar(value: Union[int, float], iterasi: int = 4) -> float:
+def akar(
+    value: Union[int, float], iterasi: int = 4
+) -> Union[float, error.ErrorTipeData]:
     """
     apromasi nilai akar pada angka
     Args:
@@ -35,6 +37,10 @@ def akar(value: Union[int, float], iterasi: int = 4) -> float:
     Returns:
         float: output dari angka yang telah di prediksi
     """
+
+    # ngecheck tipe data
+    if not isinstance(value, (int, float)):
+        raise error.ErrorTipeData(["int", "float"])
     result = value
     for _ in range(iterasi + 1):
         result = (result + (value / result)) / 2

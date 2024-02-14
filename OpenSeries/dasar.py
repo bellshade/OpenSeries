@@ -38,9 +38,12 @@ def akar(
         float: output dari angka yang telah di prediksi
     """
 
-    # ngecheck tipe data
+    # ngecheck tipe data pada value
     if not isinstance(value, (int, float)):
         raise error.ErrorTipeData(["int", "float"])
+    # ngecheck tipe data pada iterasi
+    if not isinstance(iterasi, int):
+        raise error.ErrorTipeData(["int"])
     result = value
     for _ in range(iterasi + 1):
         result = (result + (value / result)) / 2

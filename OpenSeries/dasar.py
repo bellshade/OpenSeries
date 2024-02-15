@@ -32,10 +32,11 @@ def akar(
     apromasi nilai akar pada angka
     Args:
         value (Union[int,float]): input nilai
-        iterasi (int, optional): mengsetup iterasi apporamasi. Defaults to 4.
+        iterasi (Optional[int]): mengsetup iterasi apporamasi. Defaults to 4.
 
     Returns:
         float: output dari angka yang telah di prediksi
+        error.ErrorTipeData: error jika data yang dimasukkan salah
     """
 
     # ngecheck tipe data pada value

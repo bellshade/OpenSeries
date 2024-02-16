@@ -84,11 +84,7 @@ if __name__ == "__main__":
         TestAngkaSegitiga,
     ]
 
-    testing_dasar: list = [
-        TestBulat,
-        TestAkar,
-        TestTanHiperbolik
-    ]
+    testing_dasar: list = [TestBulat, TestAkar, TestTanHiperbolik]
 
     all_tests = unittest.TestSuite()
 

@@ -1,4 +1,5 @@
 import unittest
+import numpy as np
 import OpenSeries as opseries
 import OpenSeries.util.error as error
 
@@ -46,3 +47,14 @@ class TestAkar(unittest.TestCase):
     def test_akar_iterasi_string(self):
         with self.assertRaises(error.ErrorTipeData):
             raise opseries.akar(self.angka, str(self.iterasi))
+
+
+class TestTanHiperbolik(unittest.TestCase):
+    def test_tan_hiperbolik_valid(self):
+        array = np.array([0.5, 1.0, -0.5])
+        self.assertTrue(np.allclose(opseries.tan_hiperbolik(array), np.tanh(array)))
+
+    def test_tan_invalid_input(self):
+        input = 5
+        with self.assertRaises(error.ErrorTipeData):
+            raise opseries.tan_hiperbolik(input)

@@ -1,4 +1,5 @@
 import OpenSeries.util.error as error
+import numpy as np
 from typing import Union
 import math
 
@@ -49,3 +50,19 @@ def akar(
     for _ in range(iterasi + 1):
         result = (result + (value / result)) / 2
     return round(result, 2)
+
+
+def tan_hiperbolik(x: np.ndarray) -> Union[np.ndarray, error.ErrorTipeData]:
+    """
+    fungsi tangen hiperbolik
+
+    Parameter:
+        x (np.ndarray): nilai input yang ingin dikalkulasikan
+
+    Return:
+        np.ndarray: hasil dari kalkulasi tangen hiperbolik
+        error.ErrorTipeData: error jika tipe data yang diberikan salah
+    """
+    if not isinstance(x, np.ndarray):
+        return error.ErrorTipeData(["numpy.ndarray"])
+    return (2 / (1 + np.exp(-2 * x))) - 1

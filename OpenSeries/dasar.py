@@ -66,3 +66,24 @@ def tan_hiperbolik(x: np.ndarray) -> Union[np.ndarray, error.ErrorTipeData]:
     if not isinstance(x, np.ndarray):
         return error.ErrorTipeData(["numpy.ndarray"])
     return (2 / (1 + np.exp(-2 * x))) - 1
+
+
+def volume_kubus(
+    panjang_sisi: Union[float, int],
+) -> Union[float, int, error.ErrorTipeData, error.Error]:
+    """
+    menghitung volume kubus
+
+    Parameter:
+        panjang_sisi (int atau float): sisi yang akan dihitung
+
+    return:
+        float atau int: hasil dari perhitungan
+        ErrorTipeData: error jika diberikan tipe data yang salah
+        Error: error jika nilai yang diberikan negatif
+    """
+    if not isinstance(panjang_sisi, (float, int)):
+        return error.ErrorTipeData(["float", "int"])
+    if panjang_sisi < 0:
+        return error.Error("panjang_sisi hanya menerima nilai positif")
+    return pow(panjang_sisi, 3)

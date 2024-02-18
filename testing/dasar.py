@@ -58,3 +58,23 @@ class TestTanHiperbolik(unittest.TestCase):
         input = 5
         with self.assertRaises(error.ErrorTipeData):
             raise opseries.tan_hiperbolik(input)
+
+
+class TestVolumeKubus(unittest.TestCase):
+    def test_volume_nilai_integer(self):
+        hasil = opseries.volume_kubus(3)
+        self.assertEqual(hasil, 27)
+
+    def test_volume_nilai_float(self):
+        hasil = opseries.volume_kubus(3.0)
+        self.assertEqual(hasil, 27.0)
+
+    def test_nilai_invalid_str(self):
+        hasil = opseries.volume_kubus("20")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+    def test_nilai_invalid_minus(self):
+        hasil = opseries.volume_kubus(-1)
+        with self.assertRaises(error.Error):
+            raise hasil

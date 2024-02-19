@@ -39,7 +39,7 @@ from testing.bilangan_istimewa_test import (
 
 from testing.statistika_test import TestFungsiEntropy, TestFungiStandardDeviasi
 
-from testing.dasar import TestBulat, TestAkar, TestTanHiperbolik
+from testing.dasar import TestBulat, TestAkar, TestTanHiperbolik, TestVolumeKubus
 
 if __name__ == "__main__":
     testing_matematika: list = [
@@ -84,7 +84,7 @@ if __name__ == "__main__":
         TestAngkaSegitiga,
     ]
 
-    testing_dasar: list = [TestBulat, TestAkar, TestTanHiperbolik]
+    testing_dasar: list = [TestBulat, TestAkar, TestTanHiperbolik, TestVolumeKubus]
 
     all_tests = unittest.TestSuite()
 

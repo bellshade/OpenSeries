@@ -37,7 +37,11 @@ from testing.bilangan_istimewa_test import (
     TestAngkaSegitiga,
 )
 
-from testing.statistika_test import TestFungsiEntropy, TestFungiStandardDeviasi
+from testing.statistika_test import (
+    TestFungsiEntropy,
+    TestFungiStandardDeviasi,
+    TestFungsiVarian,
+)
 
 from testing.dasar import TestBulat, TestAkar, TestTanHiperbolik, TestVolumeKubus
 
@@ -75,6 +79,7 @@ if __name__ == "__main__":
     testing_statistika: list = [
         TestFungsiEntropy,
         TestFungiStandardDeviasi,
+        TestFungsiVarian,
     ]
 
     testing_angka_istimewa: list = [

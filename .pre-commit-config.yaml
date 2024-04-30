@@ -36,19 +36,19 @@ repos:
   # contoh
   # total = sum(angka := num for num in nums )
   - repo: https://github.com/MarcoGorelli/auto-walrus
-    rev: 0.3.3
+    rev: 0.3.4
     hooks:
       - id: auto-walrus
 
   # ruff adalah salah satu linter dan formatter kode
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.1
+    rev: v0.4.2
     hooks:
       - id: ruff
       - id: ruff-format
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.9.0
+    rev: v1.10.0
     hooks:
       - id: mypy
         args:

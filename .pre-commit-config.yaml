@@ -42,7 +42,7 @@ repos:
 
   # ruff adalah salah satu linter dan formatter kode
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.2
+    rev: v0.4.4
     hooks:
       - id: ruff
       - id: ruff-format

@@ -38,7 +38,13 @@ from testing.bilangan_istimewa_test import (
     TestAngkaSegitiga,
 )
 
-from testing.statistika_test import TestFungsiEntropy, TestFungiStandardDeviasi
+from testing.statistika_test import (
+    TestFungsiEntropy,
+    TestFungiStandardDeviasi,
+    TestFungsiVarian,
+)
+
+from testing.dasar import TestBulat, TestAkar, TestTanHiperbolik, TestVolumeKubus
 
 if __name__ == "__main__":
     testing_matematika: list = [
@@ -75,6 +81,7 @@ if __name__ == "__main__":
     testing_statistika: list = [
         TestFungsiEntropy,
         TestFungiStandardDeviasi,
+        TestFungsiVarian,
     ]
 
     testing_angka_istimewa: list = [
@@ -83,6 +90,8 @@ if __name__ == "__main__":
         TestAngkaPronic,
         TestAngkaSegitiga,
     ]
+
+    testing_dasar: list = [TestBulat, TestAkar, TestTanHiperbolik, TestVolumeKubus]
 
     all_tests = unittest.TestSuite()
 
@@ -100,6 +109,11 @@ if __name__ == "__main__":
     for testing_special_number in testing_angka_istimewa:
         all_tests.addTest(
             unittest.TestLoader().loadTestsFromTestCase(testing_special_number)
+        )
+
+    for testing_dasar_suite in testing_dasar:
+        all_tests.addTest(
+            unittest.TestLoader().loadTestsFromTestCase(testing_dasar_suite)
         )
 
     unittest.TextTestRunner(verbosity=2).run(all_tests)

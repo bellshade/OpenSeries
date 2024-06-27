@@ -307,3 +307,37 @@ class TestDerivative(unittest.TestCase):
         hasil = matematika.turunan(self.inputFungsi, str(self.inputValue))
         with self.assertRaises(error.ErrorTipeData):
             raise hasil
+
+
+class TestMeanAbsolutDerivative(unittest.TestCase):
+    def test_data_kosong(self):
+        hasil = matematika.mean_absolut_deviasi([])
+        with self.assertRaises(error.Error):
+            raise hasil
+
+    def test_data_string(self):
+        hasil = matematika.mean_absolut_deviasi([2, "2"])
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+    def test_nilai_float(self):
+        hasil = matematika.mean_absolut_deviasi([2, 2.3])
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+    def test_nilai_str_float(self):
+        hasil = matematika.mean_absolut_deviasi([2, "3", 3.3])
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+    def test_nilai_integer(self):
+        hasil = matematika.mean_absolut_deviasi([100, 200])
+        self.assertAlmostEqual(hasil, 50.0)
+
+    def test_nilai_rentang(self):
+        hasil = matematika.mean_absolut_deviasi([1, 2, 3, 4, 5])
+        self.assertAlmostEqual(hasil, 1.2)
+
+    def test_ekspetasi_nilai_return(self):
+        hasil = matematika.mean_absolut_deviasi([100, 200])
+        self.assertIsInstance(hasil, float)

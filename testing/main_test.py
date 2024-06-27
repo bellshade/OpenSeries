@@ -18,6 +18,7 @@ from testing.matematika_test import (
     TestGaussian,
     TestIntegral,
     TestDerivative,
+    TestMeanAbsolutDerivative,
 )
 
 from testing.fisika_test import (
@@ -58,6 +59,7 @@ if __name__ == "__main__":
         TestGaussian,
         TestIntegral,
         TestDerivative,
+        TestMeanAbsolutDerivative,
     ]
 
     testing_fisika: list = [

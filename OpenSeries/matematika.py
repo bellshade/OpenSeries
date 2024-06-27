@@ -569,7 +569,9 @@ def integral(
     return round(result * delta)
 
 
-def turunan(f: Callable[[float], float], x: Union[int, float]) -> float:
+def turunan(
+    f: Callable[[float], float], x: Union[int, float]
+) -> Union[error.ErrorTipeData, float]:
     """
     Args:
         f (Callable[[float]float]: input fungsi
@@ -584,3 +586,30 @@ def turunan(f: Callable[[float], float], x: Union[int, float]) -> float:
         return error.ErrorTipeData(["float", "int"])
     else:
         return (f(x + h) - f(x)) / h
+
+
+def mean_absolut_deviasi(
+    nilai: list[int],
+) -> Union[error.Error, error.ErrorTipeData, float]:
+    """
+    Ukuran statistik untuk menggambarkan variabilitias kumpulan data.
+
+    Args:
+        nilai (list[int]): angka yang dihitung
+    Return:
+        float: hasil dari variabilitias kumpulan data
+        error.Error: jika list kosong
+        error.ErrorTipeData: jika tipe data float maka error
+    """
+    if isinstance(nilai, list):
+        # mengecek apakah nilai dalam list kodong
+        if not nilai:
+            return error.Error("List tidak boleh kosong")
+        else:
+            for cek_nilai in nilai:
+                if not isinstance(cek_nilai, int):
+                    return error.ErrorTipeData(["int"])
+            rata_rata = sum(nilai) / len(nilai)
+            return sum(abs(x - rata_rata) for x in nilai) / len(nilai)
+    else:
+        return error.ErrorTipeData(["list[int]"])

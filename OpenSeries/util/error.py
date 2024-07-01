@@ -73,6 +73,9 @@ class Error(Exception):
 class IndeksError(IndexError):
     """
     kelas untuk membuat error dari index jika tidak selaras dengan dimensi atau lain
+
+    Parameter:
+        pesan(str): pesan error dari indeks yang harus dimasukkan
     """
 
     def __init__(self, pesan: str):
@@ -83,6 +86,9 @@ class IndeksError(IndexError):
 class ErrorValue(ValueError):
     """
     kelas untuk membuat error dari index dengan throw dari ValueError
+
+    Parameter:
+        pesan(str): pesan error dari value yang salah
     """
 
     def __init__(self, pesan: str):

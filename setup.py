@@ -14,6 +14,7 @@ with io.open(path.join(info, "requirements.txt"), encoding="utf-8") as file:
     if platform.system == "windows":
         core_require.append("pywin32")
 
+
 install_require = [x.strip() for x in core_require if "git+" not in x]
 
 # setup nama project

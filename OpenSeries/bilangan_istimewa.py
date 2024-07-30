@@ -108,8 +108,10 @@ def angka_segitiga(angka: int) -> Union[int, error.ErrorTipeData, error.Error]:
         error.Error: jika angka negatif
         error.ErrorTipeData: jika tipe data salah
     """
+    # jika tipe data dari angka tidak integer
     if not isinstance(angka, int):
         return error.ErrorTipeData(["int"])
+    # jika value dari angka diisi nilai negatif
     if angka < 0:
         return error.Error("angka tidak boleh negatif")
     return angka * (angka + 1) // 2

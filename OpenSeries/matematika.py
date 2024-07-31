@@ -243,6 +243,7 @@ def permutasi(nilai: int, r: int) -> Union[int, float, error.ErrorTipeData]:
         faktorial_nilai = faktorial(nilai)
         faktorial_nilai_r = faktorial(nilai - r)
 
+        # mengecek tipe data dari nilai faktorial
         if isinstance(faktorial_nilai, int) and isinstance(faktorial_nilai_r, int):
             return faktorial_nilai / faktorial_nilai_r
         else:
@@ -268,6 +269,7 @@ def kombinasi(nilai: int, r: int) -> Union[int, float, error.ErrorTipeData]:
         faktorial_r = faktorial(r)
         faktorial_nilai_r = faktorial(nilai - r)
 
+        # mengecek nilai dari faktorial nilai
         if (
             isinstance(faktorial_nilai, int)
             and isinstance(faktorial_r, int)

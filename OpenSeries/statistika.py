@@ -38,10 +38,13 @@ def entropy(
         error.ErrorTipeData: error jika tipe data salah
         error.Error: jika nilai label yang diberikan kosong
     """
+    # jika tipe data dari label bukan list
     if not isinstance(label, (list)):
         return error.ErrorTipeData(["list"])
+    # jika nilai di dalam list kosong
     if not label:
         return error.Error("label tidak boleh kosong")
+    # jika nilai di dalam list itu tidak int
     if not all(isinstance(cek_nilai, int) for cek_nilai in label):
         return error.ErrorTipeData(["int"])
     _, count = np.unique(label, return_counts=True)
@@ -66,8 +69,10 @@ def standar_deviasi(
         error.ErrorTipeData: error jika tipe data salah
         error.Error: jika vektor yang diberikan kosong
     """
+    # cek parameter vektor jika tidak bertipe data np.ndarray
     if not isinstance(vektor, np.ndarray):
         return error.ErrorTipeData(["numpy array"])
+    # cek jika nilai vektor adalah 0
     if len(vektor) == 0:
         return error.Error("vektor tidak boleh kosong")
 

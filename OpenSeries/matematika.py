@@ -566,3 +566,17 @@ def turunan(f: Callable[[float], float], x: Union[int, float]) -> float:
         return error.ErrorTipeData(["float", "int"])
     else:
         return (f(x + h) - f(x)) / h
+
+
+def volume_bola(r: Union[int, float]) -> float:
+    """
+    Menghitung volume dari sebuah bola
+    Args:
+        r (Union[int, float]): input radius
+    Return:
+        float : volume dari bola
+    """
+    if not isinstance(r, (float, int)):
+        return error.ErrorTipeData(["float", "int"])
+    else:
+        return (4 / 3) * constant.PI * r**3

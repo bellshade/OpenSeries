@@ -568,7 +568,7 @@ def turunan(f: Callable[[float], float], x: Union[int, float]) -> float:
         return (f(x + h) - f(x)) / h
 
 
-def volume_bola(r: Union[int, float]) -> float:
+def volume_bola(r: Union[int, float]) -> Union[float, error.ErrorTipeData]:
     """
     Menghitung volume dari sebuah bola
     Args:

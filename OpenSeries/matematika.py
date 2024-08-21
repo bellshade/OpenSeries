@@ -590,6 +590,20 @@ def turunan(
         return (f(x + h) - f(x)) / h
 
 
+def volume_bola(r: Union[int, float]) -> Union[float, error.ErrorTipeData]:
+    """
+    Menghitung volume dari sebuah bola
+    Args:
+        r (Union[int, float]): input radius
+    Return:
+        float : volume dari bola
+    """
+    if not isinstance(r, (float, int)):
+        return error.ErrorTipeData(["float", "int"])
+    else:
+        return (4 / 3) * constant.PI * r**3
+
+
 def mean_absolut_deviasi(
     nilai: list[int],
 ) -> Union[error.Error, error.ErrorTipeData, float]:

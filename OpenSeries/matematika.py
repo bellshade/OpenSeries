@@ -603,7 +603,7 @@ def volume_bola(r: Union[int, float]) -> Union[float, error.ErrorTipeData]:
     else:
         return (4 / 3) * constant.PI * r**3
 
-      
+
 def mean_absolut_deviasi(
     nilai: list[int],
 ) -> Union[error.Error, error.ErrorTipeData, float]:

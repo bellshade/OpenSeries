@@ -36,6 +36,7 @@ from testing.bilangan_istimewa_test import (
     TestAngkaAutomorphic,
     TestAngkaPronic,
     TestAngkaSegitiga,
+    TestAngkaKatalan,
 )
 
 from testing.statistika_test import (
@@ -89,6 +90,7 @@ if __name__ == "__main__":
         TestAngkaAutomorphic,
         TestAngkaPronic,
         TestAngkaSegitiga,
+        TestAngkaKatalan,
     ]
 
     testing_dasar: list = [TestBulat, TestAkar, TestTanHiperbolik, TestVolumeKubus]

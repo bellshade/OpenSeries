@@ -135,3 +135,30 @@ def angka_segitiga(angka: int) -> Union[int, error.ErrorTipeData, error.Error]:
     if angka < 0:
         return error.Error("angka tidak boleh negatif")
     return angka * (angka + 1) // 2
+
+
+def angka_katalan(angka: int) -> Union[int, error.Error, error.ErrorTipeData]:
+    """
+    Angka katalan atau Catalan Number adalah urutan angka natural
+    yang terjadi dalam berbagai menghitung masalah, sering melibatkan
+    secara rekursif objek yang ditentukan.
+
+    Parameter:
+        angka (int): angka katalan yang ingin dikalkulasikan
+
+    Return:
+        int: hasil dari kalkulasi angka katalan
+        error.ErrorTipeData: jika tipe data yang diberikan berbeda
+        error.Error: jika angka negatif
+    """
+    if not isinstance(angka, int):
+        return error.ErrorTipeData(["int"])
+    else:
+        if angka < 1:
+            return error.Error("angka tidak boleh negatif")
+        else:
+            angka_tmp = 1
+            for i in range(1, angka):
+                angka_tmp *= 4 * i - 2
+                angka_tmp //= i + 1
+            return angka_tmp

@@ -1,3 +1,23 @@
+# Copyright (c) 2023 Bellshade
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 from OpenSeries.util import constant as constant
 from OpenSeries.util import error as error
 from typing import Union, Sequence, Callable
@@ -551,7 +571,9 @@ def integral(
     return round(result * delta)
 
 
-def turunan(f: Callable[[float], float], x: Union[int, float]) -> float:
+def turunan(
+    f: Callable[[float], float], x: Union[int, float]
+) -> Union[error.ErrorTipeData, float]:
     """
     Args:
         f (Callable[[float]float]: input fungsi
@@ -566,3 +588,44 @@ def turunan(f: Callable[[float], float], x: Union[int, float]) -> float:
         return error.ErrorTipeData(["float", "int"])
     else:
         return (f(x + h) - f(x)) / h
+
+
+def volume_bola(r: Union[int, float]) -> Union[float, error.ErrorTipeData]:
+    """
+    Menghitung volume dari sebuah bola
+    Args:
+        r (Union[int, float]): input radius
+    Return:
+        float : volume dari bola
+    """
+    if not isinstance(r, (float, int)):
+        return error.ErrorTipeData(["float", "int"])
+    else:
+        return (4 / 3) * constant.PI * r**3
+
+
+def mean_absolut_deviasi(
+    nilai: list[int],
+) -> Union[error.Error, error.ErrorTipeData, float]:
+    """
+    Ukuran statistik untuk menggambarkan variabilitias kumpulan data.
+
+    Args:
+        nilai (list[int]): angka yang dihitung
+    Return:
+        float: hasil dari variabilitias kumpulan data
+        error.Error: jika list kosong
+        error.ErrorTipeData: jika tipe data float maka error
+    """
+    if isinstance(nilai, list):
+        # mengecek apakah nilai dalam list kodong
+        if not nilai:
+            return error.Error("List tidak boleh kosong")
+        else:
+            for cek_nilai in nilai:
+                if not isinstance(cek_nilai, int):
+                    return error.ErrorTipeData(["int"])
+            rata_rata = sum(nilai) / len(nilai)
+            return sum(abs(x - rata_rata) for x in nilai) / len(nilai)
+    else:
+        return error.ErrorTipeData(["list[int]"])

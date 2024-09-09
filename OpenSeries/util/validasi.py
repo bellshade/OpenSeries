@@ -121,13 +121,3 @@ class Validasi:
             hasil_konversi for hasil_konversi in self.tipe_data
         ]
         return list(hasil)
-
-
-if __name__ == "__main__":
-    try:
-        hasil = Validasi([])
-        print(hasil.validasi_nilai_list_integer())
-    except error.ErrorTipeData as err_tipe_data:
-        print(err_tipe_data)
-    except error.Error as error_bare:
-        print(error_bare)

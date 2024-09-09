@@ -49,7 +49,9 @@ class ErrorTipeData(TypeError):
 
         # membuat pesan error dengan memanggil method format_tipe_data
         tipe_str = " atau ".join(map(str, expected_types))
-        super().__init__(f"{warna.red}Error Tipe Data:{warna.reset_warna} tipe data harus {tipe_str}")
+        super().__init__(
+            f"{warna.red}Error Tipe Data:{warna.reset_warna} tipe data harus {tipe_str}"
+        )
 
 
 class Error(Exception):

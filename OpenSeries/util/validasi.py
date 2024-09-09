@@ -18,11 +18,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import error
+from OpenSeries.util import error
 from typing import Union
 
 
 class Validasi:
+    """
+    Kelas untuk memvalidasi nilai dari yang diberikan. nilai tersebut akan di proses
+    di method dalam kelas dan throw error jika tipe data yang nantinya diberikan tidak
+    sesuai, jika benar akan dikonversikan
+    """
+
     def __init__(self, tipe_data):
         self.tipe_data = tipe_data
 
@@ -33,33 +39,44 @@ class Validasi:
         Parameter:
             nilai (float): nilai yang akan di konversi
         """
-        nilai = self.tipe_data
         if not isinstance(self.tipe_data, float):
             raise error.ErrorTipeData(["float"])
-        self.tipe_data = nilai
         return float(self.tipe_data)
 
     def validasi_nilai_int(self) -> int:
         """
         Validasi nilai dan konversi ke integer
 
-        Parameter:
-            nilai (float): nilai yang akan di konversi
+        Throw:
+            error.ErrorTipeData: jika tipe data tidak sesuai
         """
         if not isinstance(self.tipe_data, int):
             raise error.ErrorTipeData(["int"])
-        return float(self.tipe_data)
+        return int(self.tipe_data)
+
+    def validasi_nilai_int_float(self) -> Union[float, int]:
+        """
+        Validasi nilai dan konversi ke integer atau float
+        """
+        if not isinstance(self.tipe_data, (float, int)):
+            raise error.ErrorTipeData(["int, float"])
+        return self.tipe_data
 
     def validasi_nilai_list_integer(self) -> list[int]:
         """
         Validasi nilai dan konversi ke list dengan elemen tipe data
         integer
+
+        Throw:
+            error.ErrorTipeData: jika tipe data tidak sesuai
         """
         if not isinstance(self.tipe_data, list):
             raise error.ErrorTipeData(["list[int]"])
         for indeks, nilai_element in enumerate(self.tipe_data):
             if not isinstance(nilai_element, int):
-                raise error.ErrorTipeData([f"list[int] elemen indeks ke: {indeks}\nList: {self.tipe_data}"])
+                raise error.ErrorTipeData(
+                    [f"list[int] elemen indeks ke: {indeks}\nList: {self.tipe_data}"]
+                )
         hasil: list[int] = [int(hasil_konversi) for hasil_konversi in self.tipe_data]
         return list(hasil)
 
@@ -67,20 +84,50 @@ class Validasi:
         """
         Validasi nilai dan konversi ke list dengan elemen tipe data
         float
+
+        Throw:
+            error.ErrorTipeData: jika tipe data tidak sesuai
         """
         if not isinstance(self.tipe_data, list):
             raise error.ErrorTipeData(["list[int]"])
         for indeks, nilai_element in enumerate(self.tipe_data):
             if not isinstance(nilai_element, float):
-                raise error.ErrorTipeData([f"list[int] elemen indeks ke: {indeks}\nList: {self.tipe_data}"])
-        hasil: list[float] = [float(hasil_konversi) for hasil_konversi in self.tipe_data]
+                raise error.ErrorTipeData(
+                    [f"list[int] elemen indeks ke: {indeks}\nList: {self.tipe_data}"]
+                )
+        hasil: list[float] = [
+            float(hasil_konversi) for hasil_konversi in self.tipe_data
+        ]
         return list(hasil)
 
     def validasi_nilai_list_float_int(self) -> list[Union[float, int]]:
+        """
+        Validasi nilai dan konversi ke list dengan elemen tipe data
+        float atau integer, (float, integer)
+
+        Throw:
+            error.ErrorTipeData: jika tipe data tidak sesuai
+        """
         if not isinstance(self.tipe_data, list):
             raise error.ErrorTipeData(["list[float, int]"])
         for indeks, nilai_element in enumerate(self.tipe_data):
             if not isinstance(nilai_element, (float, int)):
-                raise error.ErrorTipeData([f"list[int, float] elemen indeks ke: {indeks}\nList: {self.tipe_data}"])
-        hasil: list[Union[float, int]] = [hasil_konversi for hasil_konversi in self.tipe_data]
+                raise error.ErrorTipeData(
+                    [
+                        f"list[int, float] elemen indeks ke: {indeks}\nList: {self.tipe_data}"
+                    ]
+                )
+        hasil: list[Union[float, int]] = [
+            hasil_konversi for hasil_konversi in self.tipe_data
+        ]
         return list(hasil)
+
+
+if __name__ == "__main__":
+    try:
+        hasil = Validasi([])
+        print(hasil.validasi_nilai_list_integer())
+    except error.ErrorTipeData as err_tipe_data:
+        print(err_tipe_data)
+    except error.Error as error_bare:
+        print(error_bare)

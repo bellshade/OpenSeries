@@ -41,17 +41,17 @@ install_require = [x.strip() for x in core_require if "git+" not in x]
 # setup nama project
 setup(
     # nama dari project
-    name="OpenSeries",
+    name=f"{constant.NAMA_PROJECT}",
     # versi dari project
-    version="1.7.0",
+    version=f"{constant.VERSI_LIBRARY}",
     # deskripsi singkat dari project
-    description="library untuk membantu temen-temen SMA/SMK/Sederajat",
+    description=f"{constant.DESCRIPTION}",
     # deskripsi detail tentang project
     long_description=str(readme),
     # url atau sumber dari projek
-    url="https://github.com/bellshade/OpenSeries",
+    url=f"{constant.WEBSITE}",
     # maintainer, developer yang membuat dari project
-    author="bellshade, wpu, kelas terbuka",
+    author=", ".join(constant.AUTHOR),
     packages=find_packages(),
     # jika ada folder tambahan dari project ditambahkan dalam dictionary
     package_data={"OpenSeries": ["util/*"]},
@@ -71,7 +71,7 @@ setup(
     # lisensi dari project
     license=f"{constant.OPENSERIES_BELLSHADE_LISENSI} License",
     project_urls={
-        "Bug Reports": "https://github.com/bellshade/OpenSeries/issues",
-        "Source": "https://github.com/bellshade/OpenSeries",
+        "Bug Reports": f"{constant.OPENSERIES_BELLSHADE_LISENSI}",
+        "Source": f"{constant.WEBSITE}",
     },
 )

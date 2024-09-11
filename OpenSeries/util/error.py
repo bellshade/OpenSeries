@@ -48,13 +48,10 @@ class ErrorTipeData(TypeError):
             raise TypeError("element dari tipe data harus str (string)!")
 
         # membuat pesan error dengan memanggil method format_tipe_data
-        message = self.format_tipe_data(expected_types)
-        super().__init__(message)
-
-    def format_tipe_data(self, tipe_data: list[str]) -> str:
-        # gabungkan element list menjadi string terpisah oleh `" atau "`
-        tipe_str = " atau ".join(map(str, tipe_data))
-        return f"{warna.red}Error Tipe Data:{warna.reset_warna} tipe data harus {tipe_str}!"
+        tipe_str = " atau ".join(map(str, expected_types))
+        super().__init__(
+            f"{warna.red}Error Tipe Data:{warna.reset_warna} tipe data harus {tipe_str}"
+        )
 
 
 class Error(Exception):

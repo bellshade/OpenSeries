@@ -20,8 +20,14 @@
 
 from colorama import Fore, Style
 
-# nilai constant variable daripada lisensi bellshade OpenSeries
+# nilai constant untuk bellshade
+VERSI_LIBRARY = "1.9.2"
 OPENSERIES_BELLSHADE_LISENSI = "MIT"
+NAMA_PROJECT = "OpenSeries"
+DESCRIPTION = "Library untuk membantu siswa SMA / SMK / Sederajat"
+AUTHOR = ["bellshade", "wpu", "warga slowy"]
+WEBSITE = "https://github.com/bellshade/OpenSeries"
+ISSUE_WEBSITE = "https://github.com/bellshade/OpenSeries/issues"
 
 # bilangan pi adalah nilai konstant dalam matematika yang merupakan perbandingan keliling
 # lingkaran dengan diameternya

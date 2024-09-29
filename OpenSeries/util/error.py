@@ -1,3 +1,23 @@
+# Copyright (c) 2023 Bellshade
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 # kostum error
 # file error.py berisi tentang kustomisasi error dengan beberapa tujuan antara lain:
 # - mendeteksi error terkait tipe data
@@ -28,13 +48,10 @@ class ErrorTipeData(TypeError):
             raise TypeError("element dari tipe data harus str (string)!")
 
         # membuat pesan error dengan memanggil method format_tipe_data
-        message = self.format_tipe_data(expected_types)
-        super().__init__(message)
-
-    def format_tipe_data(self, tipe_data: list[str]) -> str:
-        # gabungkan element list menjadi string terpisah oleh `" atau "`
-        tipe_str = " atau ".join(map(str, tipe_data))
-        return f"{warna.red}Error Tipe Data:{warna.reset_warna} tipe data harus {tipe_str}!"
+        tipe_str = " atau ".join(map(str, expected_types))
+        super().__init__(
+            f"{warna.red}Error Tipe Data:{warna.reset_warna} tipe data harus {tipe_str}"
+        )
 
 
 class Error(Exception):
@@ -53,6 +70,9 @@ class Error(Exception):
 class IndeksError(IndexError):
     """
     kelas untuk membuat error dari index jika tidak selaras dengan dimensi atau lain
+
+    Parameter:
+        pesan(str): pesan error dari indeks yang harus dimasukkan
     """
 
     def __init__(self, pesan: str):
@@ -63,6 +83,9 @@ class IndeksError(IndexError):
 class ErrorValue(ValueError):
     """
     kelas untuk membuat error dari index dengan throw dari ValueError
+
+    Parameter:
+        pesan(str): pesan error dari value yang salah
     """
 
     def __init__(self, pesan: str):

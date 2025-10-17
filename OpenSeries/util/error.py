@@ -96,7 +96,7 @@ class ErrorTipeData(BaseError, TypeError):
 
     def _format_message(self) -> str:
         tipe_str = " atau ".join(self.tipe_diharapkan)
-            base_message = f"tipe data harus {tipe_str}"
+        base_message = f"tipe data harus {tipe_str}"
 
         if self.nama_parameter:
             base_message = f"parameter `{self.nama_parameter}` {base_message}"

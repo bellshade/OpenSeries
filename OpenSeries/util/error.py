@@ -1,3 +1,23 @@
+# Copyright (c) 2023 Bellshade
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 # kostum error
 # file error.py berisi tentang kustomisasi error dengan beberapa tujuan antara lain:
 # - mendeteksi error terkait tipe data
@@ -74,12 +94,11 @@ class ErrorTipeData(BaseError, TypeError):
         if not all(isinstance(data, str) for data in expected_types):
             raise TypeError("semua element dalam expected_types harus string")
 
-    def _format_message(self) -> str:
-        tipe_str = " atau ".join(self.tipe_diharapkan)
-        base_message = f"tipe data harus {tipe_str}"
-
-        if self.nama_parameter:
-            base_message = f"parameter `{self.nama_parameter}` {base_message}"
+        # membuat pesan error dengan memanggil method format_tipe_data
+        tipe_str = " atau ".join(map(str, expected_types))
+        super().__init__(
+            f"{warna.red}Error Tipe Data:{warna.reset_warna} tipe data harus {tipe_str}"
+        )
 
         if self.tipe_sebenarnya:
             base_message += f" (diterima: {self.tipe_sebenarnya})"
@@ -105,6 +124,9 @@ class Error(BaseError):
 class IndeksError(BaseError, IndexError):
     """
     kelas untuk membuat error dari index jika tidak selaras dengan dimensi atau lain
+
+    Parameter:
+        pesan(str): pesan error dari indeks yang harus dimasukkan
     """
 
     def __init__(
@@ -132,6 +154,9 @@ class IndeksError(BaseError, IndexError):
 class ErrorValue(BaseError, ValueError):
     """
     kelas untuk membuat error dari index dengan throw dari ValueError
+
+    Parameter:
+        pesan(str): pesan error dari value yang salah
     """
 
     def __init__(

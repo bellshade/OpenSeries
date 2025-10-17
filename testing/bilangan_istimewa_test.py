@@ -65,3 +65,15 @@ class TestAngkaSegitiga(unittest.TestCase):
         hasil = bilangan.angka_segitiga("12")
         with self.assertRaises(error.ErrorTipeData):
             raise hasil
+
+
+class TestAngkaKatalan(unittest.TestCase):
+    def test_angka_valid(self):
+        self.assertEqual(bilangan.angka_katalan(1), 1)
+        self.assertEqual(bilangan.angka_katalan(4), 5)
+
+    def test_katalan_tipe_data(self):
+        self.assertIsInstance(bilangan.angka_katalan("3"), error.ErrorTipeData)
+
+    def test_katalan_negatif(self):
+        self.assertIsInstance(bilangan.angka_katalan(-2), error.Error)

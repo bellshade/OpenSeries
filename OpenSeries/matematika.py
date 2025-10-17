@@ -412,24 +412,6 @@ def volume_kerucut(
     else:
         return (1 / 3) * np.pi * (r**2) * h
 
-
-def volume_bola(r: Union[int, float]) -> Union[int, float, error.ErrorTipeData]:
-    """
-    Menghitung volume sebuah bola
-
-    Parameter :
-        r (int atau float) : radius dari bola
-
-    Return :
-        (int atau float) : hasil kalkulasi fungsi
-        error.ErrorTipeData : error jika tipe data salah
-    """
-    if not isinstance(r, (int, float)):
-        return error.ErrorTipeData(["int", "float"])
-    else:
-        return (4 / 3) * np.pi * np.pow(r, 3)
-
-
 def permukaan_bola(r: Union[int, float]) -> Union[int, float, error.ErrorTipeData]:
     """
     Menghitung luas permukaan bola

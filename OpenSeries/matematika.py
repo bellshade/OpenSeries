@@ -412,6 +412,7 @@ def volume_kerucut(
     else:
         return (1 / 3) * np.pi * (r**2) * h
 
+
 def permukaan_bola(r: Union[int, float]) -> Union[int, float, error.ErrorTipeData]:
     """
     Menghitung luas permukaan bola

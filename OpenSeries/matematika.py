@@ -118,12 +118,321 @@ def keliling_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeD
         return error.ErrorTipeData(["float", "int"])
 
 
+def luas_persegi(a: Union[int, float]) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung luas persegi
+
+    Parameter :
+        a (int,float) : lebar persegi
+
+    Return :
+        (int,float) : hasil kalkulasi dari fungsi
+        error.ErrorTipeData : error jika tipe data salah
+    """
+    if not isinstance(a, (int, float)):
+        return error.ErrorTipeData(["int atau float"])
+    else:
+        return a * a
+
+
+def keliling_persegi(a: Union[float, int]) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung Keliling Persegi
+
+    Parameter :
+        a (int,float) : lebar persegi
+
+    Return :
+        (int,float) : hasil kalkulasi dari fungsi
+        error.ErrorTipeData : error jika tipe data salah
+    """
+    if not isinstance(a, (int, float)):
+        return error.ErrorTipeData(["int,float"])
+    else:
+        return 4 * a
+
+
+def luas_persegi_panjang(
+    a: Union[int, float], h: Union[int, float]
+) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung Luas Persegi Panjang
+
+    Parameter :
+        a (int,float) = lebar persegi panjang
+        p (int,float) = panjang persegi panjang
+
+    Return :
+        (int,float) : hasil kalkulasi fungsi
+        error.ErrorTipeData = error jika tipe data salah
+    """
+    if not all(isinstance(data, (float, int)) for data in [a, h]):
+        return error.ErrorTipeData(["int", "float"])
+    else:
+        return a * h
+
+
+def keliling_persegi_panjang(
+    a: Union[int, float], p: Union[int, float]
+) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung keliling Persegi Panjang
+
+    Parameter :
+        a (int,float) = lebar persegi panjang
+        p (int,float) = panjang persegi panjang
+
+    Return :
+        (int,float) : hasil kalkulasi fungsi
+        error.ErrorTipeData = error jika tipe data salah
+    """
+    if not all(isinstance(data, (int, float)) for data in [p, a]):
+        return error.ErrorTipeData(["int", "float"])
+    else:
+        return 2 * (a + p)
+
+
+def luas_elips(
+    a: Union[int, float], b: Union[int, float]
+) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung luas elips
+
+    Parameter :
+        a (int,float) : semimajor
+        b (int,float) : semiminor
+
+    Return :
+        (int,float) : hasil kalkulasi fungsi
+        error.ErrorTipeData : error jika tipe data salah
+    """
+    if all(isinstance(data, (int, float)) for data in [a, b]):
+        return np.pi * a * b
+    else:
+        return error.ErrorTipeData(["int", "float"])
+
+
+def luas_trapesium(
+    a: Union[int, float], b: Union[int, float], h: Union[int, float]
+) -> Union[int, float, error.ErrorTipeData, error.Error]:
+    """
+    Menghitung luas trapesium
+
+    Parameter :
+        a (int,float) : garis yang sejajar
+        b (int,float) : garis yang sejajar
+        h (int,float) : ketinggian trapesium
+
+    Return :
+        (int,float) : hasil kalkulasi fungsi
+        error.ErrorTipeData : error jika tipe data salah
+        error.Error : error jika nilanya nol
+    """
+    if not all(isinstance(data, (int, float)) for data in [a, b, h]):
+        return error.ErrorTipeData(["int", "float"])
+    else:
+        return ((a + b) / 2) * h
+
+
+def keliling_segitiga(
+    a: Union[int, float], b: Union[int, float], c: Union[int, float]
+) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung keliling segitiga
+
+    Parameter :
+        a (int atau float) : sisi segitiga
+        b (int atau float) : sisi segitiga
+        c (int atau float) : sisi segitiga
+
+    Return :
+        (int,float) : hasil kalkulasi fungsi
+        error.ErrorTipeData : error jika tipe data salah
+    """
+    if not all(isinstance(data, (int, float)) for data in [a, b, c]):
+        return error.ErrorTipeData(["Int,Float"])
+    else:
+        return a + b + c
+
+
+def luas_jajargenjang(
+    b: Union[int, float], h: Union[int, float]
+) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung luas jajargenjang
+
+    Parameter :
+        a (int atau float) : sisi miring
+        h (int atau float) : tinggi
+
+    Return :
+        (int,float) : hasil kalkulasi fungsi
+        error.ErrorTipeData : error jika tipe data salah
+    """
+    if not all(isinstance(data, (int, float)) for data in [b, h]):
+        return error.ErrorTipeData(["int,float"])
+    else:
+        return b * h
+
+
+def keliling_jajargenjang(
+    a: Union[int, float], b: Union[int, float]
+) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung keliling jajargenjang
+
+    Parameter :
+        a (int,float) : sisi miring
+        b (int,float) : sisi
+
+    Return :
+        (int atau float) : hasil kalkulasi fungsi
+        error.ErrorTipeData : error jika tipe data salah
+    """
+    if not all(isinstance(data, (int, float)) for data in [a, b]):
+        return error.ErrorTipeData(["int", "float"])
+    else:
+        return 2 * (a + b)
+
+
+def volume_kubus(a: Union[int, float]) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung volume kubus
+
+    Parameter :
+        a (int atau float) : sisi-sisi kubus
+
+    Return :
+        (int atau float) : hasil kalkulasi fungsi
+        error.ErrorTipeData : error jika tipe data salah
+    """
+    if not isinstance(a, (int, float)):
+        return error.ErrorTipeData(["int atau float"])
+    else:
+        return np.pow(a, 3)
+
+
+def volume_balok(
+    a: Union[int, float], b: Union[int, float], c: Union[int, float]
+) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung volume balok
+
+    Parameter :
+        a (int atau float) : panjang balok
+        b (int atau float) : lebar balok
+        c (int atau float) : tinggi balok
+    Return :
+        (int atau float) : hasil kalkulasi fungsi
+        error.ErrorTipeData : error jika tipe data salah
+    """
+    if not all(isinstance(data, (int, float)) for data in [a, b, c]):
+        return error.ErrorTipeData(["int", "float"])
+    else:
+        return a * b * c
+
+
+def volume_silinder(
+    r: Union[int, float], h: Union[int, float]
+) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung volume silinder
+
+    Parameter :
+
+        r (int atau float) : radius dari silinder
+        h (int atau float) : ketinggian dari selinder
+    Return :
+
+        (int atau float) : hasil kalkulasi fungsi
+        error.ErrorTipeData : error jika tipe data salah
+    """
+    if not all(isinstance(data, (int, float)) for data in [r, h]):
+        return error.ErrorTipeData(["int", "float"])
+    else:
+        return np.pi * (r**2) * h
+
+
+def volume_elipsoid(
+    a: Union[int, float], b: Union[int, float], c: Union[int, float]
+) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung volume elipsoid
+
+    Parameter :
+        a (int atau float) : semi-major
+        b (int atau float) : semi-minor
+        c (int atau float) : panjang sumbu
+    Return :
+        (int atau float) : hasil kalkulasi fungsi
+        error.ErrorTipeData : error jika tipe data salah
+    """
+    if not all(isinstance(data, (int, float)) for data in [a, b, c]):
+        return error.ErrorTipeData(["int", "float"])
+    else:
+        return (4 / 3) * np.pi * a * b * c
+
+
+def volume_kerucut(
+    r: Union[int, float], h: Union[int, float]
+) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung volume dari sebuah kerucut
+
+    Parameter :
+        r (int atau float) : radius dari permukaan kerucut
+        h (int atau float) : ketinggian dari sebuah kerucut
+    Return :
+        (int atau float) : hasil kalkulasi fungsi
+        error.ErrorTipeData : error jika tipe data salah
+
+    """
+    if not all(isinstance(data, (int, float)) for data in [r, h]):
+        return error.ErrorTipeData(["int", "float"])
+    else:
+        return (1 / 3) * np.pi * (r**2) * h
+
+
+def volume_bola(r: Union[int, float]) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung volume sebuah bola
+
+    Parameter :
+        r (int atau float) : radius dari bola
+
+    Return :
+        (int atau float) : hasil kalkulasi fungsi
+        error.ErrorTipeData : error jika tipe data salah
+    """
+    if not isinstance(r, (int, float)):
+        return error.ErrorTipeData(["int", "float"])
+    else:
+        return (4 / 3) * np.pi * np.pow(r, 3)
+
+
+def permukaan_bola(r: Union[int, float]) -> Union[int, float, error.ErrorTipeData]:
+    """
+    Menghitung luas permukaan bola
+
+    Parameter :
+        r (int atau float) : radius dari sebuah bola
+
+    Return :
+        (int atau float) : hasil kalkulasi fungsi
+        error.ErrorTipeData : error jika tipe data salah
+    """
+    if not isinstance(r, (int, float)):
+        return error.ErrorTipeData(["int", "float"])
+    else:
+        return 4 * np.pi * np.pow(r, 2)
+
+
 def diameter_lingkaran(jari: Union[float, int]) -> Union[float, error.ErrorTipeData]:
     """
     menghitung diameter lingkaran
 
     Parameter:
-        jari (float atau integer): jari-jari lingkaran
+        jari (float atau integer): radius lingkaran
 
     Return:
         (float): hasil dari kalkulasi diameter lingkaran

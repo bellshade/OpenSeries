@@ -94,11 +94,12 @@ class ErrorTipeData(BaseError, TypeError):
         if not all(isinstance(data, str) for data in expected_types):
             raise TypeError("semua element dalam expected_types harus string")
 
-        # membuat pesan error dengan memanggil method format_tipe_data
-        tipe_str = " atau ".join(map(str, expected_types))
-        super().__init__(
-            f"{warna.red}Error Tipe Data:{warna.reset_warna} tipe data harus {tipe_str}"
-        )
+        def _format_message(self) -> str:
+        tipe_str = " atau ".join(self.tipe_diharapkan)
+        base_message = f"tipe data harus {tipe_str}"
+
+        if self.nama_parameter:
+            base_message = f"parameter `{self.nama_parameter}` {base_message}"
 
         if self.tipe_sebenarnya:
             base_message += f" (diterima: {self.tipe_sebenarnya})"

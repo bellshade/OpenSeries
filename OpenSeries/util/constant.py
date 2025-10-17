@@ -19,6 +19,7 @@
 # SOFTWARE.
 
 from colorama import Fore, Style
+from typing import Final
 
 # nilai constant untuk bellshade
 VERSI_LIBRARY = "1.9.2"

@@ -95,16 +95,16 @@ class ErrorTipeData(BaseError, TypeError):
             raise TypeError("semua element dalam expected_types harus string")
 
         def _format_message(self) -> str:
-        tipe_str = " atau ".join(self.tipe_diharapkan)
-        base_message = f"tipe data harus {tipe_str}"
+            tipe_str = " atau ".join(self.tipe_diharapkan)
+            base_message = f"tipe data harus {tipe_str}"
 
-        if self.nama_parameter:
-            base_message = f"parameter `{self.nama_parameter}` {base_message}"
+            if self.nama_parameter:
+                base_message = f"parameter `{self.nama_parameter}` {base_message}"
 
-        if self.tipe_sebenarnya:
-            base_message += f" (diterima: {self.tipe_sebenarnya})"
+            if self.tipe_sebenarnya:
+                base_message += f" (diterima: {self.tipe_sebenarnya})"
 
-        return f"{warna.red}Error Tipe data:{warna.reset_warna}"
+            return f"{warna.red}Error Tipe data:{warna.reset_warna}"
 
 
 class Error(BaseError):

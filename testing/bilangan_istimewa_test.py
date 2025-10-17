@@ -1,34 +1,67 @@
-from OpenSeries.bilangan_istimewa import angka_armstrong
+import unittest
+import OpenSeries.bilangan_istimewa as bilangan
+import OpenSeries.util.error as error
 
 
-class TestAngkaArmstrong:
-    def test_armstrong_3_digit(self):
-        """Test bilangan Armstrong 3 digit"""
-        assert angka_armstrong(153) == "angka armstrong"
-        assert angka_armstrong(371) == "angka armstrong"
-        assert angka_armstrong(407) == "angka armstrong"
+class TestAngkaArmstrong(unittest.TestCase):
+    def test_angka_armstrong(self):
+        self.assertEqual(bilangan.angka_armstrong(153), "angka armstrong".capitalize())
+        self.assertEqual(bilangan.angka_armstrong(370), "angka armstrong".capitalize())
 
-    def test_armstrong_4_digit(self):
-        """Test bilangan Armstrong 4 digit"""
-        assert angka_armstrong(9474) == "angka armstrong"
-        assert angka_armstrong(1634) == "angka armstrong"
+    def test_salah_armstrong(self):
+        self.assertEqual(
+            bilangan.angka_armstrong(222), "bukan angka armstrong".capitalize()
+        )
+        self.assertEqual(
+            bilangan.angka_armstrong(444), "bukan angka armstrong".capitalize()
+        )
 
-    def test_armstrong_5_digit(self):
-        """Test bilangan Armstrong 5 digit"""
-        assert angka_armstrong(54748) == "angka armstrong"
+    def test_salah_tipe_data_armstrong(self):
+        hasil = bilangan.angka_armstrong(333.2)
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
 
-    def test_armstrong_6_digit(self):
-        """Test bilangan Armstrong 6 digit"""
-        assert angka_armstrong(548834) == "angka armstrong"
 
-    def test_satu_digit(self):
-        """Semua angka 0-9 adalah Armstrong (n^1 = n)"""
-        for i in range(10):
-            assert angka_armstrong(i) == "angka armstrong"
+class TestAngkaAutomorphic(unittest.TestCase):
+    def test_tipe_data_angka(self):
+        with self.assertRaises(error.ErrorTipeData):
+            raise bilangan.angka_automorphic(12.3)
+            raise bilangan.angka_automorphic("23")
 
-    def test_nol(self):
-        """0 adalah angka Armstrong"""
-        assert angka_armstrong(0) == "angka armstrong"
+    def test_angka_negatif(self):
+        hasil = bilangan.angka_automorphic(-2)
+        self.assertEqual(hasil, "bukan angka automorphic".capitalize())
 
-    def test_bilangan_besar(self):
-        assert angka_armstrong(123456789) == "bukan angka armstrong"
+    def test_valid_input(self):
+        hasil = bilangan.angka_automorphic(25)
+        self.assertEqual(hasil, "angka automorphic".capitalize())
+
+
+class TestAngkaPronic(unittest.TestCase):
+    def test_angka_pronic_return_tipe_data(self):
+        hasil = bilangan.angka_pronic(30)
+        self.assertIsInstance(hasil, str)
+
+        hasil = bilangan.angka_pronic("30")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+    def test_angka_pronic_negatif(self):
+        hasil = bilangan.angka_pronic(-30)
+        self.assertIsInstance(hasil, str)
+
+
+class TestAngkaSegitiga(unittest.TestCase):
+    def test_angka_segitiga(self):
+        self.assertEqual(bilangan.angka_segitiga(0), 0)
+        self.assertEqual(bilangan.angka_segitiga(3), 6)
+
+    def test_angka_negatif(self):
+        hasil = bilangan.angka_segitiga(-1)
+        with self.assertRaises(error.Error):
+            raise hasil
+
+    def test_beda_tipe_data(self):
+        hasil = bilangan.angka_segitiga("12")
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil

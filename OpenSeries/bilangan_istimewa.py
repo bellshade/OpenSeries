@@ -24,7 +24,7 @@ def angka_armstrong(angka: int) -> Union[str, ErrorTipeData]:
 
     digit_array = np.fromiter((int(digit) for digit in angka_str), dtype=int)
     total = np.sum(np.power(digit_array, jumlah_digit))
-    return benar if abs(angka) == total else bukan
+    return benar.capitalize() if abs(angka) == total else bukan.capitalize()
 
 
 def angka_automorphic(angka: int) -> Union[str, ErrorTipeData]:

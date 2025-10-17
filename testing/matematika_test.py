@@ -3,6 +3,7 @@ from OpenSeries import matematika as matematika
 from OpenSeries.util import error as error
 import numpy as np
 
+
 class TestKonversi(unittest.TestCase):
     def test_radian_ke_derajat(self):
         self.assertAlmostEqual(matematika.radian_ke_derajat(1), 57.2957795131)

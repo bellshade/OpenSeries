@@ -12,6 +12,14 @@ BILANGAN_EULER: float = 2.718281828459045235360
 # elektron volt per detik (eV/s) nilainya adalah 4.1357 × 10⁻¹⁵ eV s⁻¹
 KONSTANTA_PLANCK: float = 4.1357 * pow(10, -15)
 
+# bilangan avogadro adalah bilangan yang menyatakan jumlah partikel dalam suatu
+# zat dalam satuan partikel/mol
+BILANGAN_AVOGADRO: float = 6.022 * pow(10, 23)
+
+# Konstanta gas adalah konstanta yang muncul dari persamaan gas ideal dengan satuan J/K mol
+KONSTANTA_GAS_IDEAL: float = 8.314472
+
+
 # default error dari warna menggunakan kode ANSI escape
 # merah
 red: str = Fore.RED

@@ -1,5 +1,6 @@
 from OpenSeries.util import error as error
 from typing import Union
+from OpenSeries.util import constant
 
 
 def kecepatan(
@@ -60,7 +61,7 @@ def gerak_lurus_beraturan(
     kecepatan_awal: float, a: float, t: float
 ) -> Union[float, error.ErrorTipeData]:
     """
-    fungsi untuk menghitung jarak yang ditempuh oleh benda yang bergerak lurus beraturan
+    fungsi untuk menghitung jarak tempuh oleh benda yang bergerak lurus beraturan
 
     Parameter:
         kecepatan_awal (float): kecepatan awal (m/s)
@@ -143,7 +144,7 @@ def energi_potensial(
         (float, int): hasil dari kalkulasi energei potensial
         error.ErrorTipeData: error jika tipe data data salah
     """
-    # melakukan pengecekan apakah semua parameter memiliki tipe data dari float atau int
+    # melakukan pengecekan apakah semua parameter
     if not all(isinstance(data, (float, int)) for data in [m, g, h]):
         return error.ErrorTipeData(["float", "int"])
     else:
@@ -268,3 +269,72 @@ def efek_doppler(
             "frekuensi tidak positif, kecepatan sumber relatif lebih besar dari kecepatan gelombang dalam medium"
         )
     return doppler
+
+
+def jumlah_partikel(
+    n: Union[int, float],
+) -> Union[int, float, error.ErrorTipeData, error.Error]:
+    """
+    Fungsi untuk melakukan kalkulasi
+    mencari jumlah partikel
+    berdasarkan persamaan N = n * N_a
+
+
+    parameter :
+    n (int, float) = jumlah mol (mol)
+
+    return :
+    N (int, float) = Jumlah Partikel
+    """
+    if not isinstance(n, (float, int)):
+        return error.ErrorTipeData(["int", "float"])
+    if n < 0:
+        return error.Error("jumlah mol tidak positif")
+    N = n * constant.BILANGAN_AVOGADRO
+    return N
+
+
+def jumlah_mol(
+    m: Union[int, float], m_r: Union[int, float]
+) -> Union[int, float, error.ErrorTipeData, error.ErrorDibagiNol, error.Error]:
+    """
+    fungsi untuk melakukan kalkulasi jumlah mol
+    berdasarkan persamaan n = m / Mr
+
+    parameter :
+    m (int, float) = massa (g)
+    m_r (int, float) = massa relatif/ massa molar (g/mol)
+
+    return :
+    n (int, float) = jumlah mol (mol)
+    """
+    if not all(isinstance(data, (float, int)) for data in [m, m_r]):
+        return error.ErrorTipeData(["int", "float"])
+    if m_r == 0:
+        return error.ErrorDibagiNol()
+    if m < 0 or m_r < 0:
+        return error.Error("Tidak boleh negatif")
+    else:
+        n = m / m_r
+        return n
+
+
+def massa_atom(
+    m_r: Union[int, float],
+) -> Union[int, float, error.ErrorTipeData, error.Error]:
+    """
+    Fungsi untuk melakukan kalkulasi massa atom
+    m_0 = m_r / Na.
+
+    parameter :
+    m_r (int, float) = massa molar(g/mol)
+
+    return :
+    m_0 = massa atom (sma)
+    """
+    if not (isinstance(m_r, (float, int))):
+        return error.ErrorTipeData(["int", "float"])
+    if m_r < 0:
+        return error.Error("massa tidak boleh negatif")
+    m_0 = m_r / constant.BILANGAN_AVOGADRO
+    return m_0

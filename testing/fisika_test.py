@@ -129,3 +129,66 @@ class TestEfekDoppler(unittest.TestCase):
         self.assertIsInstance(hasil, error.Error)
         with self.assertRaises(error.Error):
             raise hasil
+
+
+class Testjumlah_partikel(unittest.TestCase):
+    def test_jumlah_partikel(self):
+        hasil = fisika.jumlah_partikel(15)
+        rounding_hasil = hasil
+        self.assertEqual(rounding_hasil, 9032999999999999536529408)
+
+    def test_jumlah_partikel_invalid_tipe_data(self):
+        hasil = fisika.jumlah_partikel("15")
+        self.assertIsInstance(hasil, error.ErrorTipeData)
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+    def test_jumlah_partikel_negatif(self):
+        hasil = fisika.jumlah_partikel(-15)
+        self.assertIsInstance(hasil, error.Error)
+        with self.assertRaises(error.Error):
+            raise hasil
+
+
+class Testjumlah_mol(unittest.TestCase):
+    def test_jumlah_mol(self):
+        hasil = fisika.jumlah_mol(25, 5)
+        rounding_hasil = hasil
+        self.assertEqual(rounding_hasil, 5)
+
+    def test_jumlah_mol_invalid_tipe_data(self):
+        hasil = fisika.jumlah_mol("25", 5)
+        self.assertIsInstance(hasil, error.ErrorTipeData)
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+    def test_jumlah_mol_dibaginol(self):
+        hasil = fisika.jumlah_mol(25, 0)
+        self.assertIsInstance(hasil, error.ErrorDibagiNol)
+        with self.assertRaises(error.ErrorDibagiNol):
+            raise hasil
+
+    def test_jumlah_mol_invalid_negatif(self):
+        hasil = fisika.jumlah_mol(-25, 5)
+        self.assertIsInstance(hasil, error.Error)
+        with self.assertRaises(error.Error):
+            raise hasil
+
+
+class Testmassa_atom(unittest.TestCase):
+    def test_massa_atom(self):
+        hasil = fisika.massa_atom(17 * pow(10, 23))
+        rounding_hasil = hasil
+        self.assertEqual(rounding_hasil, 2.8229823978744606)
+
+    def test_jumlah_massa_atom_tipe_data(self):
+        hasil = fisika.massa_atom("17")
+        self.assertIsInstance(hasil, error.ErrorTipeData)
+        with self.assertRaises(error.ErrorTipeData):
+            raise hasil
+
+    def test_jumlah_massa_invalid_negatif(self):
+        hasil = fisika.massa_atom(-17)
+        self.assertIsInstance(hasil, error.Error)
+        with self.assertRaises(error.Error):
+            raise hasil

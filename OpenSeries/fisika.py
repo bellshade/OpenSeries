@@ -270,11 +270,10 @@ def efek_doppler(
         )
     return doppler
 
+
 def gaya_coulombs(
-        q1 : Union[int, float],
-        q2 : Union[int, float],
-        r : Union[int, float]
-    ) -> Union[int, float, error.ErrorDibagiNol, error.ErrorTipeData]:
+    q1: Union[int, float], q2: Union[int, float], r: Union[int, float]
+) -> Union[int, float, error.ErrorDibagiNol, error.ErrorTipeData]:
     """
     Fungsi untuk menghitung gaya coulombs dari partikel
 
@@ -285,23 +284,18 @@ def gaya_coulombs(
     return
         F(int atau float) : hasil kalkulasi
     """
-    if not all(
-        isinstance(data, (float, int))
-        for data in [q1, q2, r]
-    ):
+    if not all(isinstance(data, (float, int)) for data in [q1, q2, r]):
         return error.ErrorTipeData(["int", "float"])
     if r == 0:
         return error.ErrorDibagiNol()
     else:
-        F = konstanta.KONSTANTA_COULOMD * ((q1 * q2)/r**2)
+        F = konstanta.KONSTANTA_COULOMD * ((q1 * q2) / r**2)
         return F
 
 
 def Energi_Potensial_Listrik(
-        q1: Union[int, float],
-        q2: Union[int, float],
-        r: Union[int, float]
-    ) -> Union[int, float, error.ErrorDibagiNol, error.ErrorTipeData]:
+    q1: Union[int, float], q2: Union[int, float], r: Union[int, float]
+) -> Union[int, float, error.ErrorDibagiNol, error.ErrorTipeData]:
     """
     Fungsi untuk menghitung energi potensial listrik dari partikel
 
@@ -312,13 +306,10 @@ def Energi_Potensial_Listrik(
     return
         F(int atau float) : hasil kalkulasi
     """
-    if not all(
-        isinstance(data, (float, int))
-        for data in [q1, q2, r]
-    ):
+    if not all(isinstance(data, (float, int)) for data in [q1, q2, r]):
         return error.ErrorTipeData(["int", "float"])
     if r == 0:
         return error.ErrorDibagiNol()
     else:
-        F = konstanta.KONSTANTA_COULOMD * ((q1 * q2)/r)
+        F = konstanta.KONSTANTA_COULOMD * ((q1 * q2) / r)
         return F

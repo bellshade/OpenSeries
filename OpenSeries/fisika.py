@@ -1,3 +1,4 @@
+from OpenSeries.util import constant as konstanta
 from OpenSeries.util import error as error
 from typing import Union
 
@@ -268,3 +269,56 @@ def efek_doppler(
             "frekuensi tidak positif, kecepatan sumber relatif lebih besar dari kecepatan gelombang dalam medium"
         )
     return doppler
+
+def gaya_coulombs(
+        q1 : Union[int, float],
+        q2 : Union[int, float],
+        r : Union[int, float]
+    ) -> Union[int, float, error.ErrorDibagiNol, error.ErrorTipeData]:
+    """
+    Fungsi untuk menghitung gaya coulombs dari partikel
+
+    parameter:
+        q1(int atau float) : muatan partikel pertama
+        q2(int atau float) : muatan partikel kedua
+        r(int atau float) : jarak antar dua partikel
+    return
+        F(int atau float) : hasil kalkulasi
+    """
+    if not all(
+        isinstance(data, (float, int))
+        for data in [q1, q2, r]
+    ):
+        return error.ErrorTipeData(["int", "float"])
+    if r == 0:
+        return error.ErrorDibagiNol()
+    else:
+        F = konstanta.KONSTANTA_COULOMD * ((q1 * q2)/r**2)
+        return F
+
+
+def Energi_Potensial_Listrik(
+        q1: Union[int, float],
+        q2: Union[int, float],
+        r: Union[int, float]
+    ) -> Union[int, float, error.ErrorDibagiNol, error.ErrorTipeData]:
+    """
+    Fungsi untuk menghitung energi potensial listrik dari partikel
+
+    parameter:
+        q1(int atau float) : muatan partikel pertama
+        q2(int atau float) : muatan partikel kedua
+        r(int atau float) : jarak antar dua partikel
+    return
+        F(int atau float) : hasil kalkulasi
+    """
+    if not all(
+        isinstance(data, (float, int))
+        for data in [q1, q2, r]
+    ):
+        return error.ErrorTipeData(["int", "float"])
+    if r == 0:
+        return error.ErrorDibagiNol()
+    else:
+        F = konstanta.KONSTANTA_COULOMD * ((q1 * q2)/r)
+        return F

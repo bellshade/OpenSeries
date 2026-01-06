@@ -129,3 +129,43 @@ class TestEfekDoppler(unittest.TestCase):
         self.assertIsInstance(hasil, error.Error)
         with self.assertRaises(error.Error):
             raise hasil
+
+
+class test_gaya_coulombs(unittest.TestCase):
+    def test_gaya_coulombs(self):
+        hasil = fisika.gaya_coulombs((4 * pow(10, -2)), (2 * pow(10, -3)), (0.6))
+        self.assertEqual(hasil, 1997222.2222222225)
+
+    def tets_gaya_coulombs_invalid_tipe_data(self):
+        hasil = fisika.gaya_coulombs((4 * pow(10, -2)), "(2*pow(10, -3))", (0.6))
+        self.assertIsInstance(hasil, error.ErrorTipeData)
+        with self.assertIsInstance(error.ErrorTipeData):
+            raise hasil
+
+    def test_gaya_coulombs_di_bagi_nol(self):
+        hasil = fisika.gaya_coulombs((4 * pow(10, -2)), (2 * pow(10, -3)), 0)
+        self.assertIsInstance(hasil, error.ErrorDibagiNol)
+        with self.assertRaises(error.ErrorDibagiNol):
+            raise hasil
+
+
+class test_Energi_potensial_Listrik(unittest.TestCase):
+    def test_energi_potensial_listrik(self):
+        hasil = fisika.Energi_Potensial_Listrik(
+            (4 * pow(10, -2)), (2 * pow(10, -3)), (0.6)
+        )
+        self.assertEqual(hasil, 1198333.3333333335)
+
+    def tets_energi_potensial_listrik_invalid_tipe_data(self):
+        hasil = fisika.Energi_Potensial_Listrik(
+            (4 * pow(10, -2)), "(2*pow(10, -3))", (0.6)
+        )
+        self.assertIsInstance(hasil, error.ErrorTipeData)
+        with self.assertIsInstance(error.ErrorTipeData):
+            raise hasil
+
+    def tets_energi_potensial_listrik_di_bagi_nol(self):
+        hasil = fisika.Energi_Potensial_Listrik((4 * pow(10, -2)), (2 * pow(10, -3)), 0)
+        self.assertIsInstance(hasil, error.ErrorDibagiNol)
+        with self.assertRaises(error.ErrorDibagiNol):
+            raise hasil

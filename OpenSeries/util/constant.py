@@ -12,6 +12,11 @@ BILANGAN_EULER: float = 2.718281828459045235360
 # elektron volt per detik (eV/s) nilainya adalah 4.1357 × 10⁻¹⁵ eV s⁻¹
 KONSTANTA_PLANCK: float = 4.1357 * pow(10, -15)
 
+# konstanta coulmb adalah konstanta berbanding lurus pada
+# persamaan yang menghubungkan variebel listrik
+# nilainya 8,9875×10^9 N·m2/C2
+KONSTANTA_COULOMD: float = 8.9875 * pow(10, 9)
+
 # default error dari warna menggunakan kode ANSI escape
 # merah
 red: str = Fore.RED

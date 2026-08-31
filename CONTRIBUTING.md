@@ -43,18 +43,18 @@ def adding(num1, num2):
 
 ```py
 def adding(num1, num2):
-  """
-  menambahkan kedua bilangan
-  num1 dan num2 dan dikembalikan hasilnya
-  num1 = integer
-  num2 = integer
-  mengembalikan hasil yang berupa integer
-  >>> adding(2, 3)
-  5
-  >>> adding(4, 2)
-  6
-  """
-  return num1 + num2
+    """
+    menambahkan kedua bilangan
+    num1 dan num2 dan dikembalikan hasilnya
+    num1 = integer
+    num2 = integer
+    mengembalikan hasil yang berupa integer
+    >>> adding(2, 3)
+    5
+    >>> adding(4, 2)
+    6
+    """
+    return num1 + num2
 ```
 
 kemudian testing kode python dengan pytest dan pre-commit

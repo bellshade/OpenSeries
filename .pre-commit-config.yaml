@@ -1,7 +1,7 @@
 # konfigurasi pre commit
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-executables-have-shebangs
       - id: check-toml
@@ -16,19 +16,19 @@ repos:
   # contoh
   # total = sum(angka := num for num in nums )
   - repo: https://github.com/MarcoGorelli/auto-walrus
-    rev: 0.3.4
+    rev: 0.4.1
     hooks:
       - id: auto-walrus
 
   # ruff adalah salah satu linter dan formatter kode
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.7.0
+    rev: v0.16.5
     hooks:
       - id: ruff
       - id: ruff-format
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.12.1
+    rev: v2.3.1
     hooks:
       - id: mypy
         args:
